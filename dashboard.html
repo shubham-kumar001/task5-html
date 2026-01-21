@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | TaskFlow Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-tasks logo-icon"></i>
+                <span class="brand-name">TaskFlow<span class="brand-pro">Pro</span></span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="task5.html" class="nav-link">Features</a>
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="tasks.html" class="nav-link">Tasks</a>
+                <a href="#analytics" class="nav-link">Analytics</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="notification-badge">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge-count">3</span>
+                </div>
+                <div class="user-dropdown">
+                    <div class="user-info">
+                        <div class="user-avatar">JD</div>
+                        <div class="user-details">
+                            <span class="user-name">John Doe</span>
+                            <span class="user-role">Project Manager</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="profile.html" class="dropdown-item">
+                            <i class="fas fa-user"></i> Profile
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-question-circle"></i> Help
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">Home</a>
+        <a href="task5.html" class="mobile-link">Features</a>
+        <a href="dashboard.html" class="mobile-link active">Dashboard</a>
+        <a href="tasks.html" class="mobile-link">Tasks</a>
+        <a href="#analytics" class="mobile-link">Analytics</a>
+        <a href="profile.html" class="mobile-link">Profile</a>
+        <div class="mobile-actions">
+            <a href="#" class="btn btn-text">Sign Out</a>
+        </div>
+    </div>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Workspace</h3>
+                <button class="btn btn-primary btn-small">
+                    <i class="fas fa-plus"></i> New
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link active">
+                    <i class="fas fa-chart-line"></i>
+                    Overview
+                </a>
+                <a href="tasks.html" class="sidebar-link">
+                    <i class="fas fa-tasks"></i>
+                    My Tasks
+                    <span class="sidebar-badge">12</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-calendar-alt"></i>
+                    Calendar
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-project-diagram"></i>
+                    Projects
+                    <span class="sidebar-badge">5</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-users"></i>
+                    Team
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-chart-bar"></i>
+                    Reports
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-inbox"></i>
+                    Inbox
+                    <span class="sidebar-badge">3</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-section">
+                <h4>Projects</h4>
+                <div class="project-list">
+                    <div class="project-item active">
+                        <div class="project-color" style="background-color: #4361ee;"></div>
+                        <span>Q4 Launch</span>
+                        <div class="project-progress">85%</div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-color" style="background-color: #f72585;"></div>
+                        <span>Marketing Campaign</span>
+                        <div class="project-progress">60%</div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-color" style="background-color: #4cc9f0;"></div>
+                        <span>Website Redesign</span>
+                        <div class="project-progress">45%</div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-color" style="background-color: #f8961e;"></div>
+                        <span>Mobile App</span>
+                        <div class="project-progress">30%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="storage-status">
+                    <div class="storage-info">
+                        <span>Storage</span>
+                        <span>65% used</span>
+                    </div>
+                    <div class="storage-bar">
+                        <div class="storage-progress" style="width: 65%;"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <div class="dashboard-title">
+                    <h1>Dashboard</h1>
+                    <p class="dashboard-subtitle">Welcome back, John. Here's what's happening with your projects today.</p>
+                </div>
+                <div class="dashboard-actions">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                    <div class="date-selector">
+                        <i class="fas fa-calendar"></i>
+                        <span>Today: Dec 8, 2023</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <h3>Active Tasks</h3>
+                        <i class="fas fa-tasks stat-icon"></i>
+                    </div>
+                    <div class="stat-card-body">
+                        <div class="stat-value">24</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>12% from last week</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <h3>Completed Today</h3>
+                        <i class="fas fa-check-circle stat-icon"></i>
+                    </div>
+                    <div class="stat-card-body">
+                        <div class="stat-value">8</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>20% from yesterday</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <h3>Overdue</h3>
+                        <i class="fas fa-exclamation-triangle stat-icon"></i>
+                    </div>
+                    <div class="stat-card-body">
+                        <div class="stat-value">3</div>
+                        <div class="stat-change negative">
+                            <i class="fas fa-arrow-down"></i>
+                            <span>2 since yesterday</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <h3>Team Productivity</h3>
+                        <i class="fas fa-chart-line stat-icon"></i>
+                    </div>
+                    <div class="stat-card-body">
+                        <div class="stat-value">92%</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>5% from last week</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts and Tasks -->
+            <div class="dashboard-content-grid">
+                <div class="dashboard-card large">
+                    <div class="card-header">
+                        <h3>Task Completion Trend</h3>
+                        <select class="chart-select">
+                            <option>Last 7 days</option>
+                            <option>Last 30 days</option>
+                            <option>Last quarter</option>
+                        </select>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="taskChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Priority Tasks</h3>
+                        <a href="#" class="btn-text">View All</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="priority-tasks">
+                            <div class="priority-task high">
+                                <div class="task-checkbox">
+                                    <input type="checkbox" id="task1">
+                                    <label for="task1"></label>
+                                </div>
+                                <div class="task-content">
+                                    <h4>Finalize Q4 Launch Plan</h4>
+                                    <p>Due: Today, 5:00 PM</p>
+                                </div>
+                                <div class="task-actions">
+                                    <button class="task-action-btn">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="priority-task medium">
+                                <div class="task-checkbox">
+                                    <input type="checkbox" id="task2">
+                                    <label for="task2"></label>
+                                </div>
+                                <div class="task-content">
+                                    <h4>Client Presentation Review</h4>
+                                    <p>Due: Tomorrow, 10:00 AM</p>
+                                </div>
+                                <div class="task-actions">
+                                    <button class="task-action-btn">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="priority-task low">
+                                <div class="task-checkbox">
+                                    <input type="checkbox" id="task3">
+                                    <label for="task3"></label>
+                                </div>
+                                <div class="task-content">
+                                    <h4>Team Meeting Agenda</h4>
+                                    <p>Due: Dec 10</p>
+                                </div>
+                                <div class="task-actions">
+                                    <button class="task-action-btn">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="priority-task overdue">
+                                <div class="task-checkbox">
+                                    <input type="checkbox" id="task4">
+                                    <label for="task4"></label>
+                                </div>
+                                <div class="task-content">
+                                    <h4>Budget Report Submission</h4>
+                                    <p>Overdue by 2 days</p>
+                                </div>
+                                <div class="task-actions">
+                                    <button class="task-action-btn">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity and Team -->
+            <div class="dashboard-content-grid">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Recent Activity</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-avatar">
+                                    <i class="fas fa-user-check"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p><strong>Sarah Johnson</strong> completed "Design Mockups"</p>
+                                    <span class="activity-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-avatar">
+                                    <i class="fas fa-comment"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p><strong>Mike Chen</strong> commented on "Q4 Launch"</p>
+                                    <span class="activity-time">4 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-avatar">
+                                    <i class="fas fa-file-upload"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p><strong>You</strong> uploaded documents to "Marketing Campaign"</p>
+                                    <span class="activity-time">Yesterday</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-avatar">
+                                    <i class="fas fa-tasks"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p><strong>Lisa Wong</strong> created a new task in "Website Redesign"</p>
+                                    <span class="activity-time">2 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Team Members</h3>
+                        <a href="#" class="btn-text">Manage Team</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="team-list">
+                            <div class="team-member">
+                                <div class="member-avatar">SJ</div>
+                                <div class="member-info">
+                                    <h4>Sarah Johnson</h4>
+                                    <p>Lead Designer • 8 tasks</p>
+                                </div>
+                                <div class="member-status online"></div>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-avatar">MC</div>
+                                <div class="member-info">
+                                    <h4>Mike Chen</h4>
+                                    <p>Dev Lead • 12 tasks</p>
+                                </div>
+                                <div class="member-status online"></div>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-avatar">LW</div>
+                                <div class="member-info">
+                                    <h4>Lisa Wong</h4>
+                                    <p>Marketing • 6 tasks</p>
+                                </div>
+                                <div class="member-status away"></div>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-avatar">RK</div>
+                                <div class="member-info">
+                                    <h4>Robert Kim</h4>
+                                    <p>QA Engineer • 10 tasks</p>
+                                </div>
+                                <div class="member-status offline"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Quick Add Task Modal -->
+    <div class="modal" id="addTaskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Task</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="taskForm">
+                    <div class="form-group">
+                        <label for="taskTitle">Task Title</label>
+                        <input type="text" id="taskTitle" placeholder="Enter task title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDescription">Description</label>
+                        <textarea id="taskDescription" rows="3" placeholder="Enter task description"></textarea>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="taskPriority">Priority</label>
+                            <select id="taskPriority">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskDueDate">Due Date</label>
+                            <input type="date" id="taskDueDate">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskProject">Project</label>
+                        <select id="taskProject">
+                            <option value="">Select Project</option>
+                            <option value="q4-launch">Q4 Launch</option>
+                            <option value="marketing">Marketing Campaign</option>
+                            <option value="website">Website Redesign</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskAssignees">Assign to</label>
+                        <select id="taskAssignees" multiple>
+                            <option value="john">John Doe</option>
+                            <option value="sarah">Sarah Johnson</option>
+                            <option value="mike">Mike Chen</option>
+                            <option value="lisa">Lisa Wong</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary">Cancel</button>
+                <button class="btn btn-primary">Create Task</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Dashboard-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // User dropdown
+            const userDropdown = document.querySelector('.user-dropdown');
+            if (userDropdown) {
+                userDropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function() {
+                    userDropdown.classList.remove('active');
+                });
+            }
+            
+            // Task Chart
+            const taskCtx = document.getElementById('taskChart');
+            if (taskCtx) {
+                new Chart(taskCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                        datasets: [{
+                            label: 'Tasks Completed',
+                            data: [12, 19, 8, 15, 22, 10, 18],
+                            borderColor: '#4361ee',
+                            backgroundColor: 'rgba(67, 97, 238, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Task completion
+            const taskCheckboxes = document.querySelectorAll('.task-checkbox input');
+            taskCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const task = this.closest('.priority-task');
+                    if (this.checked) {
+                        task.style.opacity = '0.6';
+                        setTimeout(() => {
+                            task.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+            
+            // Modal functionality
+            const addTaskBtn = document.querySelector('.btn-primary[href*="Add Task"]');
+            const modal = document.getElementById('addTaskModal');
+            const modalClose = modal?.querySelector('.modal-close');
+            
+            if (addTaskBtn && modal) {
+                addTaskBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modal.style.display = 'block';
+                });
+                
+                modalClose.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                });
+                
+                // Close modal when clicking outside
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Update stats in real-time
+            function updateStats() {
+                const statValues = document.querySelectorAll('.stat-value');
+                statValues.forEach(stat => {
+                    if (stat.textContent === '24') {
+                        // Simulate task completion
+                        const current = parseInt(stat.textContent);
+                        if (current > 20) {
+                            stat.textContent = (current - 1).toString();
+                        }
+                    }
+                });
+            }
+            
+            // Simulate real-time updates
+            setInterval(updateStats, 30000);
+        });
+    </script>
+</body>
+</html>
