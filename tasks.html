@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tasks | TaskFlow Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation (similar to dashboard) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-tasks logo-icon"></i>
+                <span class="brand-name">TaskFlow<span class="brand-pro">Pro</span></span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="task5.html" class="nav-link">Features</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="tasks.html" class="nav-link active">Tasks</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+            </div>
+            
+            <div class="nav-actions">
+                <!-- Same as dashboard -->
+                <div class="notification-badge">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge-count">3</span>
+                </div>
+                <div class="user-dropdown">
+                    <div class="user-info">
+                        <div class="user-avatar">JD</div>
+                        <div class="user-details">
+                            <span class="user-name">John Doe</span>
+                            <span class="user-role">Project Manager</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="profile.html" class="dropdown-item">
+                            <i class="fas fa-user"></i> Profile
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-question-circle"></i> Help
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="tasks-layout">
+        <main class="tasks-main">
+            <div class="tasks-header">
+                <h1>My Tasks</h1>
+                <div class="tasks-actions">
+                    <div class="view-toggle">
+                        <button class="view-btn active">
+                            <i class="fas fa-list"></i> List
+                        </button>
+                        <button class="view-btn">
+                            <i class="fas fa-grip-horizontal"></i> Board
+                        </button>
+                        <button class="view-btn">
+                            <i class="fas fa-calendar-alt"></i> Calendar
+                        </button>
+                    </div>
+                    <div class="tasks-filter">
+                        <select class="filter-select">
+                            <option>All Tasks</option>
+                            <option>Today</option>
+                            <option>This Week</option>
+                            <option>Overdue</option>
+                            <option>Completed</option>
+                        </select>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-plus"></i> New Task
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tasks content would go here -->
+            <div class="tasks-content">
+                <p>Task management interface with list/board/calendar views</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
