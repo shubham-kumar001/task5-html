@@ -1,65 +1,264 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>My Portfolio</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Features | TaskFlow Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <style>
-        .header {
-    background-color: #333333;
-    color: white;
-    padding-top: 20px;
-    padding-right: 0px;
-    padding-bottom: 20px;
-    padding-left: 0px;
-}
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-tasks logo-icon"></i>
+                <span class="brand-name">TaskFlow<span class="brand-pro">Pro</span></span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="task5.html" class="nav-link active">Features</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#enterprise" class="nav-link">Enterprise</a>
+                <a href="#resources" class="nav-link">Resources</a>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="#" class="btn btn-text">Sign In</a>
+                <a href="#" class="btn btn-primary">Get Started Free</a>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-.nav ul {
-    list-style-type: none;
-    margin: 0px;
-    padding: 0px;
-    overflow: hidden;
-    background-color: #444444;
-}
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">Home</a>
+        <a href="task5.html" class="mobile-link active">Features</a>
+        <a href="#pricing" class="mobile-link">Pricing</a>
+        <a href="#enterprise" class="mobile-link">Enterprise</a>
+        <a href="#resources" class="mobile-link">Resources</a>
+        <div class="mobile-actions">
+            <a href="#" class="btn btn-text">Sign In</a>
+            <a href="#" class="btn btn-primary">Get Started Free</a>
+        </div>
+    </div>
 
-.nav li {
-    float: left;
-}
+    <!-- Features Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1 class="page-hero-title">Advanced Features</h1>
+                <p class="page-hero-subtitle">Discover the powerful capabilities that make TaskFlow Pro the leading enterprise task management platform.</p>
+            </div>
+        </div>
+    </section>
 
-.nav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px;
-    text-decoration: none;
-}
+    <!-- Detailed Features -->
+    <section class="section detailed-features">
+        <div class="container">
+            <div class="feature-tabs" id="featureTabs">
+                <button class="feature-tab active" data-tab="ai">AI Assistant</button>
+                <button class="feature-tab" data-tab="workflow">Workflows</button>
+                <button class="feature-tab" data-tab="analytics">Analytics</button>
+                <button class="feature-tab" data-tab="integrations">Integrations</button>
+                <button class="feature-tab" data-tab="security">Security</button>
+            </div>
 
-.footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-}
+            <div class="feature-content active" id="aiContent">
+                <div class="feature-detail">
+                    <div class="feature-detail-text">
+                        <h2>AI-Powered Task Management</h2>
+                        <p>Our advanced AI analyzes your team's work patterns to optimize task allocation, predict deadlines, and identify potential bottlenecks before they impact your workflow.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Automatic task prioritization based on urgency and importance</li>
+                            <li><i class="fas fa-check-circle"></i> Predictive deadline forecasting with 95% accuracy</li>
+                            <li><i class="fas fa-check-circle"></i> Smart resource allocation to prevent team burnout</li>
+                            <li><i class="fas fa-check-circle"></i> Natural language task creation and updates</li>
+                            <li><i class="fas fa-check-circle"></i> Automated progress reporting and stakeholder updates</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Try AI Features</a>
+                    </div>
+                    <div class="feature-detail-visual">
+                        <div class="ai-dashboard-preview">
+                            <div class="ai-header">
+                                <h4>AI Task Assistant</h4>
+                                <span class="ai-status active">Active</span>
+                            </div>
+                            <div class="ai-suggestions">
+                                <div class="ai-suggestion">
+                                    <div class="suggestion-icon">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="suggestion-content">
+                                        <h5>Potential Bottleneck Detected</h5>
+                                        <p>Design review delayed by 2 days. Consider reallocating resources.</p>
+                                    </div>
+                                </div>
+                                <div class="ai-suggestion">
+                                    <div class="suggestion-icon">
+                                        <i class="fas fa-lightbulb"></i>
+                                    </div>
+                                    <div class="suggestion-content">
+                                        <h5>Optimization Suggestion</h5>
+                                        <p>Merge "Client Feedback" and "Revision" tasks to reduce context switching.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    </style>
-<div class="header">
-    <h1>Welcome to My Portfolio</h1>
-</div>
-<div class="nav">
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About Me</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
-</div>
-<div class="content">
-    <h2>Projects</h2>
-    <p>This is a list of my projects. More details coming soon.</p>
-</div>
-<div class="footer">
-    <p>Copyright 2023</p>
-</div>
+            <div class="feature-content" id="workflowContent">
+                <div class="feature-detail">
+                    <div class="feature-detail-text">
+                        <h2>Visual Workflow Builder</h2>
+                        <p>Create complex workflows with our intuitive drag-and-drop interface. Visualize dependencies, assign responsibilities, and optimize processes in real-time.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Drag-and-drop workflow creation</li>
+                            <li><i class="fas fa-check-circle"></i> Real-time collaboration on process maps</li>
+                            <li><i class="fas fa-check-circle"></i> Conditional logic and branching paths</li>
+                            <li><i class="fas fa-check-circle"></i> Automated task generation from workflows</li>
+                            <li><i class="fas fa-check-circle"></i> Version history and rollback capabilities</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Build Your First Workflow</a>
+                    </div>
+                    <div class="feature-detail-visual">
+                        <div class="workflow-preview">
+                            <!-- Workflow visualization placeholder -->
+                            <div class="workflow-node start">Start</div>
+                            <div class="workflow-arrow"></div>
+                            <div class="workflow-node process">Review</div>
+                            <div class="workflow-arrow"></div>
+                            <div class="workflow-node decision">Approve?</div>
+                            <div class="workflow-arrow yes"></div>
+                            <div class="workflow-node end">Complete</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional feature contents would go here -->
+        </div>
+    </section>
+
+    <!-- Feature Comparison -->
+    <section class="section comparison">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Compare Plans</h2>
+                <p class="section-subtitle">Choose the right plan for your team's needs</p>
+            </div>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Starter</th>
+                            <th>Professional</th>
+                            <th>Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AI Task Assistant</td>
+                            <td><i class="fas fa-check"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Advanced Workflows</td>
+                            <td><i class="fas fa-times"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Custom Analytics</td>
+                            <td>Basic</td>
+                            <td>Standard</td>
+                            <td>Advanced</td>
+                        </tr>
+                        <tr>
+                            <td>Enterprise Security</td>
+                            <td><i class="fas fa-times"></i></td>
+                            <td>Standard</td>
+                            <td><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Priority Support</td>
+                            <td><i class="fas fa-times"></i></td>
+                            <td>Business Hours</td>
+                            <td>24/7</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Experience Advanced Task Management?</h2>
+                <p class="cta-text">Start your free 30-day trial of TaskFlow Pro today.</p>
+                <div class="cta-actions">
+                    <a href="#" class="btn btn-primary btn-large">Start Free Trial</a>
+                    <a href="#" class="btn btn-secondary btn-large">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="nav-brand">
+                        <i class="fas fa-tasks logo-icon"></i>
+                        <span class="brand-name">TaskFlow<span class="brand-pro">Pro</span></span>
+                    </div>
+                    <p class="footer-description">Enterprise task management for modern teams.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="footer-title">Product</h4>
+                        <a href="task5.html" class="footer-link">Features</a>
+                        <a href="#" class="footer-link">Integrations</a>
+                        <a href="#" class="footer-link">Pricing</a>
+                        <a href="#" class="footer-link">Updates</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-title">Company</h4>
+                        <a href="#" class="footer-link">About</a>
+                        <a href="#" class="footer-link">Careers</a>
+                        <a href="#" class="footer-link">Press</a>
+                        <a href="#" class="footer-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2023 TaskFlow Pro. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#" class="footer-bottom-link">Cookie Policy</a>
+                    <a href="#" class="footer-bottom-link">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
