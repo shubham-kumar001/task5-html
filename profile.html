@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | TaskFlow Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-tasks logo-icon"></i>
+                <span class="brand-name">TaskFlow<span class="brand-pro">Pro</span></span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="task5.html" class="nav-link">Features</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="tasks.html" class="nav-link">Tasks</a>
+                <a href="profile.html" class="nav-link active">Profile</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="notification-badge">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge-count">3</span>
+                </div>
+                <div class="user-dropdown">
+                    <div class="user-info">
+                        <div class="user-avatar">JD</div>
+                        <div class="user-details">
+                            <span class="user-name">John Doe</span>
+                            <span class="user-role">Project Manager</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="profile.html" class="dropdown-item active">
+                            <i class="fas fa-user"></i> Profile
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-question-circle"></i> Help
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">Home</a>
+        <a href="task5.html" class="mobile-link">Features</a>
+        <a href="dashboard.html" class="mobile-link">Dashboard</a>
+        <a href="tasks.html" class="mobile-link">Tasks</a>
+        <a href="profile.html" class="mobile-link active">Profile</a>
+        <div class="mobile-actions">
+            <a href="#" class="btn btn-text">Sign Out</a>
+        </div>
+    </div>
+
+    <!-- Profile Layout -->
+    <div class="profile-layout">
+        <!-- Profile Sidebar -->
+        <aside class="profile-sidebar">
+            <div class="profile-header">
+                <div class="profile-avatar-large">
+                    <div class="avatar-image">JD</div>
+                    <button class="avatar-edit">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                </div>
+                <h2 class="profile-name">John Doe</h2>
+                <p class="profile-title">Project Manager</p>
+                <div class="profile-status">
+                    <span class="status-indicator online"></span>
+                    <span>Online</span>
+                </div>
+            </div>
+            
+            <nav class="profile-nav">
+                <a href="#overview" class="profile-nav-link active">
+                    <i class="fas fa-user-circle"></i>
+                    Overview
+                </a>
+                <a href="#activity" class="profile-nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    Activity
+                </a>
+                <a href="#tasks" class="profile-nav-link">
+                    <i class="fas fa-tasks"></i>
+                    My Tasks
+                </a>
+                <a href="#projects" class="profile-nav-link">
+                    <i class="fas fa-project-diagram"></i>
+                    Projects
+                </a>
+                <a href="#settings" class="profile-nav-link">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </a>
+                <a href="#security" class="profile-nav-link">
+                    <i class="fas fa-shield-alt"></i>
+                    Security
+                </a>
+                <a href="#notifications" class="profile-nav-link">
+                    <i class="fas fa-bell"></i>
+                    Notifications
+                </a>
+            </nav>
+            
+            <div class="profile-stats">
+                <div class="profile-stat">
+                    <span class="stat-number">1,248</span>
+                    <span class="stat-label">Tasks Completed</span>
+                </div>
+                <div class="profile-stat">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">On Time Rate</span>
+                </div>
+                <div class="profile-stat">
+                    <span class="stat-number">42</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Profile Content -->
+        <main class="profile-main">
+            <!-- Overview Section -->
+            <section id="overview" class="profile-section active">
+                <div class="profile-section-header">
+                    <h1>Profile Overview</h1>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Edit Profile
+                    </button>
+                </div>
+                
+                <div class="profile-content-grid">
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h3>Personal Information</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="profile-form">
+                                <div class="form-group">
+                                    <label for="fullName">Full Name</label>
+                                    <input type="text" id="fullName" value="John Doe" readonly>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" id="email" value="john.doe@company.com" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="tel" id="phone" value="+1 (555) 123-4567" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="department">Department</label>
+                                    <input type="text" id="department" value="Product Management" readonly>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="location">Location</label>
+                                        <input type="text" id="location" value="San Francisco, CA" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="timezone">Timezone</label>
+                                        <input type="text" id="timezone" value="PST (UTC-8)" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-secondary" id="enableEdit">Edit Information</button>
+                                    <button type="submit" class="btn btn-primary" id="saveInfo" disabled>Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h3>Skills & Expertise</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="skills-list">
+                                <div class="skill-item">
+                                    <span>Project Management</span>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 90%;"></div>
+                                    </div>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-item">
+                                    <span>Team Leadership</span>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 85%;"></div>
+                                    </div>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-item">
+                                    <span>Agile Methodology</span>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 95%;"></div>
+                                    </div>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-item">
+                                    <span>Risk Management</span>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 80%;"></div>
+                                    </div>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-item">
+                                    <span>Stakeholder Communication</span>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 88%;"></div>
+                                    </div>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-text" style="margin-top: 1rem;">
+                                <i class="fas fa-plus"></i> Add Skill
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Current Projects -->
+                <div class="profile-card">
+                    <div class="card-header">
+                        <h3>Current Projects</h3>
+                        <a href="#" class="btn-text">View All Projects</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="projects-grid">
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <div class="project-color" style="background-color: #4361ee;"></div>
+                                    <h4>Q4 Product Launch</h4>
+                                    <span class="project-status active">Active</span>
+                                </div>
+                                <p class="project-description">Launch of new product line with marketing campaign</p>
+                                <div class="project-meta">
+                                    <div class="project-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 85%;"></div>
+                                        </div>
+                                        <span>85% complete</span>
+                                    </div>
+                                    <div class="project-team">
+                                        <div class="team-avatars">
+                                            <div class="team-avatar">SJ</div>
+                                            <div class="team-avatar">MC</div>
+                                            <div class="team-avatar">LW</div>
+                                            <span class="team-count">+2</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-footer">
+                                    <span class="project-deadline">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        Due: Dec 15, 2023
+                                    </span>
+                                    <span class="project-tasks">
+                                        <i class="fas fa-tasks"></i>
+                                        24/32 tasks
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <div class="project-color" style="background-color: #f72585;"></div>
+                                    <h4>Marketing Campaign</h4>
+                                    <span class="project-status active">Active</span>
+                                </div>
+                                <p class="project-description">Q4 digital marketing campaign across all platforms</p>
+                                <div class="project-meta">
+                                    <div class="project-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 60%;"></div>
+                                        </div>
+                                        <span>60% complete</span>
+                                    </div>
+                                    <div class="project-team">
+                                        <div class="team-avatars">
+                                            <div class="team-avatar">LW</div>
+                                            <div class="team-avatar">RK</div>
+                                            <span class="team-count">+3</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-footer">
+                                    <span class="project-deadline">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        Due: Dec 20, 2023
+                                    </span>
+                                    <span class="project-tasks">
+                                        <i class="fas fa-tasks"></i>
+                                        18/30 tasks
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="profile-section">
+                <div class="profile-section-header">
+                    <h1>Account Settings</h1>
+                </div>
+                
+                <div class="settings-tabs">
+                    <button class="settings-tab active" data-tab="preferences">Preferences</button>
+                    <button class="settings-tab" data-tab="appearance">Appearance</button>
+                    <button class="settings-tab" data-tab="integrations">Integrations</button>
+                </div>
+                
+                <div class="settings-content active" id="preferencesContent">
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h3>Preferences</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="preferences-list">
+                                <div class="preference-item">
+                                    <div class="preference-info">
+                                        <h4>Email Notifications</h4>
+                                        <p>Receive email notifications for task updates, mentions, and deadlines</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                
+                                <div class="preference-item">
+                                    <div class="preference-info">
+                                        <h4>Desktop Notifications</h4>
+                                        <p>Show desktop notifications for urgent tasks and mentions</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                
+                                <div class="preference-item">
+                                    <div class="preference-info">
+                                        <h4>Weekly Reports</h4>
+                                        <p>Send weekly productivity reports to your email</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                
+                                <div class="preference-item">
+                                    <div class="preference-info">
+                                        <h4>Auto-Archive Completed Tasks</h4>
+                                        <p>Automatically archive tasks 7 days after completion</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Security Section -->
+            <section id="security" class="profile-section">
+                <div class="profile-section-header">
+                    <h1>Security Settings</h1>
+                </div>
+                
+                <div class="profile-content-grid">
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h3>Password & Authentication</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="security-form">
+                                <div class="form-group">
+                                    <label for="currentPassword">Current Password</label>
+                                    <input type="password" id="currentPassword" placeholder="Enter current password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="newPassword">New Password</label>
+                                    <input type="password" id="newPassword" placeholder="Enter new password">
+                                    <div class="password-strength">
+                                        <div class="strength-bar"></div>
+                                        <span class="strength-text">Password strength: Medium</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmPassword">Confirm New Password</label>
+                                    <input type="password" id="confirmPassword" placeholder="Confirm new password">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Password</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h3>Two-Factor Authentication</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="two-factor-info">
+                                <i class="fas fa-shield-alt"></i>
+                                <h4>Add an Extra Layer of Security</h4>
+                                <p>Protect your account with two-factor authentication. You'll need to enter a verification code from your phone when signing in.</p>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    Enable 2FA
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Active Sessions -->
+                <div class="profile-card">
+                    <div class="card-header">
+                        <h3>Active Sessions</h3>
+                        <button class="btn btn-text" id="logoutAll">Logout All Devices</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="sessions-list">
+                            <div class="session-item current">
+                                <div class="session-info">
+                                    <h4>Current Session</h4>
+                                    <p>Chrome on Windows • San Francisco, CA</p>
+                                    <span class="session-time">Active now</span>
+                                </div>
+                                <div class="session-status">
+                                    <span class="status-badge active">Active</span>
+                                </div>
+                            </div>
+                            <div class="session-item">
+                                <div class="session-info">
+                                    <h4>Mobile App</h4>
+                                    <p>iOS 16 • iPhone 14 Pro</p>
+                                    <span class="session-time">2 hours ago</span>
+                                </div>
+                                <div class="session-actions">
+                                    <button class="btn-text">Revoke</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Profile-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Profile navigation
+            const profileNavLinks = document.querySelectorAll('.profile-nav-link');
+            const profileSections = document.querySelectorAll('.profile-section');
+            
+            profileNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Update active nav link
+                    profileNavLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const targetId = this.getAttribute('href').substring(1);
+                    profileSections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Settings tabs
+            const settingsTabs = document.querySelectorAll('.settings-tab');
+            const settingsContents = document.querySelectorAll('.settings-content');
+            
+            settingsTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Update active tab
+                    settingsTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const targetId = this.getAttribute('data-tab') + 'Content';
+                    settingsContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === targetId) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Edit profile functionality
+            const enableEditBtn = document.getElementById('enableEdit');
+            const saveInfoBtn = document.getElementById('saveInfo');
+            const profileInputs = document.querySelectorAll('.profile-form input');
+            
+            if (enableEditBtn && saveInfoBtn) {
+                enableEditBtn.addEventListener('click', function() {
+                    profileInputs.forEach(input => {
+                        input.removeAttribute('readonly');
+                        input.style.backgroundColor = 'var(--gray-200)';
+                    });
+                    
+                    enableEditBtn.style.display = 'none';
+                    saveInfoBtn.disabled = false;
+                });
+                
+                // Password strength checker
+                const newPasswordInput = document.getElementById('newPassword');
+                const strengthBar = document.querySelector('.strength-bar');
+                const strengthText = document.querySelector('.strength-text');
+                
+                if (newPasswordInput) {
+                    newPasswordInput.addEventListener('input', function() {
+                        const password = this.value;
+                        let strength = 0;
+                        
+                        // Check password strength
+                        if (password.length >= 8) strength++;
+                        if (/[A-Z]/.test(password)) strength++;
+                        if (/[0-9]/.test(password)) strength++;
+                        if (/[^A-Za-z0-9]/.test(password)) strength++;
+                        
+                        // Update strength bar
+                        const width = strength * 25;
+                        strengthBar.style.width = width + '%';
+                        
+                        // Update text
+                        const strengthLabels = ['Very Weak', 'Weak', 'Medium', 'Strong', 'Very Strong'];
+                        strengthText.textContent = `Password strength: ${strengthLabels[strength]}`;
+                        
+                        // Update color
+                        const colors = ['#f94144', '#f8961e', '#f9c74f', '#90be6d', '#43aa8b'];
+                        strengthBar.style.backgroundColor = colors[strength];
+                    });
+                }
+                
+                // Profile form submission
+                const profileForm = document.querySelector('.profile-form');
+                if (profileForm) {
+                    profileForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        
+                        // Show success message
+                        const successMsg = document.createElement('div');
+                        successMsg.className = 'form-success';
+                        successMsg.textContent = 'Profile updated successfully!';
+                        successMsg.style.cssText = `
+                            background-color: var(--success);
+                            color: white;
+                            padding: 1rem;
+                            border-radius: var(--radius-md);
+                            margin-top: 1rem;
+                            text-align: center;
+                        `;
+                        
+                        this.appendChild(successMsg);
+                        
+                        // Reset form state
+                        setTimeout(() => {
+                            successMsg.remove();
+                            profileInputs.forEach(input => {
+                                input.setAttribute('readonly', 'true');
+                                input.style.backgroundColor = '';
+                            });
+                            enableEditBtn.style.display = 'block';
+                            saveInfoBtn.disabled = true;
+                        }, 3000);
+                    });
+                }
+            }
+            
+            // Toggle switches
+            const toggleSwitches = document.querySelectorAll('.switch input');
+            toggleSwitches.forEach(toggle => {
+                toggle.addEventListener('change', function() {
+                    const preference = this.closest('.preference-item').querySelector('h4').textContent;
+                    console.log(`${preference} ${this.checked ? 'enabled' : 'disabled'}`);
+                });
+            });
+            
+            // Avatar edit
+            const avatarEditBtn = document.querySelector('.avatar-edit');
+            if (avatarEditBtn) {
+                avatarEditBtn.addEventListener('click', function() {
+                    const input = document.createElement('input');
+                    input.type = 'file';
+                    input.accept = 'image/*';
+                    input.onchange = function(e) {
+                        const file = e.target.files[0];
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                const avatar = document.querySelector('.avatar-image');
+                                avatar.innerHTML = `<img src="${e.target.result}" alt="Profile">`;
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    };
+                    input.click();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
