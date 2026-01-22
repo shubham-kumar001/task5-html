@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation (similar to dashboard) -->
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
@@ -26,7 +26,6 @@
             </div>
             
             <div class="nav-actions">
-                <!-- Same as dashboard -->
                 <div class="notification-badge">
                     <i class="fas fa-bell"></i>
                     <span class="badge-count">3</span>
@@ -63,44 +62,707 @@
         </div>
     </nav>
 
+    <!-- Tasks Layout -->
     <div class="tasks-layout">
+        <aside class="tasks-sidebar">
+            <div class="sidebar-header">
+                <h3>Task Filters</h3>
+                <button class="btn btn-primary btn-small" id="newTaskBtn">
+                    <i class="fas fa-plus"></i> New
+                </button>
+            </div>
+            
+            <div class="filters-section">
+                <div class="filter-group">
+                    <h4>Status</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" checked>
+                            <span class="filter-label">All Tasks</span>
+                            <span class="filter-count">24</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox">
+                            <span class="filter-label">To Do</span>
+                            <span class="filter-count">12</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox">
+                            <span class="filter-label">In Progress</span>
+                            <span class="filter-count">8</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox">
+                            <span class="filter-label">Review</span>
+                            <span class="filter-count">3</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox">
+                            <span class="filter-label">Completed</span>
+                            <span class="filter-count">6</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox">
+                            <span class="filter-label">Overdue</span>
+                            <span class="filter-count">3</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h4>Priority</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" checked>
+                            <span class="filter-label">All Priorities</span>
+                        </label>
+                        <label class="filter-option priority-high">
+                            <input type="checkbox">
+                            <span class="filter-label">High</span>
+                            <span class="filter-count">5</span>
+                        </label>
+                        <label class="filter-option priority-medium">
+                            <input type="checkbox">
+                            <span class="filter-label">Medium</span>
+                            <span class="filter-count">12</span>
+                        </label>
+                        <label class="filter-option priority-low">
+                            <input type="checkbox">
+                            <span class="filter-label">Low</span>
+                            <span class="filter-count">7</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h4>Projects</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" checked>
+                            <span class="filter-label">All Projects</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox">
+                            <span class="filter-label">Q4 Launch</span>
+                            <span class="filter-count">8</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox">
+                            <span class="filter-label">Marketing</span>
+                            <span class="filter-count">6</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox">
+                            <span class="filter-label">Website Redesign</span>
+                            <span class="filter-count">4</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox">
+                            <span class="filter-label">Mobile App</span>
+                            <span class="filter-count">3</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h4>Assignees</h4>
+                    <div class="assignee-list">
+                        <div class="assignee-item">
+                            <div class="assignee-avatar">JD</div>
+                            <span class="assignee-name">John Doe</span>
+                            <span class="assignee-count">12</span>
+                        </div>
+                        <div class="assignee-item">
+                            <div class="assignee-avatar">SJ</div>
+                            <span class="assignee-name">Sarah Johnson</span>
+                            <span class="assignee-count">8</span>
+                        </div>
+                        <div class="assignee-item">
+                            <div class="assignee-avatar">MC</div>
+                            <span class="assignee-name">Mike Chen</span>
+                            <span class="assignee-count">6</span>
+                        </div>
+                        <div class="assignee-item">
+                            <div class="assignee-avatar">LW</div>
+                            <span class="assignee-name">Lisa Wong</span>
+                            <span class="assignee-count">4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="quick-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">24</span>
+                        <span class="stat-label">Total Tasks</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">8</span>
+                        <span class="stat-label">Due This Week</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
         <main class="tasks-main">
             <div class="tasks-header">
                 <h1>My Tasks</h1>
                 <div class="tasks-actions">
                     <div class="view-toggle">
-                        <button class="view-btn active">
+                        <button class="view-btn active" data-view="list">
                             <i class="fas fa-list"></i> List
                         </button>
-                        <button class="view-btn">
+                        <button class="view-btn" data-view="board">
                             <i class="fas fa-grip-horizontal"></i> Board
                         </button>
-                        <button class="view-btn">
+                        <button class="view-btn" data-view="calendar">
                             <i class="fas fa-calendar-alt"></i> Calendar
                         </button>
                     </div>
                     <div class="tasks-filter">
-                        <select class="filter-select">
-                            <option>All Tasks</option>
-                            <option>Today</option>
-                            <option>This Week</option>
-                            <option>Overdue</option>
-                            <option>Completed</option>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search tasks...">
+                        </div>
+                        <select class="sort-select">
+                            <option>Sort by: Due Date</option>
+                            <option>Sort by: Priority</option>
+                            <option>Sort by: Project</option>
+                            <option>Sort by: Assignee</option>
                         </select>
-                        <button class="btn btn-primary">
-                            <i class="fas fa-plus"></i> New Task
+                        <button class="btn btn-primary" id="createTaskBtn">
+                            <i class="fas fa-plus"></i> Create Task
                         </button>
                     </div>
                 </div>
             </div>
             
-            <!-- Tasks content would go here -->
+            <!-- Tasks Content -->
             <div class="tasks-content">
-                <p>Task management interface with list/board/calendar views</p>
+                <div class="tasks-view active" id="listView">
+                    <div class="tasks-table">
+                        <div class="table-header">
+                            <div class="table-cell check-cell">
+                                <input type="checkbox" id="selectAll">
+                                <label for="selectAll"></label>
+                            </div>
+                            <div class="table-cell">Task Name</div>
+                            <div class="table-cell">Project</div>
+                            <div class="table-cell">Priority</div>
+                            <div class="table-cell">Assignee</div>
+                            <div class="table-cell">Due Date</div>
+                            <div class="table-cell">Status</div>
+                            <div class="table-cell actions-cell">Actions</div>
+                        </div>
+                        
+                        <div class="task-row" data-priority="high">
+                            <div class="table-cell check-cell">
+                                <input type="checkbox" id="task1">
+                                <label for="task1"></label>
+                            </div>
+                            <div class="table-cell">
+                                <div class="task-title">
+                                    <h4>Finalize Q4 Launch Plan</h4>
+                                    <p class="task-description">Complete the launch strategy document</p>
+                                </div>
+                            </div>
+                            <div class="table-cell">
+                                <span class="project-badge" style="background-color: #4361ee;">Q4 Launch</span>
+                            </div>
+                            <div class="table-cell">
+                                <span class="priority-badge high">High</span>
+                            </div>
+                            <div class="table-cell">
+                                <div class="assignee-info">
+                                    <div class="assignee-avatar">JD</div>
+                                    <span>John Doe</span>
+                                </div>
+                            </div>
+                            <div class="table-cell">
+                                <span class="due-date overdue">Today</span>
+                            </div>
+                            <div class="table-cell">
+                                <span class="status-badge in-progress">In Progress</span>
+                            </div>
+                            <div class="table-cell actions-cell">
+                                <div class="task-actions">
+                                    <button class="action-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <button class="action-btn" title="More">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="task-row" data-priority="medium">
+                            <div class="table-cell check-cell">
+                                <input type="checkbox" id="task2">
+                                <label for="task2"></label>
+                            </div>
+                            <div class="table-cell">
+                                <div class="task-title">
+                                    <h4>Client Presentation Review</h4>
+                                    <p class="task-description">Review slides for client meeting</p>
+                                </div>
+                            </div>
+                            <div class="table-cell">
+                                <span class="project-badge" style="background-color: #f72585;">Marketing</span>
+                            </div>
+                            <div class="table-cell">
+                                <span class="priority-badge medium">Medium</span>
+                            </div>
+                            <div class="table-cell">
+                                <div class="assignee-info">
+                                    <div class="assignee-avatar">SJ</div>
+                                    <span>Sarah Johnson</span>
+                                </div>
+                            </div>
+                            <div class="table-cell">
+                                <span class="due-date">Tomorrow</span>
+                            </div>
+                            <div class="table-cell">
+                                <span class="status-badge to-do">To Do</span>
+                            </div>
+                            <div class="table-cell actions-cell">
+                                <div class="task-actions">
+                                    <button class="action-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <button class="action-btn" title="More">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="task-row" data-priority="low">
+                            <div class="table-cell check-cell">
+                                <input type="checkbox" id="task3">
+                                <label for="task3"></label>
+                            </div>
+                            <div class="table-cell">
+                                <div class="task-title">
+                                    <h4>Team Meeting Agenda</h4>
+                                    <p class="task-description">Prepare agenda for weekly team meeting</p>
+                                </div>
+                            </div>
+                            <div class="table-cell">
+                                <span class="project-badge" style="background-color: #4cc9f0;">Internal</span>
+                            </div>
+                            <div class="table-cell">
+                                <span class="priority-badge low">Low</span>
+                            </div>
+                            <div class="table-cell">
+                                <div class="assignee-info">
+                                    <div class="assignee-avatar">MC</div>
+                                    <span>Mike Chen</span>
+                                </div>
+                            </div>
+                            <div class="table-cell">
+                                <span class="due-date">Dec 15</span>
+                            </div>
+                            <div class="table-cell">
+                                <span class="status-badge completed">Completed</span>
+                            </div>
+                            <div class="table-cell actions-cell">
+                                <div class="task-actions">
+                                    <button class="action-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <button class="action-btn" title="More">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tasks-view" id="boardView">
+                    <div class="board-columns">
+                        <div class="board-column">
+                            <div class="column-header">
+                                <h3>To Do</h3>
+                                <span class="column-count">12</span>
+                            </div>
+                            <div class="column-tasks">
+                                <div class="board-task" data-priority="high">
+                                    <div class="task-header">
+                                        <span class="priority-dot high"></span>
+                                        <h4>Budget Report Submission</h4>
+                                    </div>
+                                    <p class="task-preview">Complete quarterly budget analysis</p>
+                                    <div class="task-footer">
+                                        <span class="due-date overdue">Overdue</span>
+                                        <div class="assignee-avatar">JD</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="board-column">
+                            <div class="column-header">
+                                <h3>In Progress</h3>
+                                <span class="column-count">8</span>
+                            </div>
+                            <div class="column-tasks">
+                                <div class="board-task" data-priority="medium">
+                                    <div class="task-header">
+                                        <span class="priority-dot medium"></span>
+                                        <h4>Design Mockups</h4>
+                                    </div>
+                                    <p class="task-preview">Create UI mockups for new feature</p>
+                                    <div class="task-footer">
+                                        <span class="due-date">Tomorrow</span>
+                                        <div class="assignee-avatar">SJ</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="board-column">
+                            <div class="column-header">
+                                <h3>Review</h3>
+                                <span class="column-count">3</span>
+                            </div>
+                        </div>
+                        
+                        <div class="board-column">
+                            <div class="column-header">
+                                <h3>Completed</h3>
+                                <span class="column-count">6</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tasks-view" id="calendarView">
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button class="calendar-nav"><i class="fas fa-chevron-left"></i></button>
+                            <h3>December 2024</h3>
+                            <button class="calendar-nav"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="calendar-grid">
+                            <!-- Calendar days will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
 
+    <!-- Create Task Modal -->
+    <div class="modal" id="createTaskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Task</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="taskForm">
+                    <div class="form-group">
+                        <label for="taskTitle">Task Title *</label>
+                        <input type="text" id="taskTitle" placeholder="Enter task title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDescription">Description</label>
+                        <textarea id="taskDescription" rows="3" placeholder="Enter task description"></textarea>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="taskPriority">Priority</label>
+                            <select id="taskPriority">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskDueDate">Due Date</label>
+                            <input type="date" id="taskDueDate">
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="taskProject">Project</label>
+                            <select id="taskProject">
+                                <option value="">Select Project</option>
+                                <option value="q4-launch">Q4 Launch</option>
+                                <option value="marketing">Marketing Campaign</option>
+                                <option value="website">Website Redesign</option>
+                                <option value="mobile">Mobile App</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskStatus">Status</label>
+                            <select id="taskStatus">
+                                <option value="todo">To Do</option>
+                                <option value="progress">In Progress</option>
+                                <option value="review">In Review</option>
+                                <option value="done">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskAssignees">Assign to</label>
+                        <div class="assignee-select">
+                            <div class="selected-assignees">
+                                <div class="selected-assignee">
+                                    <div class="assignee-avatar">JD</div>
+                                    <span>John Doe</span>
+                                    <button type="button" class="remove-assignee">&times;</button>
+                                </div>
+                            </div>
+                            <select id="taskAssignees" multiple style="display: none;">
+                                <option value="john" selected>John Doe</option>
+                                <option value="sarah">Sarah Johnson</option>
+                                <option value="mike">Mike Chen</option>
+                                <option value="lisa">Lisa Wong</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskTags">Tags</label>
+                        <div class="tag-input">
+                            <input type="text" id="taskTags" placeholder="Add tags...">
+                            <div class="tag-suggestions"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancelTask">Cancel</button>
+                <button type="submit" form="taskForm" class="btn btn-primary">Create Task</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        // Tasks-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // View toggle functionality
+            const viewButtons = document.querySelectorAll('.view-btn');
+            const taskViews = document.querySelectorAll('.tasks-view');
+            
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    viewButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding view
+                    const viewName = this.getAttribute('data-view');
+                    taskViews.forEach(view => {
+                        view.classList.remove('active');
+                        if (view.id === viewName + 'View') {
+                            view.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Create task modal
+            const createTaskBtn = document.getElementById('createTaskBtn');
+            const createTaskModal = document.getElementById('createTaskModal');
+            const modalClose = createTaskModal?.querySelector('.modal-close');
+            
+            if (createTaskBtn && createTaskModal) {
+                createTaskBtn.addEventListener('click', function() {
+                    createTaskModal.style.display = 'flex';
+                });
+                
+                modalClose.addEventListener('click', function() {
+                    createTaskModal.style.display = 'none';
+                });
+                
+                document.getElementById('cancelTask').addEventListener('click', function() {
+                    createTaskModal.style.display = 'none';
+                });
+                
+                createTaskModal.addEventListener('click', function(e) {
+                    if (e.target === createTaskModal) {
+                        createTaskModal.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Task form submission
+            const taskForm = document.getElementById('taskForm');
+            if (taskForm) {
+                taskForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(this);
+                    const taskData = Object.fromEntries(formData);
+                    
+                    // In a real app, send to backend
+                    console.log('Task created:', taskData);
+                    
+                    // Show success message
+                    showNotification('Task created successfully!', 'success');
+                    
+                    // Close modal
+                    createTaskModal.style.display = 'none';
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Refresh task list
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                });
+            }
+            
+            // Task row selection
+            const selectAllCheckbox = document.getElementById('selectAll');
+            const taskCheckboxes = document.querySelectorAll('.task-row input[type="checkbox"]');
+            
+            if (selectAllCheckbox) {
+                selectAllCheckbox.addEventListener('change', function() {
+                    taskCheckboxes.forEach(checkbox => {
+                        checkbox.checked = this.checked;
+                    });
+                });
+            }
+            
+            // Task actions
+            const taskActions = document.querySelectorAll('.task-actions .action-btn');
+            taskActions.forEach(button => {
+                button.addEventListener('click', function() {
+                    const action = this.getAttribute('title');
+                    const taskRow = this.closest('.task-row');
+                    const taskTitle = taskRow.querySelector('.task-title h4').textContent;
+                    
+                    if (action === 'Delete') {
+                        if (confirm(`Delete task "${taskTitle}"?`)) {
+                            taskRow.style.opacity = '0.5';
+                            setTimeout(() => {
+                                taskRow.remove();
+                                showNotification('Task deleted', 'info');
+                            }, 300);
+                        }
+                    } else if (action === 'Edit') {
+                        // In a real app, open edit modal
+                        showNotification('Edit feature coming soon', 'info');
+                    }
+                });
+            });
+            
+            // Filter functionality
+            const filterOptions = document.querySelectorAll('.filter-option input');
+            filterOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    applyFilters();
+                });
+            });
+            
+            function applyFilters() {
+                const rows = document.querySelectorAll('.task-row');
+                const selectedStatuses = [];
+                const selectedPriorities = [];
+                
+                // Get selected filters
+                document.querySelectorAll('.filter-option input:checked').forEach(checkbox => {
+                    const label = checkbox.nextElementSibling.textContent;
+                    if (label.includes('High') || label.includes('Medium') || label.includes('Low')) {
+                        selectedPriorities.push(label.toLowerCase());
+                    } else if (!label.includes('All')) {
+                        selectedStatuses.push(label.toLowerCase());
+                    }
+                });
+                
+                // Apply filters
+                rows.forEach(row => {
+                    const priority = row.getAttribute('data-priority');
+                    const status = row.querySelector('.status-badge').textContent.toLowerCase();
+                    
+                    let show = true;
+                    
+                    if (selectedPriorities.length > 0 && !selectedPriorities.includes(priority)) {
+                        show = false;
+                    }
+                    
+                    if (selectedStatuses.length > 0 && !selectedStatuses.includes(status)) {
+                        show = false;
+                    }
+                    
+                    row.style.display = show ? 'flex' : 'none';
+                });
+            }
+            
+            // Calendar view initialization
+            function initCalendar() {
+                const calendarGrid = document.querySelector('.calendar-grid');
+                if (!calendarGrid) return;
+                
+                const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                
+                // Add day headers
+                days.forEach(day => {
+                    const dayHeader = document.createElement('div');
+                    dayHeader.className = 'calendar-day-header';
+                    dayHeader.textContent = day;
+                    calendarGrid.appendChild(dayHeader);
+                });
+                
+                // Add calendar days (example)
+                const totalDays = 31;
+                for (let i = 1; i <= totalDays; i++) {
+                    const dayCell = document.createElement('div');
+                    dayCell.className = 'calendar-day';
+                    dayCell.textContent = i;
+                    
+                    // Add tasks to some days (example)
+                    if (i === 15) {
+                        const taskIndicator = document.createElement('div');
+                        taskIndicator.className = 'calendar-task high';
+                        taskIndicator.title = 'Q4 Launch Plan Due';
+                        dayCell.appendChild(taskIndicator);
+                    }
+                    
+                    if (i === 20) {
+                        const taskIndicator = document.createElement('div');
+                        taskIndicator.className = 'calendar-task medium';
+                        taskIndicator.title = 'Client Presentation';
+                        dayCell.appendChild(taskIndicator);
+                    }
+                    
+                    calendarGrid.appendChild(dayCell);
+                }
+            }
+            
+            // Initialize calendar when calendar view is shown
+            const calendarViewBtn = document.querySelector('[data-view="calendar"]');
+            if (calendarViewBtn) {
+                calendarViewBtn.addEventListener('click', initCalendar);
+            }
+            
+            function showNotification(message, type = 'info') {
+                // Reuse notification function from main script
+                if (window.RealEstateUtils && window.RealEstateUtils.showNotification) {
+                    window.RealEstateUtils.showNotification(message, type);
+                } else {
+                    // Fallback notification
+                    alert(message);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
