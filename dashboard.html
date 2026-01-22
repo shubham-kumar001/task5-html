@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -23,7 +22,6 @@
                 <a href="task5.html" class="nav-link">Features</a>
                 <a href="dashboard.html" class="nav-link active">Dashboard</a>
                 <a href="tasks.html" class="nav-link">Tasks</a>
-                <a href="#analytics" class="nav-link">Analytics</a>
                 <a href="profile.html" class="nav-link">Profile</a>
             </div>
             
@@ -64,27 +62,14 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html" class="mobile-link">Home</a>
-        <a href="task5.html" class="mobile-link">Features</a>
-        <a href="dashboard.html" class="mobile-link active">Dashboard</a>
-        <a href="tasks.html" class="mobile-link">Tasks</a>
-        <a href="#analytics" class="mobile-link">Analytics</a>
-        <a href="profile.html" class="mobile-link">Profile</a>
-        <div class="mobile-actions">
-            <a href="#" class="btn btn-text">Sign Out</a>
-        </div>
-    </div>
-
     <!-- Dashboard Layout -->
     <div class="dashboard-layout">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
                 <h3>Workspace</h3>
-                <button class="btn btn-primary btn-small">
-                    <i class="fas fa-plus"></i> New
+                <button class="btn btn-primary btn-small" id="quickAddBtn">
+                    <i class="fas fa-plus"></i> Quick Add
                 </button>
             </div>
             
@@ -148,15 +133,42 @@
                 </div>
             </div>
             
+            <div class="sidebar-section">
+                <h4>Team Members</h4>
+                <div class="team-list">
+                    <div class="team-member">
+                        <div class="member-avatar">SJ</div>
+                        <div class="member-info">
+                            <span class="member-name">Sarah Johnson</span>
+                            <span class="member-status online"></span>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">MC</div>
+                        <div class="member-info">
+                            <span class="member-name">Mike Chen</span>
+                            <span class="member-status online"></span>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">LW</div>
+                        <div class="member-info">
+                            <span class="member-name">Lisa Wong</span>
+                            <span class="member-status away"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="sidebar-footer">
-                <div class="storage-status">
-                    <div class="storage-info">
-                        <span>Storage</span>
-                        <span>65% used</span>
+                <div class="ai-assistant">
+                    <div class="ai-header">
+                        <i class="fas fa-robot"></i>
+                        <span>AI Assistant</span>
                     </div>
-                    <div class="storage-bar">
-                        <div class="storage-progress" style="width: 65%;"></div>
-                    </div>
+                    <button class="btn btn-text btn-small" id="askAI">
+                        <i class="fas fa-comment"></i> Ask AI
+                    </button>
                 </div>
             </div>
         </aside>
@@ -169,12 +181,12 @@
                     <p class="dashboard-subtitle">Welcome back, John. Here's what's happening with your projects today.</p>
                 </div>
                 <div class="dashboard-actions">
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" id="addTaskBtn">
                         <i class="fas fa-plus"></i> Add Task
                     </button>
                     <div class="date-selector">
                         <i class="fas fa-calendar"></i>
-                        <span>Today: Dec 8, 2023</span>
+                        <span id="currentDate">Loading...</span>
                     </div>
                 </div>
             </div>
@@ -243,9 +255,9 @@
                 <div class="dashboard-card large">
                     <div class="card-header">
                         <h3>Task Completion Trend</h3>
-                        <select class="chart-select">
+                        <select class="chart-select" id="chartPeriod">
                             <option>Last 7 days</option>
-                            <option>Last 30 days</option>
+                            <option selected>Last 30 days</option>
                             <option>Last quarter</option>
                         </select>
                     </div>
@@ -259,14 +271,14 @@
                 <div class="dashboard-card">
                     <div class="card-header">
                         <h3>Priority Tasks</h3>
-                        <a href="#" class="btn-text">View All</a>
+                        <a href="tasks.html" class="btn-text">View All</a>
                     </div>
                     <div class="card-body">
                         <div class="priority-tasks">
                             <div class="priority-task high">
                                 <div class="task-checkbox">
-                                    <input type="checkbox" id="task1">
-                                    <label for="task1"></label>
+                                    <input type="checkbox" id="dashTask1">
+                                    <label for="dashTask1"></label>
                                 </div>
                                 <div class="task-content">
                                     <h4>Finalize Q4 Launch Plan</h4>
@@ -281,8 +293,8 @@
                             
                             <div class="priority-task medium">
                                 <div class="task-checkbox">
-                                    <input type="checkbox" id="task2">
-                                    <label for="task2"></label>
+                                    <input type="checkbox" id="dashTask2">
+                                    <label for="dashTask2"></label>
                                 </div>
                                 <div class="task-content">
                                     <h4>Client Presentation Review</h4>
@@ -297,8 +309,8 @@
                             
                             <div class="priority-task low">
                                 <div class="task-checkbox">
-                                    <input type="checkbox" id="task3">
-                                    <label for="task3"></label>
+                                    <input type="checkbox" id="dashTask3">
+                                    <label for="dashTask3"></label>
                                 </div>
                                 <div class="task-content">
                                     <h4>Team Meeting Agenda</h4>
@@ -313,8 +325,8 @@
                             
                             <div class="priority-task overdue">
                                 <div class="task-checkbox">
-                                    <input type="checkbox" id="task4">
-                                    <label for="task4"></label>
+                                    <input type="checkbox" id="dashTask4">
+                                    <label for="dashTask4"></label>
                                 </div>
                                 <div class="task-content">
                                     <h4>Budget Report Submission</h4>
@@ -331,7 +343,7 @@
                 </div>
             </div>
 
-            <!-- Recent Activity and Team -->
+            <!-- Recent Activity and Upcoming -->
             <div class="dashboard-content-grid">
                 <div class="dashboard-card">
                     <div class="card-header">
@@ -381,42 +393,43 @@
                 
                 <div class="dashboard-card">
                     <div class="card-header">
-                        <h3>Team Members</h3>
-                        <a href="#" class="btn-text">Manage Team</a>
+                        <h3>Upcoming Deadlines</h3>
+                        <a href="#" class="btn-text">View Calendar</a>
                     </div>
                     <div class="card-body">
-                        <div class="team-list">
-                            <div class="team-member">
-                                <div class="member-avatar">SJ</div>
-                                <div class="member-info">
-                                    <h4>Sarah Johnson</h4>
-                                    <p>Lead Designer • 8 tasks</p>
+                        <div class="deadline-list">
+                            <div class="deadline-item">
+                                <div class="deadline-date">
+                                    <span class="deadline-day">15</span>
+                                    <span class="deadline-month">DEC</span>
                                 </div>
-                                <div class="member-status online"></div>
+                                <div class="deadline-details">
+                                    <h4>Q4 Launch Final Review</h4>
+                                    <p>Project: Q4 Launch</p>
+                                </div>
+                                <div class="deadline-status urgent">Urgent</div>
                             </div>
-                            <div class="team-member">
-                                <div class="member-avatar">MC</div>
-                                <div class="member-info">
-                                    <h4>Mike Chen</h4>
-                                    <p>Dev Lead • 12 tasks</p>
+                            <div class="deadline-item">
+                                <div class="deadline-date">
+                                    <span class="deadline-day">20</span>
+                                    <span class="deadline-month">DEC</span>
                                 </div>
-                                <div class="member-status online"></div>
+                                <div class="deadline-details">
+                                    <h4>Marketing Campaign Launch</h4>
+                                    <p>Project: Marketing</p>
+                                </div>
+                                <div class="deadline-status upcoming">Upcoming</div>
                             </div>
-                            <div class="team-member">
-                                <div class="member-avatar">LW</div>
-                                <div class="member-info">
-                                    <h4>Lisa Wong</h4>
-                                    <p>Marketing • 6 tasks</p>
+                            <div class="deadline-item">
+                                <div class="deadline-date">
+                                    <span class="deadline-day">31</span>
+                                    <span class="deadline-month">DEC</span>
                                 </div>
-                                <div class="member-status away"></div>
-                            </div>
-                            <div class="team-member">
-                                <div class="member-avatar">RK</div>
-                                <div class="member-info">
-                                    <h4>Robert Kim</h4>
-                                    <p>QA Engineer • 10 tasks</p>
+                                <div class="deadline-details">
+                                    <h4>Year-End Reports</h4>
+                                    <p>Project: Internal</p>
                                 </div>
-                                <div class="member-status offline"></div>
+                                <div class="deadline-status normal">Normal</div>
                             </div>
                         </div>
                     </div>
@@ -425,60 +438,95 @@
         </main>
     </div>
 
-    <!-- Quick Add Task Modal -->
-    <div class="modal" id="addTaskModal">
+    <!-- Quick Add Modal -->
+    <div class="modal" id="quickAddModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Add New Task</h3>
+                <h3>Quick Add Task</h3>
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">
-                <form id="taskForm">
+                <form id="quickTaskForm">
                     <div class="form-group">
-                        <label for="taskTitle">Task Title</label>
-                        <input type="text" id="taskTitle" placeholder="Enter task title" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="taskDescription">Description</label>
-                        <textarea id="taskDescription" rows="3" placeholder="Enter task description"></textarea>
+                        <label for="quickTaskTitle">What needs to be done?</label>
+                        <input type="text" id="quickTaskTitle" placeholder="Enter task title" required autofocus>
                     </div>
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="taskPriority">Priority</label>
-                            <select id="taskPriority">
+                            <label for="quickTaskPriority">Priority</label>
+                            <select id="quickTaskPriority">
                                 <option value="low">Low</option>
-                                <option value="medium">Medium</option>
+                                <option value="medium" selected>Medium</option>
                                 <option value="high">High</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="taskDueDate">Due Date</label>
-                            <input type="date" id="taskDueDate">
+                            <label for="quickTaskDue">Due</label>
+                            <select id="quickTaskDue">
+                                <option value="today">Today</option>
+                                <option value="tomorrow" selected>Tomorrow</option>
+                                <option value="week">This Week</option>
+                                <option value="nextweek">Next Week</option>
+                                <option value="later">Later</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="taskProject">Project</label>
-                        <select id="taskProject">
-                            <option value="">Select Project</option>
+                        <label for="quickTaskProject">Project</label>
+                        <select id="quickTaskProject">
+                            <option value="">No Project</option>
                             <option value="q4-launch">Q4 Launch</option>
                             <option value="marketing">Marketing Campaign</option>
                             <option value="website">Website Redesign</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="taskAssignees">Assign to</label>
-                        <select id="taskAssignees" multiple>
-                            <option value="john">John Doe</option>
-                            <option value="sarah">Sarah Johnson</option>
-                            <option value="mike">Mike Chen</option>
-                            <option value="lisa">Lisa Wong</option>
                         </select>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary">Cancel</button>
-                <button class="btn btn-primary">Create Task</button>
+                <button class="btn btn-primary" id="saveQuickTask">Add Task</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Assistant Modal -->
+    <div class="modal" id="aiModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>AI Task Assistant</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="ai-conversation">
+                    <div class="ai-message">
+                        <div class="ai-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>Hi John! I'm your AI assistant. I can help you prioritize tasks, suggest deadlines, or optimize your workflow. What would you like help with today?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ai-suggestions">
+                    <button class="ai-suggestion-btn" data-question="What's my most urgent task?">
+                        <i class="fas fa-exclamation-circle"></i>
+                        What's my most urgent task?
+                    </button>
+                    <button class="ai-suggestion-btn" data-question="Suggest a deadline for my presentation">
+                        <i class="fas fa-calendar-check"></i>
+                        Suggest a deadline
+                    </button>
+                    <button class="ai-suggestion-btn" data-question="How can I optimize my workflow?">
+                        <i class="fas fa-chart-line"></i>
+                        Optimize my workflow
+                    </button>
+                </div>
+                <div class="ai-input">
+                    <input type="text" placeholder="Ask me anything about your tasks..." id="aiQuestion">
+                    <button class="btn btn-primary" id="askQuestion">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -488,18 +536,153 @@
     <script>
         // Dashboard-specific JavaScript
         document.addEventListener('DOMContentLoaded', function() {
-            // User dropdown
-            const userDropdown = document.querySelector('.user-dropdown');
-            if (userDropdown) {
-                userDropdown.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    this.classList.toggle('active');
+            // Set current date
+            const currentDate = document.getElementById('currentDate');
+            if (currentDate) {
+                const now = new Date();
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                currentDate.textContent = now.toLocaleDateString('en-US', options);
+            }
+            
+            // Quick Add Modal
+            const quickAddBtn = document.getElementById('quickAddBtn');
+            const quickAddModal = document.getElementById('quickAddModal');
+            const addTaskBtn = document.getElementById('addTaskBtn');
+            
+            if (quickAddBtn && quickAddModal) {
+                const openModal = () => {
+                    quickAddModal.style.display = 'flex';
+                    document.getElementById('quickTaskTitle').focus();
+                };
+                
+                quickAddBtn.addEventListener('click', openModal);
+                if (addTaskBtn) addTaskBtn.addEventListener('click', openModal);
+                
+                const modalClose = quickAddModal.querySelector('.modal-close');
+                modalClose.addEventListener('click', () => {
+                    quickAddModal.style.display = 'none';
                 });
                 
-                // Close dropdown when clicking outside
-                document.addEventListener('click', function() {
-                    userDropdown.classList.remove('active');
+                quickAddModal.addEventListener('click', (e) => {
+                    if (e.target === quickAddModal) {
+                        quickAddModal.style.display = 'none';
+                    }
                 });
+                
+                // Save quick task
+                const saveBtn = document.getElementById('saveQuickTask');
+                if (saveBtn) {
+                    saveBtn.addEventListener('click', function() {
+                        const title = document.getElementById('quickTaskTitle').value;
+                        if (title.trim()) {
+                            // In a real app, save to backend
+                            showNotification('Task added successfully!', 'success');
+                            quickAddModal.style.display = 'none';
+                            document.getElementById('quickTaskForm').reset();
+                            
+                            // Update stats
+                            const statValue = document.querySelector('.stat-card:first-child .stat-value');
+                            if (statValue) {
+                                const current = parseInt(statValue.textContent);
+                                statValue.textContent = (current + 1).toString();
+                            }
+                        }
+                    });
+                }
+            }
+            
+            // AI Assistant Modal
+            const askAIBtn = document.getElementById('askAI');
+            const aiModal = document.getElementById('aiModal');
+            
+            if (askAIBtn && aiModal) {
+                askAIBtn.addEventListener('click', function() {
+                    aiModal.style.display = 'flex';
+                });
+                
+                const modalClose = aiModal.querySelector('.modal-close');
+                modalClose.addEventListener('click', () => {
+                    aiModal.style.display = 'none';
+                });
+                
+                aiModal.addEventListener('click', (e) => {
+                    if (e.target === aiModal) {
+                        aiModal.style.display = 'none';
+                    }
+                });
+                
+                // AI suggestions
+                const suggestionBtns = document.querySelectorAll('.ai-suggestion-btn');
+                suggestionBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const question = this.getAttribute('data-question');
+                        document.getElementById('aiQuestion').value = question;
+                        askAI(question);
+                    });
+                });
+                
+                // Ask question
+                const askQuestionBtn = document.getElementById('askQuestion');
+                if (askQuestionBtn) {
+                    askQuestionBtn.addEventListener('click', function() {
+                        const question = document.getElementById('aiQuestion').value;
+                        if (question.trim()) {
+                            askAI(question);
+                        }
+                    });
+                }
+            }
+            
+            function askAI(question) {
+                const conversation = document.querySelector('.ai-conversation');
+                if (!conversation) return;
+                
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'user-message';
+                userMessage.innerHTML = `
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>${question}</p>
+                    </div>
+                `;
+                conversation.appendChild(userMessage);
+                
+                // Clear input
+                document.getElementById('aiQuestion').value = '';
+                
+                // Simulate AI thinking
+                setTimeout(() => {
+                    const aiMessage = document.createElement('div');
+                    aiMessage.className = 'ai-message';
+                    
+                    let response = '';
+                    
+                    if (question.includes('urgent')) {
+                        response = "Based on your tasks, 'Finalize Q4 Launch Plan' is your most urgent task. It's due today and marked as high priority. I recommend focusing on this first.";
+                    } else if (question.includes('deadline')) {
+                        response = "For your client presentation, I suggest setting the deadline for Friday, December 15th. This gives you 3 days for preparation and allows time for review.";
+                    } else if (question.includes('optimize')) {
+                        response = "I notice you have 3 overdue tasks. Consider delegating 'Budget Report' to Mike Chen. Also, try batching similar tasks together to reduce context switching.";
+                    } else {
+                        response = "I've analyzed your workflow and suggest grouping similar tasks together. You have 5 design-related tasks that could be completed in one focused session.";
+                    }
+                    
+                    aiMessage.innerHTML = `
+                        <div class="ai-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>${response}</p>
+                        </div>
+                    `;
+                    conversation.appendChild(aiMessage);
+                    
+                    // Scroll to bottom
+                    conversation.scrollTop = conversation.scrollHeight;
+                }, 1000);
             }
             
             // Task Chart
@@ -521,6 +704,7 @@
                     },
                     options: {
                         responsive: true,
+                        maintainAspectRatio: false,
                         plugins: {
                             legend: {
                                 display: false
@@ -531,6 +715,9 @@
                                 beginAtZero: true,
                                 grid: {
                                     color: 'rgba(0, 0, 0, 0.05)'
+                                },
+                                ticks: {
+                                    stepSize: 5
                                 }
                             },
                             x: {
@@ -552,50 +739,55 @@
                         task.style.opacity = '0.6';
                         setTimeout(() => {
                             task.style.display = 'none';
+                            
+                            // Update stats
+                            const completedStat = document.querySelectorAll('.stat-value')[1];
+                            const activeStat = document.querySelectorAll('.stat-value')[0];
+                            
+                            if (completedStat) {
+                                const current = parseInt(completedStat.textContent);
+                                completedStat.textContent = (current + 1).toString();
+                            }
+                            
+                            if (activeStat) {
+                                const current = parseInt(activeStat.textContent);
+                                if (current > 0) {
+                                    activeStat.textContent = (current - 1).toString();
+                                }
+                            }
                         }, 300);
                     }
                 });
             });
             
-            // Modal functionality
-            const addTaskBtn = document.querySelector('.btn-primary[href*="Add Task"]');
-            const modal = document.getElementById('addTaskModal');
-            const modalClose = modal?.querySelector('.modal-close');
-            
-            if (addTaskBtn && modal) {
-                addTaskBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    modal.style.display = 'block';
-                });
-                
-                modalClose.addEventListener('click', function() {
-                    modal.style.display = 'none';
-                });
-                
-                // Close modal when clicking outside
-                modal.addEventListener('click', function(e) {
-                    if (e.target === modal) {
-                        modal.style.display = 'none';
-                    }
+            // Chart period selector
+            const chartPeriod = document.getElementById('chartPeriod');
+            if (chartPeriod) {
+                chartPeriod.addEventListener('change', function() {
+                    // In a real app, update chart data based on selected period
+                    showNotification(`Chart updated for ${this.value}`, 'info');
                 });
             }
             
-            // Update stats in real-time
-            function updateStats() {
-                const statValues = document.querySelectorAll('.stat-value');
-                statValues.forEach(stat => {
-                    if (stat.textContent === '24') {
-                        // Simulate task completion
-                        const current = parseInt(stat.textContent);
-                        if (current > 20) {
-                            stat.textContent = (current - 1).toString();
-                        }
-                    }
+            // Project item clicks
+            const projectItems = document.querySelectorAll('.project-item');
+            projectItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    projectItems.forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const projectName = this.querySelector('span').textContent;
+                    showNotification(`Showing tasks for ${projectName}`, 'info');
                 });
-            }
+            });
             
-            // Simulate real-time updates
-            setInterval(updateStats, 30000);
+            function showNotification(message, type = 'info') {
+                if (window.RealEstateUtils && window.RealEstateUtils.showNotification) {
+                    window.RealEstateUtils.showNotification(message, type);
+                } else {
+                    alert(message);
+                }
+            }
         });
     </script>
 </body>
