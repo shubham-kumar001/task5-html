@@ -21,32 +21,19 @@
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="task5.html" class="nav-link active">Features</a>
                 <a href="#pricing" class="nav-link">Pricing</a>
-                <a href="#enterprise" class="nav-link">Enterprise</a>
-                <a href="#resources" class="nav-link">Resources</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="profile.html" class="nav-link">Profile</a>
             </div>
             
             <div class="nav-actions">
                 <a href="#" class="btn btn-text">Sign In</a>
-                <a href="#" class="btn btn-primary">Get Started Free</a>
+                <a href="dashboard.html" class="btn btn-primary">Launch App</a>
                 <button class="mobile-toggle" id="mobileToggle">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </nav>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html" class="mobile-link">Home</a>
-        <a href="task5.html" class="mobile-link active">Features</a>
-        <a href="#pricing" class="mobile-link">Pricing</a>
-        <a href="#enterprise" class="mobile-link">Enterprise</a>
-        <a href="#resources" class="mobile-link">Resources</a>
-        <div class="mobile-actions">
-            <a href="#" class="btn btn-text">Sign In</a>
-            <a href="#" class="btn btn-primary">Get Started Free</a>
-        </div>
-    </div>
 
     <!-- Features Hero -->
     <section class="page-hero">
@@ -81,7 +68,10 @@
                             <li><i class="fas fa-check-circle"></i> Natural language task creation and updates</li>
                             <li><i class="fas fa-check-circle"></i> Automated progress reporting and stakeholder updates</li>
                         </ul>
-                        <a href="#" class="btn btn-primary">Try AI Features</a>
+                        <div class="feature-actions">
+                            <a href="dashboard.html" class="btn btn-primary">Try AI Features</a>
+                            <a href="#" class="btn btn-secondary">Watch Demo</a>
+                        </div>
                     </div>
                     <div class="feature-detail-visual">
                         <div class="ai-dashboard-preview">
@@ -108,7 +98,47 @@
                                         <p>Merge "Client Feedback" and "Revision" tasks to reduce context switching.</p>
                                     </div>
                                 </div>
+                                <div class="ai-suggestion">
+                                    <div class="suggestion-icon">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <div class="suggestion-content">
+                                        <h5>Deadline Prediction</h5>
+                                        <p>Based on current pace, project will complete 3 days ahead of schedule.</p>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI Stats -->
+                <div class="feature-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>40%</h3>
+                            <p>Average productivity increase with AI</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>95%</h3>
+                            <p>Deadline prediction accuracy</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>8.5/10</h3>
+                            <p>Team satisfaction with AI suggestions</p>
                         </div>
                     </div>
                 </div>
@@ -126,24 +156,104 @@
                             <li><i class="fas fa-check-circle"></i> Automated task generation from workflows</li>
                             <li><i class="fas fa-check-circle"></i> Version history and rollback capabilities</li>
                         </ul>
-                        <a href="#" class="btn btn-primary">Build Your First Workflow</a>
+                        <div class="feature-actions">
+                            <a href="dashboard.html" class="btn btn-primary">Build Your First Workflow</a>
+                            <a href="#" class="btn btn-secondary">View Templates</a>
+                        </div>
                     </div>
                     <div class="feature-detail-visual">
                         <div class="workflow-preview">
-                            <!-- Workflow visualization placeholder -->
-                            <div class="workflow-node start">Start</div>
-                            <div class="workflow-arrow"></div>
-                            <div class="workflow-node process">Review</div>
-                            <div class="workflow-arrow"></div>
-                            <div class="workflow-node decision">Approve?</div>
-                            <div class="workflow-arrow yes"></div>
-                            <div class="workflow-node end">Complete</div>
+                            <div class="workflow-diagram">
+                                <div class="workflow-node start">
+                                    <i class="fas fa-play"></i>
+                                    <span>Start Project</span>
+                                </div>
+                                <div class="workflow-arrow"></div>
+                                <div class="workflow-node process">
+                                    <i class="fas fa-tasks"></i>
+                                    <span>Design Phase</span>
+                                </div>
+                                <div class="workflow-arrow"></div>
+                                <div class="workflow-node decision">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>Client Approval?</span>
+                                </div>
+                                <div class="workflow-branch">
+                                    <div class="branch-yes">
+                                        <div class="workflow-arrow"></div>
+                                        <div class="workflow-node process">
+                                            <i class="fas fa-check"></i>
+                                            <span>Development</span>
+                                        </div>
+                                    </div>
+                                    <div class="branch-no">
+                                        <div class="workflow-arrow"></div>
+                                        <div class="workflow-node process">
+                                            <i class="fas fa-redo"></i>
+                                            <span>Revisions</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Additional feature contents would go here -->
+            <div class="feature-content" id="analyticsContent">
+                <div class="feature-detail">
+                    <div class="feature-detail-text">
+                        <h2>Advanced Analytics & Reporting</h2>
+                        <p>Gain deep insights into team performance, project health, and resource utilization with our comprehensive analytics suite.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Real-time performance dashboards</li>
+                            <li><i class="fas fa-check-circle"></i> Predictive analytics for project timelines</li>
+                            <li><i class="fas fa-check-circle"></i> Custom report builder with drag-and-drop</li>
+                            <li><i class="fas fa-check-circle"></i> Export to PDF, Excel, and PowerPoint</li>
+                            <li><i class="fas fa-check-circle"></i> Automated executive summaries</li>
+                        </ul>
+                        <div class="feature-actions">
+                            <a href="dashboard.html" class="btn btn-primary">View Analytics</a>
+                            <a href="#" class="btn btn-secondary">Sample Reports</a>
+                        </div>
+                    </div>
+                    <div class="feature-detail-visual">
+                        <div class="analytics-preview">
+                            <div class="analytics-chart">
+                                <div class="chart-header">
+                                    <h4>Team Performance Metrics</h4>
+                                    <span class="chart-period">This Month</span>
+                                </div>
+                                <div class="chart-metrics">
+                                    <div class="metric">
+                                        <span class="metric-label">Productivity</span>
+                                        <div class="metric-bar">
+                                            <div class="metric-fill" style="width: 85%;"></div>
+                                        </div>
+                                        <span class="metric-value">85%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">On-time Delivery</span>
+                                        <div class="metric-bar">
+                                            <div class="metric-fill" style="width: 92%;"></div>
+                                        </div>
+                                        <span class="metric-value">92%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Quality Score</span>
+                                        <div class="metric-bar">
+                                            <div class="metric-fill" style="width: 88%;"></div>
+                                        </div>
+                                        <span class="metric-value">88%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Integration and Security sections would follow similar pattern -->
         </div>
     </section>
 
@@ -195,6 +305,18 @@
                             <td>Business Hours</td>
                             <td>24/7</td>
                         </tr>
+                        <tr>
+                            <td>API Access</td>
+                            <td>Limited</td>
+                            <td>Standard</td>
+                            <td>Full</td>
+                        </tr>
+                        <tr>
+                            <td>Custom Integrations</td>
+                            <td><i class="fas fa-times"></i></td>
+                            <td>3 Integrations</td>
+                            <td>Unlimited</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -208,7 +330,7 @@
                 <h2 class="cta-title">Ready to Experience Advanced Task Management?</h2>
                 <p class="cta-text">Start your free 30-day trial of TaskFlow Pro today.</p>
                 <div class="cta-actions">
-                    <a href="#" class="btn btn-primary btn-large">Start Free Trial</a>
+                    <a href="dashboard.html" class="btn btn-primary btn-large">Start Free Trial</a>
                     <a href="#" class="btn btn-secondary btn-large">Contact Sales</a>
                 </div>
             </div>
@@ -236,21 +358,21 @@
                     <div class="footer-column">
                         <h4 class="footer-title">Product</h4>
                         <a href="task5.html" class="footer-link">Features</a>
-                        <a href="#" class="footer-link">Integrations</a>
-                        <a href="#" class="footer-link">Pricing</a>
-                        <a href="#" class="footer-link">Updates</a>
+                        <a href="#pricing" class="footer-link">Pricing</a>
+                        <a href="dashboard.html" class="footer-link">Dashboard</a>
+                        <a href="tasks.html" class="footer-link">Tasks</a>
                     </div>
                     <div class="footer-column">
                         <h4 class="footer-title">Company</h4>
                         <a href="#" class="footer-link">About</a>
                         <a href="#" class="footer-link">Careers</a>
-                        <a href="#" class="footer-link">Press</a>
+                        <a href="#" class="footer-link">Blog</a>
                         <a href="#" class="footer-link">Contact</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="copyright">© 2023 TaskFlow Pro. All rights reserved.</p>
+                <p class="copyright">© 2024 TaskFlow Pro. All rights reserved.</p>
                 <div class="footer-bottom-links">
                     <a href="#" class="footer-bottom-link">Cookie Policy</a>
                     <a href="#" class="footer-bottom-link">Sitemap</a>
@@ -260,5 +382,66 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Features page JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Feature tabs
+            const featureTabs = document.querySelectorAll('.feature-tab');
+            const featureContents = document.querySelectorAll('.feature-content');
+            
+            featureTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    featureTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all feature contents
+                    featureContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Show selected feature content
+                    const tabId = this.getAttribute('data-tab');
+                    const selectedContent = document.getElementById(`${tabId}Content`);
+                    if (selectedContent) {
+                        selectedContent.classList.add('active');
+                    }
+                });
+            });
+            
+            // Animate feature stats
+            const statCards = document.querySelectorAll('.feature-stats .stat-card');
+            const observerOptions = {
+                threshold: 0.5
+            };
+            
+            const statsObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statCard = entry.target;
+                        statCard.classList.add('animated');
+                        statsObserver.unobserve(statCard);
+                    }
+                });
+            }, observerOptions);
+            
+            statCards.forEach(card => {
+                statsObserver.observe(card);
+            });
+            
+            // Demo video modal (placeholder)
+            const demoButtons = document.querySelectorAll('.btn-secondary');
+            demoButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (this.textContent.includes('Watch') || this.textContent.includes('Demo')) {
+                        e.preventDefault();
+                        alert('Demo video would play here. In a real implementation, this would open a modal with a video player.');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
