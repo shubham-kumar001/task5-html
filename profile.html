@@ -62,18 +62,6 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html" class="mobile-link">Home</a>
-        <a href="task5.html" class="mobile-link">Features</a>
-        <a href="dashboard.html" class="mobile-link">Dashboard</a>
-        <a href="tasks.html" class="mobile-link">Tasks</a>
-        <a href="profile.html" class="mobile-link active">Profile</a>
-        <div class="mobile-actions">
-            <a href="#" class="btn btn-text">Sign Out</a>
-        </div>
-    </div>
-
     <!-- Profile Layout -->
     <div class="profile-layout">
         <!-- Profile Sidebar -->
@@ -81,7 +69,7 @@
             <div class="profile-header">
                 <div class="profile-avatar-large">
                     <div class="avatar-image">JD</div>
-                    <button class="avatar-edit">
+                    <button class="avatar-edit" id="editAvatar">
                         <i class="fas fa-camera"></i>
                     </button>
                 </div>
@@ -89,38 +77,34 @@
                 <p class="profile-title">Project Manager</p>
                 <div class="profile-status">
                     <span class="status-indicator online"></span>
-                    <span>Online</span>
+                    <span>Active Now</span>
                 </div>
             </div>
             
             <nav class="profile-nav">
-                <a href="#overview" class="profile-nav-link active">
+                <a href="#overview" class="profile-nav-link active" data-section="overview">
                     <i class="fas fa-user-circle"></i>
                     Overview
                 </a>
-                <a href="#activity" class="profile-nav-link">
+                <a href="#activity" class="profile-nav-link" data-section="activity">
                     <i class="fas fa-chart-line"></i>
                     Activity
                 </a>
-                <a href="#tasks" class="profile-nav-link">
+                <a href="#tasks" class="profile-nav-link" data-section="tasks">
                     <i class="fas fa-tasks"></i>
                     My Tasks
                 </a>
-                <a href="#projects" class="profile-nav-link">
+                <a href="#projects" class="profile-nav-link" data-section="projects">
                     <i class="fas fa-project-diagram"></i>
                     Projects
                 </a>
-                <a href="#settings" class="profile-nav-link">
+                <a href="#settings" class="profile-nav-link" data-section="settings">
                     <i class="fas fa-cog"></i>
                     Settings
                 </a>
-                <a href="#security" class="profile-nav-link">
+                <a href="#security" class="profile-nav-link" data-section="security">
                     <i class="fas fa-shield-alt"></i>
                     Security
-                </a>
-                <a href="#notifications" class="profile-nav-link">
-                    <i class="fas fa-bell"></i>
-                    Notifications
                 </a>
             </nav>
             
@@ -146,7 +130,7 @@
             <section id="overview" class="profile-section active">
                 <div class="profile-section-header">
                     <h1>Profile Overview</h1>
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" id="editProfileBtn">
                         <i class="fas fa-edit"></i> Edit Profile
                     </button>
                 </div>
@@ -157,7 +141,7 @@
                             <h3>Personal Information</h3>
                         </div>
                         <div class="card-body">
-                            <form class="profile-form">
+                            <form class="profile-form" id="profileForm">
                                 <div class="form-group">
                                     <label for="fullName">Full Name</label>
                                     <input type="text" id="fullName" value="John Doe" readonly>
@@ -186,9 +170,13 @@
                                         <input type="text" id="timezone" value="PST (UTC-8)" readonly>
                                     </div>
                                 </div>
-                                <div class="form-actions">
-                                    <button type="button" class="btn btn-secondary" id="enableEdit">Edit Information</button>
-                                    <button type="submit" class="btn btn-primary" id="saveInfo" disabled>Save Changes</button>
+                                <div class="form-group">
+                                    <label for="bio">Bio</label>
+                                    <textarea id="bio" rows="3" readonly>Senior Project Manager with 8+ years of experience leading cross-functional teams. Specialized in agile methodologies and process optimization.</textarea>
+                                </div>
+                                <div class="form-actions" id="profileActions" style="display: none;">
+                                    <button type="button" class="btn btn-secondary" id="cancelEdit">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
                                 </div>
                             </form>
                         </div>
@@ -196,57 +184,47 @@
                     
                     <div class="profile-card">
                         <div class="card-header">
-                            <h3>Skills & Expertise</h3>
+                            <h3>Productivity Stats</h3>
                         </div>
                         <div class="card-body">
-                            <div class="skills-list">
-                                <div class="skill-item">
-                                    <span>Project Management</span>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 90%;"></div>
+                            <div class="stats-chart">
+                                <div class="chart-row">
+                                    <span class="chart-label">Task Completion</span>
+                                    <div class="chart-bar">
+                                        <div class="chart-fill" style="width: 92%;"></div>
                                     </div>
-                                    <span class="skill-percentage">90%</span>
+                                    <span class="chart-value">92%</span>
                                 </div>
-                                <div class="skill-item">
-                                    <span>Team Leadership</span>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 85%;"></div>
+                                <div class="chart-row">
+                                    <span class="chart-label">On Time Delivery</span>
+                                    <div class="chart-bar">
+                                        <div class="chart-fill" style="width: 88%;"></div>
                                     </div>
-                                    <span class="skill-percentage">85%</span>
+                                    <span class="chart-value">88%</span>
                                 </div>
-                                <div class="skill-item">
-                                    <span>Agile Methodology</span>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 95%;"></div>
+                                <div class="chart-row">
+                                    <span class="chart-label">Team Collaboration</span>
+                                    <div class="chart-bar">
+                                        <div class="chart-fill" style="width: 95%;"></div>
                                     </div>
-                                    <span class="skill-percentage">95%</span>
+                                    <span class="chart-value">95%</span>
                                 </div>
-                                <div class="skill-item">
-                                    <span>Risk Management</span>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 80%;"></div>
+                                <div class="chart-row">
+                                    <span class="chart-label">Quality Rating</span>
+                                    <div class="chart-bar">
+                                        <div class="chart-fill" style="width: 90%;"></div>
                                     </div>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                                <div class="skill-item">
-                                    <span>Stakeholder Communication</span>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 88%;"></div>
-                                    </div>
-                                    <span class="skill-percentage">88%</span>
+                                    <span class="chart-value">90%</span>
                                 </div>
                             </div>
-                            <button class="btn btn-text" style="margin-top: 1rem;">
-                                <i class="fas fa-plus"></i> Add Skill
-                            </button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Current Projects -->
+                <!-- Recent Projects -->
                 <div class="profile-card">
                     <div class="card-header">
-                        <h3>Current Projects</h3>
+                        <h3>Recent Projects</h3>
                         <a href="#" class="btn-text">View All Projects</a>
                     </div>
                     <div class="card-body">
@@ -277,7 +255,7 @@
                                 <div class="project-footer">
                                     <span class="project-deadline">
                                         <i class="fas fa-calendar-alt"></i>
-                                        Due: Dec 15, 2023
+                                        Due: Dec 15, 2024
                                     </span>
                                     <span class="project-tasks">
                                         <i class="fas fa-tasks"></i>
@@ -311,12 +289,79 @@
                                 <div class="project-footer">
                                     <span class="project-deadline">
                                         <i class="fas fa-calendar-alt"></i>
-                                        Due: Dec 20, 2023
+                                        Due: Dec 20, 2024
                                     </span>
                                     <span class="project-tasks">
                                         <i class="fas fa-tasks"></i>
                                         18/30 tasks
                                     </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Activity Section -->
+            <section id="activity" class="profile-section">
+                <div class="profile-section-header">
+                    <h1>Activity Log</h1>
+                    <select class="activity-filter">
+                        <option>All Activities</option>
+                        <option>Last 7 Days</option>
+                        <option>Last 30 Days</option>
+                        <option>This Month</option>
+                    </select>
+                </div>
+                
+                <div class="profile-card">
+                    <div class="card-body">
+                        <div class="activity-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-date">Today</div>
+                                <div class="timeline-content">
+                                    <div class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <div class="activity-details">
+                                            <p>Completed task "Finalize Q4 Launch Plan"</p>
+                                            <span class="activity-time">2 hours ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-comment"></i>
+                                        </div>
+                                        <div class="activity-details">
+                                            <p>Commented on "Marketing Campaign" project</p>
+                                            <span class="activity-time">4 hours ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-date">Yesterday</div>
+                                <div class="timeline-content">
+                                    <div class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-upload"></i>
+                                        </div>
+                                        <div class="activity-details">
+                                            <p>Uploaded documents to "Website Redesign" project</p>
+                                            <span class="activity-time">1 day ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-user-plus"></i>
+                                        </div>
+                                        <div class="activity-details">
+                                            <p>Added Sarah Johnson to "Q4 Launch" project</p>
+                                            <span class="activity-time">1 day ago</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -330,13 +375,7 @@
                     <h1>Account Settings</h1>
                 </div>
                 
-                <div class="settings-tabs">
-                    <button class="settings-tab active" data-tab="preferences">Preferences</button>
-                    <button class="settings-tab" data-tab="appearance">Appearance</button>
-                    <button class="settings-tab" data-tab="integrations">Integrations</button>
-                </div>
-                
-                <div class="settings-content active" id="preferencesContent">
+                <div class="profile-content-grid">
                     <div class="profile-card">
                         <div class="card-header">
                             <h3>Preferences</h3>
@@ -346,7 +385,7 @@
                                 <div class="preference-item">
                                     <div class="preference-info">
                                         <h4>Email Notifications</h4>
-                                        <p>Receive email notifications for task updates, mentions, and deadlines</p>
+                                        <p>Receive email notifications for task updates</p>
                                     </div>
                                     <label class="switch">
                                         <input type="checkbox" checked>
@@ -357,7 +396,7 @@
                                 <div class="preference-item">
                                     <div class="preference-info">
                                         <h4>Desktop Notifications</h4>
-                                        <p>Show desktop notifications for urgent tasks and mentions</p>
+                                        <p>Show desktop notifications for urgent tasks</p>
                                     </div>
                                     <label class="switch">
                                         <input type="checkbox" checked>
@@ -368,7 +407,7 @@
                                 <div class="preference-item">
                                     <div class="preference-info">
                                         <h4>Weekly Reports</h4>
-                                        <p>Send weekly productivity reports to your email</p>
+                                        <p>Send weekly productivity reports</p>
                                     </div>
                                     <label class="switch">
                                         <input type="checkbox">
@@ -378,13 +417,39 @@
                                 
                                 <div class="preference-item">
                                     <div class="preference-info">
-                                        <h4>Auto-Archive Completed Tasks</h4>
-                                        <p>Automatically archive tasks 7 days after completion</p>
+                                        <h4>Dark Mode</h4>
+                                        <p>Use dark theme across the platform</p>
                                     </div>
                                     <label class="switch">
-                                        <input type="checkbox" checked>
+                                        <input type="checkbox" id="darkModeToggle">
                                         <span class="slider"></span>
                                     </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h3>Appearance</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="theme-selector">
+                                <h4>Theme Color</h4>
+                                <div class="theme-colors">
+                                    <div class="theme-color active" style="background-color: #4361ee;" data-color="#4361ee"></div>
+                                    <div class="theme-color" style="background-color: #f72585;" data-color="#f72585"></div>
+                                    <div class="theme-color" style="background-color: #4cc9f0;" data-color="#4cc9f0"></div>
+                                    <div class="theme-color" style="background-color: #f8961e;" data-color="#f8961e"></div>
+                                    <div class="theme-color" style="background-color: #27ae60;" data-color="#27ae60"></div>
+                                </div>
+                            </div>
+                            <div class="layout-options">
+                                <h4>Layout Density</h4>
+                                <div class="layout-buttons">
+                                    <button class="layout-btn active" data-density="comfortable">Comfortable</button>
+                                    <button class="layout-btn" data-density="compact">Compact</button>
+                                    <button class="layout-btn" data-density="spacious">Spacious</button>
                                 </div>
                             </div>
                         </div>
@@ -404,7 +469,7 @@
                             <h3>Password & Authentication</h3>
                         </div>
                         <div class="card-body">
-                            <form class="security-form">
+                            <form class="security-form" id="passwordForm">
                                 <div class="form-group">
                                     <label for="currentPassword">Current Password</label>
                                     <input type="password" id="currentPassword" placeholder="Enter current password">
@@ -432,10 +497,14 @@
                         </div>
                         <div class="card-body">
                             <div class="two-factor-info">
-                                <i class="fas fa-shield-alt"></i>
-                                <h4>Add an Extra Layer of Security</h4>
-                                <p>Protect your account with two-factor authentication. You'll need to enter a verification code from your phone when signing in.</p>
-                                <button class="btn btn-primary">
+                                <div class="factor-status">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <div>
+                                        <h4>2FA Status: <span class="status-off">Off</span></h4>
+                                        <p>Add an extra layer of security to your account</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" id="enable2FA">
                                     <i class="fas fa-mobile-alt"></i>
                                     Enable 2FA
                                 </button>
@@ -454,8 +523,13 @@
                         <div class="sessions-list">
                             <div class="session-item current">
                                 <div class="session-info">
-                                    <h4>Current Session</h4>
-                                    <p>Chrome on Windows • San Francisco, CA</p>
+                                    <div class="session-device">
+                                        <i class="fas fa-desktop"></i>
+                                        <div>
+                                            <h4>Current Session</h4>
+                                            <p>Chrome on Windows • San Francisco, CA</p>
+                                        </div>
+                                    </div>
                                     <span class="session-time">Active now</span>
                                 </div>
                                 <div class="session-status">
@@ -464,8 +538,13 @@
                             </div>
                             <div class="session-item">
                                 <div class="session-info">
-                                    <h4>Mobile App</h4>
-                                    <p>iOS 16 • iPhone 14 Pro</p>
+                                    <div class="session-device">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <div>
+                                            <h4>Mobile App</h4>
+                                            <p>iOS 17 • iPhone 15 Pro</p>
+                                        </div>
+                                    </div>
                                     <span class="session-time">2 hours ago</span>
                                 </div>
                                 <div class="session-actions">
@@ -477,6 +556,88 @@
                 </div>
             </section>
         </main>
+    </div>
+
+    <!-- Change Avatar Modal -->
+    <div class="modal" id="avatarModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Change Profile Picture</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="avatar-options">
+                    <div class="avatar-option active">
+                        <div class="avatar-preview">JD</div>
+                        <span>Initials</span>
+                    </div>
+                    <div class="avatar-option">
+                        <div class="avatar-preview">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span>Default</span>
+                    </div>
+                    <div class="avatar-option">
+                        <div class="avatar-preview custom">
+                            <label for="avatarUpload">
+                                <i class="fas fa-upload"></i>
+                                <span>Upload</span>
+                            </label>
+                            <input type="file" id="avatarUpload" accept="image/*">
+                        </div>
+                        <span>Custom</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary">Cancel</button>
+                <button class="btn btn-primary">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2FA Setup Modal -->
+    <div class="modal" id="twoFAModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Enable Two-Factor Authentication</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="twofa-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Download Authenticator App</h4>
+                            <p>Install Google Authenticator or similar app on your phone</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Scan QR Code</h4>
+                            <div class="qr-code">
+                                <div class="qr-placeholder">
+                                    <i class="fas fa-qrcode"></i>
+                                    <span>QR Code Placeholder</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Enter Verification Code</h4>
+                            <input type="text" placeholder="Enter 6-digit code" maxlength="6" class="verification-code">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary">Cancel</button>
+                <button class="btn btn-primary">Verify & Enable</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
@@ -496,147 +657,304 @@
                     this.classList.add('active');
                     
                     // Show corresponding section
-                    const targetId = this.getAttribute('href').substring(1);
+                    const sectionId = this.getAttribute('data-section');
                     profileSections.forEach(section => {
                         section.classList.remove('active');
-                        if (section.id === targetId) {
+                        if (section.id === sectionId) {
                             section.classList.add('active');
                         }
                     });
-                });
-            });
-            
-            // Settings tabs
-            const settingsTabs = document.querySelectorAll('.settings-tab');
-            const settingsContents = document.querySelectorAll('.settings-content');
-            
-            settingsTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // Update active tab
-                    settingsTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
                     
-                    // Show corresponding content
-                    const targetId = this.getAttribute('data-tab') + 'Content';
-                    settingsContents.forEach(content => {
-                        content.classList.remove('active');
-                        if (content.id === targetId) {
-                            content.classList.add('active');
-                        }
-                    });
+                    // Scroll to top of section
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             });
             
             // Edit profile functionality
-            const enableEditBtn = document.getElementById('enableEdit');
-            const saveInfoBtn = document.getElementById('saveInfo');
-            const profileInputs = document.querySelectorAll('.profile-form input');
+            const editProfileBtn = document.getElementById('editProfileBtn');
+            const profileForm = document.getElementById('profileForm');
+            const profileInputs = profileForm?.querySelectorAll('input, textarea');
+            const profileActions = document.getElementById('profileActions');
+            const cancelEditBtn = document.getElementById('cancelEdit');
             
-            if (enableEditBtn && saveInfoBtn) {
-                enableEditBtn.addEventListener('click', function() {
+            if (editProfileBtn && profileForm) {
+                editProfileBtn.addEventListener('click', function() {
+                    // Enable editing
                     profileInputs.forEach(input => {
                         input.removeAttribute('readonly');
                         input.style.backgroundColor = 'var(--gray-200)';
+                        input.style.borderColor = 'var(--primary)';
                     });
                     
-                    enableEditBtn.style.display = 'none';
-                    saveInfoBtn.disabled = false;
+                    // Show save/cancel buttons
+                    profileActions.style.display = 'flex';
+                    editProfileBtn.style.display = 'none';
                 });
                 
-                // Password strength checker
-                const newPasswordInput = document.getElementById('newPassword');
-                const strengthBar = document.querySelector('.strength-bar');
-                const strengthText = document.querySelector('.strength-text');
-                
-                if (newPasswordInput) {
-                    newPasswordInput.addEventListener('input', function() {
-                        const password = this.value;
-                        let strength = 0;
+                if (cancelEditBtn) {
+                    cancelEditBtn.addEventListener('click', function() {
+                        // Reset form
+                        profileForm.reset();
                         
-                        // Check password strength
-                        if (password.length >= 8) strength++;
-                        if (/[A-Z]/.test(password)) strength++;
-                        if (/[0-9]/.test(password)) strength++;
-                        if (/[^A-Za-z0-9]/.test(password)) strength++;
+                        // Disable editing
+                        profileInputs.forEach(input => {
+                            input.setAttribute('readonly', 'true');
+                            input.style.backgroundColor = '';
+                            input.style.borderColor = '';
+                        });
                         
-                        // Update strength bar
-                        const width = strength * 25;
-                        strengthBar.style.width = width + '%';
-                        
-                        // Update text
-                        const strengthLabels = ['Very Weak', 'Weak', 'Medium', 'Strong', 'Very Strong'];
-                        strengthText.textContent = `Password strength: ${strengthLabels[strength]}`;
-                        
-                        // Update color
-                        const colors = ['#f94144', '#f8961e', '#f9c74f', '#90be6d', '#43aa8b'];
-                        strengthBar.style.backgroundColor = colors[strength];
+                        // Hide save/cancel buttons
+                        profileActions.style.display = 'none';
+                        editProfileBtn.style.display = 'flex';
                     });
                 }
                 
-                // Profile form submission
-                const profileForm = document.querySelector('.profile-form');
-                if (profileForm) {
-                    profileForm.addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        
-                        // Show success message
-                        const successMsg = document.createElement('div');
-                        successMsg.className = 'form-success';
-                        successMsg.textContent = 'Profile updated successfully!';
-                        successMsg.style.cssText = `
-                            background-color: var(--success);
-                            color: white;
-                            padding: 1rem;
-                            border-radius: var(--radius-md);
-                            margin-top: 1rem;
-                            text-align: center;
-                        `;
-                        
-                        this.appendChild(successMsg);
-                        
-                        // Reset form state
-                        setTimeout(() => {
-                            successMsg.remove();
-                            profileInputs.forEach(input => {
-                                input.setAttribute('readonly', 'true');
-                                input.style.backgroundColor = '';
-                            });
-                            enableEditBtn.style.display = 'block';
-                            saveInfoBtn.disabled = true;
-                        }, 3000);
+                // Form submission
+                profileForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // In a real app, send to backend
+                    showNotification('Profile updated successfully!', 'success');
+                    
+                    // Disable editing
+                    profileInputs.forEach(input => {
+                        input.setAttribute('readonly', 'true');
+                        input.style.backgroundColor = '';
+                        input.style.borderColor = '';
                     });
-                }
+                    
+                    // Hide save/cancel buttons
+                    profileActions.style.display = 'none';
+                    editProfileBtn.style.display = 'flex';
+                });
             }
             
-            // Toggle switches
-            const toggleSwitches = document.querySelectorAll('.switch input');
-            toggleSwitches.forEach(toggle => {
-                toggle.addEventListener('change', function() {
-                    const preference = this.closest('.preference-item').querySelector('h4').textContent;
-                    console.log(`${preference} ${this.checked ? 'enabled' : 'disabled'}`);
-                });
-            });
+            // Avatar edit modal
+            const editAvatarBtn = document.getElementById('editAvatar');
+            const avatarModal = document.getElementById('avatarModal');
             
-            // Avatar edit
-            const avatarEditBtn = document.querySelector('.avatar-edit');
-            if (avatarEditBtn) {
-                avatarEditBtn.addEventListener('click', function() {
-                    const input = document.createElement('input');
-                    input.type = 'file';
-                    input.accept = 'image/*';
-                    input.onchange = function(e) {
+            if (editAvatarBtn && avatarModal) {
+                editAvatarBtn.addEventListener('click', function() {
+                    avatarModal.style.display = 'flex';
+                });
+                
+                const modalClose = avatarModal.querySelector('.modal-close');
+                modalClose.addEventListener('click', function() {
+                    avatarModal.style.display = 'none';
+                });
+                
+                avatarModal.addEventListener('click', function(e) {
+                    if (e.target === avatarModal) {
+                        avatarModal.style.display = 'none';
+                    }
+                });
+                
+                // Avatar selection
+                const avatarOptions = document.querySelectorAll('.avatar-option');
+                avatarOptions.forEach(option => {
+                    option.addEventListener('click', function() {
+                        avatarOptions.forEach(opt => opt.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+                
+                // Avatar upload
+                const avatarUpload = document.getElementById('avatarUpload');
+                if (avatarUpload) {
+                    avatarUpload.addEventListener('change', function(e) {
                         const file = e.target.files[0];
                         if (file) {
                             const reader = new FileReader();
                             reader.onload = function(e) {
-                                const avatar = document.querySelector('.avatar-image');
-                                avatar.innerHTML = `<img src="${e.target.result}" alt="Profile">`;
+                                const avatarImage = document.querySelector('.avatar-image');
+                                avatarImage.innerHTML = `<img src="${e.target.result}" alt="Profile">`;
+                                showNotification('Profile picture updated!', 'success');
+                                avatarModal.style.display = 'none';
                             };
                             reader.readAsDataURL(file);
                         }
-                    };
-                    input.click();
+                    });
+                }
+            }
+            
+            // Password strength checker
+            const newPasswordInput = document.getElementById('newPassword');
+            const strengthBar = document.querySelector('.strength-bar');
+            const strengthText = document.querySelector('.strength-text');
+            
+            if (newPasswordInput && strengthBar && strengthText) {
+                newPasswordInput.addEventListener('input', function() {
+                    const password = this.value;
+                    let strength = 0;
+                    
+                    // Check password strength
+                    if (password.length >= 8) strength++;
+                    if (/[A-Z]/.test(password)) strength++;
+                    if (/[0-9]/.test(password)) strength++;
+                    if (/[^A-Za-z0-9]/.test(password)) strength++;
+                    
+                    // Update strength bar
+                    const width = strength * 25;
+                    strengthBar.style.width = width + '%';
+                    
+                    // Update text and color
+                    const strengthLabels = ['Very Weak', 'Weak', 'Medium', 'Strong', 'Very Strong'];
+                    const colors = ['#f94144', '#f8961e', '#f9c74f', '#90be6d', '#43aa8b'];
+                    
+                    strengthText.textContent = `Password strength: ${strengthLabels[strength]}`;
+                    strengthBar.style.backgroundColor = colors[strength];
                 });
+            }
+            
+            // Password form submission
+            const passwordForm = document.getElementById('passwordForm');
+            if (passwordForm) {
+                passwordForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const currentPass = document.getElementById('currentPassword').value;
+                    const newPass = document.getElementById('newPassword').value;
+                    const confirmPass = document.getElementById('confirmPassword').value;
+                    
+                    if (newPass !== confirmPass) {
+                        showNotification('New passwords do not match!', 'error');
+                        return;
+                    }
+                    
+                    if (newPass.length < 8) {
+                        showNotification('Password must be at least 8 characters', 'error');
+                        return;
+                    }
+                    
+                    // In a real app, verify current password and update
+                    showNotification('Password updated successfully!', 'success');
+                    this.reset();
+                    strengthBar.style.width = '0%';
+                    strengthText.textContent = 'Password strength:';
+                });
+            }
+            
+            // 2FA Enable
+            const enable2FABtn = document.getElementById('enable2FA');
+            const twoFAModal = document.getElementById('twoFAModal');
+            
+            if (enable2FABtn && twoFAModal) {
+                enable2FABtn.addEventListener('click', function() {
+                    twoFAModal.style.display = 'flex';
+                });
+                
+                const modalClose = twoFAModal.querySelector('.modal-close');
+                modalClose.addEventListener('click', function() {
+                    twoFAModal.style.display = 'none';
+                });
+                
+                twoFAModal.addEventListener('click', function(e) {
+                    if (e.target === twoFAModal) {
+                        twoFAModal.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Theme colors
+            const themeColors = document.querySelectorAll('.theme-color');
+            themeColors.forEach(color => {
+                color.addEventListener('click', function() {
+                    themeColors.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const selectedColor = this.getAttribute('data-color');
+                    document.documentElement.style.setProperty('--primary', selectedColor);
+                    localStorage.setItem('themeColor', selectedColor);
+                    
+                    showNotification('Theme color updated!', 'success');
+                });
+            });
+            
+            // Load saved theme color
+            const savedColor = localStorage.getItem('themeColor');
+            if (savedColor) {
+                document.documentElement.style.setProperty('--primary', savedColor);
+                themeColors.forEach(color => {
+                    if (color.getAttribute('data-color') === savedColor) {
+                        color.classList.add('active');
+                    } else {
+                        color.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Layout density
+            const layoutButtons = document.querySelectorAll('.layout-btn');
+            layoutButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    layoutButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const density = this.getAttribute('data-density');
+                    document.body.setAttribute('data-density', density);
+                    localStorage.setItem('layoutDensity', density);
+                    
+                    showNotification(`Layout changed to ${density}`, 'info');
+                });
+            });
+            
+            // Load saved layout density
+            const savedDensity = localStorage.getItem('layoutDensity');
+            if (savedDensity) {
+                document.body.setAttribute('data-density', savedDensity);
+                layoutButtons.forEach(button => {
+                    if (button.getAttribute('data-density') === savedDensity) {
+                        button.classList.add('active');
+                    }
+                });
+            }
+            
+            // Dark mode toggle
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (darkModeToggle) {
+                // Check saved preference
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    darkModeToggle.checked = true;
+                    document.body.classList.add('dark-mode');
+                }
+                
+                darkModeToggle.addEventListener('change', function() {
+                    document.body.classList.toggle('dark-mode');
+                    localStorage.setItem('theme', this.checked ? 'dark' : 'light');
+                    showNotification(`Dark mode ${this.checked ? 'enabled' : 'disabled'}`, 'info');
+                });
+            }
+            
+            // Logout all sessions
+            const logoutAllBtn = document.getElementById('logoutAll');
+            if (logoutAllBtn) {
+                logoutAllBtn.addEventListener('click', function() {
+                    if (confirm('Logout from all devices?')) {
+                        // In a real app, call API to logout all sessions
+                        showNotification('Logged out from all devices', 'success');
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 2000);
+                    }
+                });
+            }
+            
+            // Activity filter
+            const activityFilter = document.querySelector('.activity-filter');
+            if (activityFilter) {
+                activityFilter.addEventListener('change', function() {
+                    // In a real app, filter activities based on selection
+                    showNotification(`Showing activities for: ${this.value}`, 'info');
+                });
+            }
+            
+            function showNotification(message, type = 'info') {
+                if (window.RealEstateUtils && window.RealEstateUtils.showNotification) {
+                    window.RealEstateUtils.showNotification(message, type);
+                } else {
+                    alert(message);
+                }
             }
         });
     </script>
