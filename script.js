@@ -1,3 +1,5 @@
+// TaskFlow Pro - Main JavaScript
+
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile Menu Toggle
@@ -59,6 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animated');
+                
+                // Animate stats counters
+                if (entry.target.classList.contains('stat-number')) {
+                    animateCounter(entry.target);
+                }
             }
         });
     }, observerOptions);
@@ -67,6 +74,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const featureCards = document.querySelectorAll('.feature-card');
     featureCards.forEach(card => {
         observer.observe(card);
+    });
+    
+    // Observe stat numbers
+    const statNumbers = document.querySelectorAll('.stat-number:not(.profile-stat .stat-number)');
+    statNumbers.forEach(number => {
+        observer.observe(number);
     });
     
     // Task card hover effects
@@ -81,50 +94,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Form validation for contact forms (if any)
+    // Form validation for contact forms
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Basic validation
-            const inputs = this.querySelectorAll('input[required], textarea[required]');
-            let valid = true;
-            
-            inputs.forEach(input => {
-                if (!input.value.trim()) {
-                    valid = false;
-                    input.style.borderColor = 'var(--danger)';
+        if (!form.id || !form.id.includes('Task') && !form.id.includes('profile') && !form.id.includes('password')) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Basic validation
+                const inputs = this.querySelectorAll('input[required], textarea[required], select[required]');
+                let valid = true;
+                
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        valid = false;
+                        input.style.borderColor = 'var(--danger)';
+                    } else {
+                        input.style.borderColor = '';
+                    }
+                });
+                
+                if (valid) {
+                    // In a real app, you would submit the form here
+                    console.log('Form submitted successfully');
+                    
+                    // Show success message
+                    showNotification('Form submitted successfully!', 'success');
+                    
+                    this.reset();
                 } else {
-                    input.style.borderColor = '';
+                    showNotification('Please fill in all required fields.', 'error');
                 }
             });
-            
-            if (valid) {
-                // In a real app, you would submit the form here
-                console.log('Form submitted successfully');
-                this.reset();
-                
-                // Show success message
-                const successMsg = document.createElement('div');
-                successMsg.className = 'form-success';
-                successMsg.textContent = 'Thank you! Your message has been sent.';
-                successMsg.style.cssText = `
-                    background-color: var(--success);
-                    color: white;
-                    padding: 1rem;
-                    border-radius: var(--radius-md);
-                    margin-top: 1rem;
-                    text-align: center;
-                `;
-                
-                this.appendChild(successMsg);
-                
-                // Remove message after 5 seconds
-                setTimeout(() => {
-                    successMsg.remove();
-                }, 5000);
-            }
-        });
+        }
     });
     
     // Smooth scroll for anchor links
@@ -146,39 +147,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Counter animation for stats
-    const statNumbers = document.querySelectorAll('.stat-number');
-    if (statNumbers.length > 0) {
-        const observerOptions = {
-            threshold: 0.5
-        };
+    function animateCounter(element) {
+        if (element.dataset.animated) return;
         
-        const statsObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const statNumber = entry.target;
-                    const target = parseInt(statNumber.textContent);
-                    let current = 0;
-                    const increment = target / 50;
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            current = target;
-                            clearInterval(timer);
-                        }
-                        statNumber.textContent = Math.round(current).toLocaleString();
-                    }, 30);
-                    
-                    statsObserver.unobserve(statNumber);
-                }
-            });
-        }, observerOptions);
+        const target = parseInt(element.textContent.replace(/[^0-9]/g, ''));
+        if (isNaN(target)) return;
         
-        statNumbers.forEach(number => {
-            statsObserver.observe(number);
-        });
+        element.dataset.animated = 'true';
+        let current = 0;
+        const increment = target / 50;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            element.textContent = Math.round(current).toLocaleString() + (element.textContent.includes('%') ? '%' : '');
+        }, 30);
     }
     
-    // Theme toggle (optional dark mode)
+    // Theme toggle (dark mode)
     const themeToggle = document.createElement('button');
     themeToggle.id = 'themeToggle';
     themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
@@ -226,38 +214,127 @@ document.addEventListener('DOMContentLoaded', function() {
     const darkModeStyles = `
         <style>
             body.dark-mode {
-                background-color: #121212;
-                color: #e0e0e0;
+                --dark: #e0e0e0;
+                --gray-900: #f8f9fa;
+                --gray-800: #e9ecef;
+                --gray-700: #dee2e6;
+                --gray-600: #ced4da;
+                --gray-500: #adb5bd;
+                --gray-400: #6c757d;
+                --gray-300: #495057;
+                --gray-200: #343a40;
+                --gray-100: #212529;
+                --white: #121212;
+                background-color: var(--white);
+                color: var(--dark);
             }
             
             body.dark-mode .navbar {
                 background-color: rgba(18, 18, 18, 0.95);
-                border-bottom: 1px solid #333;
+                border-bottom: 1px solid var(--gray-300);
             }
             
             body.dark-mode .feature-card,
             body.dark-mode .dashboard-preview,
-            body.dark-mode .ai-dashboard-preview {
-                background-color: #1e1e1e;
-                border-color: #333;
+            body.dark-mode .ai-dashboard-preview,
+            body.dark-mode .tasks-sidebar,
+            body.dark-mode .sidebar,
+            body.dark-mode .profile-card,
+            body.dark-mode .dashboard-card,
+            body.dark-mode .stat-card,
+            body.dark-mode .modal-content,
+            body.dark-mode .testimonial-card,
+            body.dark-mode .workflow-preview,
+            body.dark-mode .analytics-preview {
+                background-color: var(--gray-100);
+                border-color: var(--gray-300);
+                color: var(--dark);
+            }
+            
+            body.dark-mode .hero {
+                background: linear-gradient(135deg, var(--gray-100) 0%, var(--white) 100%);
             }
             
             body.dark-mode .footer {
-                background-color: #0a0a0a;
+                background-color: var(--gray-100);
             }
             
             body.dark-mode p,
             body.dark-mode .stat-label,
-            body.dark-mode .task-info p {
-                color: #b0b0b0;
+            body.dark-mode .task-info p,
+            body.dark-mode .feature-description,
+            body.dark-mode .section-subtitle,
+            body.dark-mode .hero-subtitle,
+            body.dark-mode .dashboard-subtitle,
+            body.dark-mode .preference-info p,
+            body.dark-mode .footer-description,
+            body.dark-mode .footer-link,
+            body.dark-mode .copyright {
+                color: var(--gray-600);
             }
             
             body.dark-mode .comparison-table td {
-                border-color: #333;
+                border-color: var(--gray-300);
             }
             
             body.dark-mode .comparison-table tr:hover {
-                background-color: #2a2a2a;
+                background-color: var(--gray-200);
+            }
+            
+            body.dark-mode .search-box input,
+            body.dark-mode .sort-select,
+            body.dark-mode .filter-select,
+            body.dark-mode .form-group input,
+            body.dark-mode .form-group select,
+            body.dark-mode .form-group textarea {
+                background-color: var(--gray-200);
+                border-color: var(--gray-400);
+                color: var(--dark);
+            }
+            
+            body.dark-mode .btn-text {
+                color: var(--gray-600);
+            }
+            
+            body.dark-mode .btn-text:hover {
+                color: var(--primary);
+            }
+            
+            body.dark-mode .tasks-content,
+            body.dark-mode .tasks-table,
+            body.dark-mode .board-column,
+            body.dark-mode .calendar-day {
+                background-color: var(--gray-100);
+            }
+            
+            body.dark-mode .table-header {
+                background-color: var(--gray-200);
+            }
+            
+            body.dark-mode .task-row:hover {
+                background-color: var(--gray-200);
+            }
+            
+            body.dark-mode .priority-task,
+            body.dark-mode .deadline-item,
+            body.dark-mode .session-item,
+            body.dark-mode .preference-item,
+            body.dark-mode .activity-item {
+                background-color: var(--gray-200);
+            }
+            
+            body.dark-mode .priority-task:hover,
+            body.dark-mode .deadline-item:hover {
+                background-color: var(--gray-300);
+            }
+            
+            body.dark-mode .ai-conversation,
+            body.dark-mode .ai-suggestion-btn {
+                background-color: var(--gray-200);
+            }
+            
+            body.dark-mode .message-content p {
+                background-color: var(--gray-100);
             }
         </style>
     `;
@@ -343,10 +420,6 @@ window.addEventListener('load', function() {
             @keyframes spin {
                 to { transform: rotate(360deg); }
             }
-            
-            body.dark-mode #pageLoader {
-                background-color: #121212;
-            }
         </style>
     `;
     
@@ -377,3 +450,132 @@ window.addEventListener('resize', function() {
         }
     }, 250);
 });
+
+// Notification System
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: ${type === 'success' ? 'var(--success)' : type === 'error' ? 'var(--danger)' : 'var(--primary)'};
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-lg);
+        z-index: 9999;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        max-width: 350px;
+        word-wrap: break-word;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Remove after 5 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 5000);
+}
+
+// Export utility functions for use in other scripts
+window.TaskFlowUtils = {
+    showNotification: showNotification,
+    
+    formatDate: function(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', {
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        });
+    },
+    
+    formatTime: function(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            minute: '2-digit'
+        });
+    },
+    
+    debounce: function(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+};
+
+// Initialize any chart.js charts if available
+window.initCharts = function() {
+    const chartElements = document.querySelectorAll('canvas');
+    chartElements.forEach(canvas => {
+        if (!canvas.chart) {
+            const ctx = canvas.getContext('2d');
+            const chartType = canvas.dataset.chartType || 'line';
+            
+            // Default chart configuration
+            const config = {
+                type: chartType,
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Tasks Completed',
+                        data: [12, 19, 8, 15, 22, 10, 18],
+                        borderColor: 'var(--primary)',
+                        backgroundColor: 'rgba(67, 97, 238, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            };
+            
+            canvas.chart = new Chart(ctx, config);
+        }
+    });
+};
+
+// Call initCharts on pages with charts
+if (document.querySelector('canvas')) {
+    document.addEventListener('DOMContentLoaded', initCharts);
+}
