@@ -3,241 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskFlow Pro | Enterprise Task Management</title>
+    <title>EstatePro | Luxury Real Estate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <i class="fas fa-tasks logo-icon"></i>
-                <span class="brand-name">TaskFlow<span class="brand-pro">Pro</span></span>
-            </div>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Estate<span>Pro</span></a>
             
             <div class="nav-menu">
                 <a href="index.html" class="nav-link active">Home</a>
-                <a href="task5.html" class="nav-link">Features</a>
-                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#properties" class="nav-link">Properties</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#agents" class="nav-link">Agents</a>
                 <a href="dashboard.html" class="nav-link">Dashboard</a>
                 <a href="profile.html" class="nav-link">Profile</a>
+                <a href="tasks.html" class="nav-link">Tasks</a>
             </div>
             
             <div class="nav-actions">
-                <a href="#" class="btn btn-text">Sign In</a>
-                <a href="dashboard.html" class="btn btn-primary">Launch App</a>
-                <button class="mobile-toggle" id="mobileToggle">
-                    <i class="fas fa-bars"></i>
+                <button class="btn btn-secondary" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
                 </button>
+                <a href="dashboard.html" class="btn btn-primary">Get Started</a>
+                <div class="mobile-toggle" id="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
         </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html" class="mobile-link active">Home</a>
-        <a href="task5.html" class="mobile-link">Features</a>
-        <a href="#pricing" class="mobile-link">Pricing</a>
-        <a href="dashboard.html" class="mobile-link">Dashboard</a>
-        <a href="profile.html" class="mobile-link">Profile</a>
-        <div class="mobile-actions">
-            <a href="#" class="btn btn-text">Sign In</a>
-            <a href="dashboard.html" class="btn btn-primary">Launch App</a>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html" class="mobile-link active">Home</a>
+            <a href="#properties" class="mobile-link">Properties</a>
+            <a href="#services" class="mobile-link">Services</a>
+            <a href="#agents" class="mobile-link">Agents</a>
+            <a href="dashboard.html" class="mobile-link">Dashboard</a>
+            <a href="profile.html" class="mobile-link">Profile</a>
+            <a href="tasks.html" class="mobile-link">Tasks</a>
         </div>
-    </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="badge">NEW</span>
-                    <span class="badge-text">AI Task Automation Now Available</span>
+                <h1 class="hero-title">Find Your <span>Dream</span> Property</h1>
+                <p class="hero-subtitle">Discover luxury homes, apartments, and commercial properties with our premium real estate services.</p>
+                
+                <div class="search-box">
+                    <div class="search-input">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search by location, property type, or keyword...">
+                    </div>
+                    <div class="search-filters">
+                        <select>
+                            <option>Property Type</option>
+                            <option>House</option>
+                            <option>Apartment</option>
+                            <option>Villa</option>
+                            <option>Commercial</option>
+                        </select>
+                        <select>
+                            <option>Price Range</option>
+                            <option>$100k - $500k</option>
+                            <option>$500k - $1M</option>
+                            <option>$1M - $5M</option>
+                            <option>$5M+</option>
+                        </select>
+                        <button class="btn btn-primary">Search <i class="fas fa-arrow-right"></i></button>
+                    </div>
                 </div>
-                <h1 class="hero-title">Transform Your Team's Productivity</h1>
-                <p class="hero-subtitle">TaskFlow Pro is the enterprise-grade platform that brings clarity, efficiency, and results to your organization's workflow management.</p>
-                <div class="hero-actions">
-                    <a href="dashboard.html" class="btn btn-primary btn-large">Launch Dashboard</a>
-                    <a href="#features" class="btn btn-secondary btn-large">
-                        <i class="fas fa-play-circle"></i>
-                        Watch Demo
-                    </a>
-                </div>
+                
                 <div class="hero-stats">
                     <div class="stat">
-                        <span class="stat-number">15,000+</span>
-                        <span class="stat-label">Teams Trust Us</span>
+                        <h3>5,000+</h3>
+                        <p>Properties Listed</p>
                     </div>
-                    <div class="stat-divider"></div>
                     <div class="stat">
-                        <span class="stat-number">98%</span>
-                        <span class="stat-label">Productivity Increase</span>
+                        <h3>1,200+</h3>
+                        <p>Happy Clients</p>
                     </div>
-                    <div class="stat-divider"></div>
                     <div class="stat">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">Support</span>
+                        <h3>250+</h3>
+                        <p>Expert Agents</p>
                     </div>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="dashboard-preview">
-                    <div class="dashboard-header">
-                        <div class="dashboard-tabs">
-                            <span class="dashboard-tab active">Dashboard</span>
-                            <span class="dashboard-tab">Tasks</span>
-                            <span class="dashboard-tab">Calendar</span>
-                            <span class="dashboard-tab">Reports</span>
-                        </div>
-                        <div class="dashboard-actions">
-                            <i class="fas fa-search"></i>
-                            <i class="fas fa-bell"></i>
-                            <div class="user-avatar small">JD</div>
-                        </div>
-                    </div>
-                    <div class="dashboard-content">
-                        <div class="task-card">
-                            <div class="task-priority high"></div>
-                            <div class="task-info">
-                                <h4>Q4 Product Launch</h4>
-                                <p>Finalize marketing materials</p>
-                                <div class="task-meta">
-                                    <span class="task-date">Due: Dec 15</span>
-                                    <span class="task-progress">85% complete</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="task-card">
-                            <div class="task-priority medium"></div>
-                            <div class="task-info">
-                                <h4>Client Presentation</h4>
-                                <p>Prepare quarterly review</p>
-                                <div class="task-meta">
-                                    <span class="task-date">Due: Dec 10</span>
-                                    <span class="task-progress">60% complete</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="task-card">
-                            <div class="task-priority low"></div>
-                            <div class="task-info">
-                                <h4>Team Offsite Planning</h4>
-                                <p>Book venue and activities</p>
-                                <div class="task-meta">
-                                    <span class="task-date">Due: Jan 20</span>
-                                    <span class="task-progress">30% complete</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="stat">
+                        <h3>50+</h3>
+                        <p>Cities Covered</p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Luxury Property">
+        </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="section features" id="features">
+    <!-- Featured Properties -->
+    <section class="section" id="properties">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Everything You Need to Excel</h2>
-                <p class="section-subtitle">Powerful features designed for modern teams and enterprises</p>
+                <h2>Featured Properties</h2>
+                <p>Discover our handpicked selection of premium properties</p>
+                <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 class="feature-title">AI Task Assistant</h3>
-                    <p class="feature-description">Our AI automatically prioritizes tasks, suggests deadlines, and identifies bottlenecks in your workflow.</p>
-                    <a href="task5.html" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-network"></i>
-                    </div>
-                    <h3 class="feature-title">Visual Workflows</h3>
-                    <p class="feature-description">Create, visualize, and optimize complex workflows with our drag-and-drop interface.</p>
-                    <a href="task5.html" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Enterprise Security</h3>
-                    <p class="feature-description">Bank-level security with SOC 2 compliance, end-to-end encryption, and advanced access controls.</p>
-                    <a href="task5.html" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Anywhere Access</h3>
-                    <p class="feature-description">Full platform functionality on desktop, tablet, and mobile with real-time synchronization.</p>
-                    <a href="task5.html" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
-                </div>
+            
+            <div class="properties-grid">
+                <!-- Property cards will be loaded by JavaScript -->
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="section testimonials">
+    <!-- Services -->
+    <section class="section bg-light" id="services">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Trusted by Industry Leaders</h2>
-                <p class="section-subtitle">See what our customers say about TaskFlow Pro</p>
+                <h2>Our Services</h2>
+                <p>Comprehensive real estate solutions for all your needs</p>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"TaskFlow Pro transformed how our team collaborates. Productivity increased by 40% in the first month alone."</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">SJ</div>
-                        <div class="author-info">
-                            <h4>Sarah Johnson</h4>
-                            <p>CTO, TechNova Inc.</p>
-                        </div>
-                    </div>
+                    <h3>Property Sales</h3>
+                    <p>Find your perfect home or investment property with our extensive listings and expert guidance.</p>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"The AI features are game-changing. It automatically prioritizes our most critical tasks and predicts deadlines with incredible accuracy."</p>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-key"></i>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">MC</div>
-                        <div class="author-info">
-                            <h4>Michael Chen</h4>
-                            <p>Project Director, GlobalCorp</p>
-                        </div>
-                    </div>
+                    <h3>Property Rentals</h3>
+                    <p>Discover rental properties that match your lifestyle and budget requirements.</p>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"Enterprise security features give us peace of mind while collaborating on sensitive projects. Highly recommended for large organizations."</p>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">EW</div>
-                        <div class="author-info">
-                            <h4>Emma Wilson</h4>
-                            <p>Security Lead, BankSecure</p>
-                        </div>
+                    <h3>Property Valuation</h3>
+                    <p>Get accurate market valuations for buying, selling, or investment purposes.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
                     </div>
+                    <h3>Consultation</h3>
+                    <p>Personalized real estate advice from our experienced property consultants.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- Call to Action -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2 class="cta-title">Ready to Transform Your Workflow?</h2>
-                <p class="cta-text">Join 15,000+ teams who have revolutionized their productivity with TaskFlow Pro.</p>
-                <div class="cta-actions">
-                    <a href="dashboard.html" class="btn btn-primary btn-large">Start Free Trial</a>
-                    <a href="task5.html" class="btn btn-secondary btn-large">View Features</a>
+                <h2>Ready to Find Your Dream Property?</h2>
+                <p>Join thousands of satisfied clients who found their perfect property with EstatePro</p>
+                <div class="cta-buttons">
+                    <a href="dashboard.html" class="btn btn-primary btn-large">Start Exploring</a>
+                    <a href="#contact" class="btn btn-secondary btn-large">Contact Agent</a>
                 </div>
             </div>
         </div>
@@ -246,56 +179,49 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="nav-brand">
-                        <i class="fas fa-tasks logo-icon"></i>
-                        <span class="brand-name">TaskFlow<span class="brand-pro">Pro</span></span>
-                    </div>
-                    <p class="footer-description">Enterprise task management for modern teams.</p>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo">Estate<span>Pro</span></a>
+                    <p>Premium real estate services with unmatched expertise and customer satisfaction.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4 class="footer-title">Product</h4>
-                        <a href="task5.html" class="footer-link">Features</a>
-                        <a href="#pricing" class="footer-link">Pricing</a>
-                        <a href="dashboard.html" class="footer-link">Dashboard</a>
-                        <a href="tasks.html" class="footer-link">Tasks</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4 class="footer-title">Company</h4>
-                        <a href="#" class="footer-link">About</a>
-                        <a href="#" class="footer-link">Careers</a>
-                        <a href="#" class="footer-link">Blog</a>
-                        <a href="#" class="footer-link">Contact</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4 class="footer-title">Resources</h4>
-                        <a href="#" class="footer-link">Documentation</a>
-                        <a href="#" class="footer-link">Help Center</a>
-                        <a href="#" class="footer-link">Community</a>
-                        <a href="#" class="footer-link">API</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4 class="footer-title">Legal</h4>
-                        <a href="#" class="footer-link">Privacy</a>
-                        <a href="#" class="footer-link">Terms</a>
-                        <a href="#" class="footer-link">Security</a>
-                        <a href="#" class="footer-link">GDPR</a>
-                    </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="#properties">Properties</a>
+                    <a href="#services">Services</a>
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="profile.html">Profile</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="#">Buy Property</a>
+                    <a href="#">Rent Property</a>
+                    <a href="#">Sell Property</a>
+                    <a href="#">Property Management</a>
+                    <a href="#">Legal Services</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Luxury Avenue, New York, NY 10001</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@estatepro.com</p>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p class="copyright">© 2024 TaskFlow Pro. All rights reserved.</p>
-                <div class="footer-bottom-links">
-                    <a href="#" class="footer-bottom-link">Cookie Policy</a>
-                    <a href="#" class="footer-bottom-link">Sitemap</a>
+                <p>&copy; 2024 EstatePro. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
                 </div>
             </div>
         </div>
