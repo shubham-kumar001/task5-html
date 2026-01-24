@@ -3,445 +3,418 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Features | TaskFlow Pro</title>
+    <title>Task 5 Details | EstatePro</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="task-detail-page">
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <i class="fas fa-tasks logo-icon"></i>
-                <span class="brand-name">TaskFlow<span class="brand-pro">Pro</span></span>
-            </div>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Estate<span>Pro</span></a>
             
             <div class="nav-menu">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="task5.html" class="nav-link active">Features</a>
-                <a href="#pricing" class="nav-link">Pricing</a>
                 <a href="dashboard.html" class="nav-link">Dashboard</a>
                 <a href="profile.html" class="nav-link">Profile</a>
+                <a href="tasks.html" class="nav-link">Tasks</a>
+                <a href="task5.html" class="nav-link active">Task 5</a>
             </div>
             
             <div class="nav-actions">
-                <a href="#" class="btn btn-text">Sign In</a>
-                <a href="dashboard.html" class="btn btn-primary">Launch App</a>
-                <button class="mobile-toggle" id="mobileToggle">
-                    <i class="fas fa-bars"></i>
+                <button class="btn btn-secondary" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
                 </button>
+                <div class="user-menu">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="user-avatar">
+                    <span class="user-name">John Doe</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="mobile-toggle" id="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="dashboard.html" class="mobile-link">Dashboard</a>
+            <a href="profile.html" class="mobile-link">Profile</a>
+            <a href="tasks.html" class="mobile-link">Tasks</a>
+            <a href="task5.html" class="mobile-link active">Task 5</a>
         </div>
     </nav>
 
-    <!-- Features Hero -->
-    <section class="page-hero">
+    <!-- Task Detail Content -->
+    <div class="task-detail-container">
         <div class="container">
-            <div class="page-hero-content">
-                <h1 class="page-hero-title">Advanced Features</h1>
-                <p class="page-hero-subtitle">Discover the powerful capabilities that make TaskFlow Pro the leading enterprise task management platform.</p>
+            <div class="task-detail-header">
+                <div class="task-detail-title">
+                    <h1>Finalize Purchase Agreement for Luxury Villa</h1>
+                    <div class="task-tags">
+                        <span class="task-tag priority high">High Priority</span>
+                        <span class="task-tag status in-progress">In Progress</span>
+                        <span class="task-tag category">Legal</span>
+                    </div>
+                </div>
+                
+                <div class="task-header-actions">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-edit"></i> Edit Task
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-check"></i> Mark Complete
+                    </button>
+                    <a href="tasks.html" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Back to Tasks
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Detailed Features -->
-    <section class="section detailed-features">
-        <div class="container">
-            <div class="feature-tabs" id="featureTabs">
-                <button class="feature-tab active" data-tab="ai">AI Assistant</button>
-                <button class="feature-tab" data-tab="workflow">Workflows</button>
-                <button class="feature-tab" data-tab="analytics">Analytics</button>
-                <button class="feature-tab" data-tab="integrations">Integrations</button>
-                <button class="feature-tab" data-tab="security">Security</button>
-            </div>
-
-            <div class="feature-content active" id="aiContent">
-                <div class="feature-detail">
-                    <div class="feature-detail-text">
-                        <h2>AI-Powered Task Management</h2>
-                        <p>Our advanced AI analyzes your team's work patterns to optimize task allocation, predict deadlines, and identify potential bottlenecks before they impact your workflow.</p>
-                        <ul class="feature-list">
-                            <li><i class="fas fa-check-circle"></i> Automatic task prioritization based on urgency and importance</li>
-                            <li><i class="fas fa-check-circle"></i> Predictive deadline forecasting with 95% accuracy</li>
-                            <li><i class="fas fa-check-circle"></i> Smart resource allocation to prevent team burnout</li>
-                            <li><i class="fas fa-check-circle"></i> Natural language task creation and updates</li>
-                            <li><i class="fas fa-check-circle"></i> Automated progress reporting and stakeholder updates</li>
-                        </ul>
-                        <div class="feature-actions">
-                            <a href="dashboard.html" class="btn btn-primary">Try AI Features</a>
-                            <a href="#" class="btn btn-secondary">Watch Demo</a>
+            
+            <div class="task-detail-grid">
+                <!-- Main Content -->
+                <div class="task-detail-main">
+                    <!-- Task Overview -->
+                    <div class="task-section">
+                        <h2><i class="fas fa-info-circle"></i> Task Overview</h2>
+                        <p class="task-description">
+                            Critical task: Review and finalize the purchase agreement for the Malibu luxury villa. 
+                            Our legal team has sent the final draft that needs your review before signing. 
+                            This is a time-sensitive task as the seller has multiple offers.
+                        </p>
+                        
+                        <div class="task-progress-large">
+                            <div class="progress-info">
+                                <span>Progress</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar large">
+                                <div class="progress-fill" style="width: 75%;"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="feature-detail-visual">
-                        <div class="ai-dashboard-preview">
-                            <div class="ai-header">
-                                <h4>AI Task Assistant</h4>
-                                <span class="ai-status active">Active</span>
+                    
+                    <!-- Property Details -->
+                    <div class="task-section">
+                        <h2><i class="fas fa-home"></i> Associated Property</h2>
+                        <div class="property-detail-card">
+                            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Luxury Villa">
+                            <div class="property-detail-info">
+                                <h3>Malibu Oceanfront Luxury Villa</h3>
+                                <div class="property-detail-meta">
+                                    <p><i class="fas fa-map-marker-alt"></i> Malibu, California</p>
+                                    <p><i class="fas fa-bed"></i> 5 Bedrooms</p>
+                                    <p><i class="fas fa-bath"></i> 6 Bathrooms</p>
+                                    <p><i class="fas fa-ruler-combined"></i> 8,500 sq ft</p>
+                                </div>
+                                <div class="property-price-large">$8,500,000</div>
+                                <p class="property-description">
+                                    Stunning contemporary villa with panoramic ocean views, infinity pool, 
+                                    private beach access, and smart home features throughout.
+                                </p>
                             </div>
-                            <div class="ai-suggestions">
-                                <div class="ai-suggestion">
-                                    <div class="suggestion-icon">
-                                        <i class="fas fa-exclamation-triangle"></i>
-                                    </div>
-                                    <div class="suggestion-content">
-                                        <h5>Potential Bottleneck Detected</h5>
-                                        <p>Design review delayed by 2 days. Consider reallocating resources.</p>
-                                    </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Requirements & Instructions -->
+                    <div class="task-section">
+                        <h2><i class="fas fa-list-check"></i> Requirements</h2>
+                        <div class="requirements-list">
+                            <div class="requirement-item">
+                                <div class="requirement-checkbox">
+                                    <input type="checkbox" id="req1" checked>
+                                    <label for="req1"></label>
                                 </div>
-                                <div class="ai-suggestion">
-                                    <div class="suggestion-icon">
-                                        <i class="fas fa-lightbulb"></i>
-                                    </div>
-                                    <div class="suggestion-content">
-                                        <h5>Optimization Suggestion</h5>
-                                        <p>Merge "Client Feedback" and "Revision" tasks to reduce context switching.</p>
-                                    </div>
+                                <div class="requirement-content">
+                                    <h4>Review Purchase Agreement</h4>
+                                    <p>Carefully read through all 45 pages of the purchase agreement</p>
                                 </div>
-                                <div class="ai-suggestion">
-                                    <div class="suggestion-icon">
-                                        <i class="fas fa-calendar-check"></i>
-                                    </div>
-                                    <div class="suggestion-content">
-                                        <h5>Deadline Prediction</h5>
-                                        <p>Based on current pace, project will complete 3 days ahead of schedule.</p>
-                                    </div>
+                            </div>
+                            
+                            <div class="requirement-item">
+                                <div class="requirement-checkbox">
+                                    <input type="checkbox" id="req2" checked>
+                                    <label for="req2"></label>
+                                </div>
+                                <div class="requirement-content">
+                                    <h4>Verify Financial Terms</h4>
+                                    <p>Confirm down payment amount, closing costs, and payment schedule</p>
+                                </div>
+                            </div>
+                            
+                            <div class="requirement-item">
+                                <div class="requirement-checkbox">
+                                    <input type="checkbox" id="req3">
+                                    <label for="req3"></label>
+                                </div>
+                                <div class="requirement-content">
+                                    <h4>Review Contingencies</h4>
+                                    <p>Check inspection, financing, and appraisal contingencies</p>
+                                </div>
+                            </div>
+                            
+                            <div class="requirement-item">
+                                <div class="requirement-checkbox">
+                                    <input type="checkbox" id="req4">
+                                    <label for="req4"></label>
+                                </div>
+                                <div class="requirement-content">
+                                    <h4>Schedule Final Walkthrough</h4>
+                                    <p>Coordinate with agent for final property inspection before closing</p>
+                                </div>
+                            </div>
+                            
+                            <div class="requirement-item">
+                                <div class="requirement-checkbox">
+                                    <input type="checkbox" id="req5">
+                                    <label for="req5"></label>
+                                </div>
+                                <div class="requirement-content">
+                                    <h4>Sign and Notarize Documents</h4>
+                                    <p>Sign all documents in presence of notary public</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline -->
+                    <div class="task-section">
+                        <h2><i class="fas fa-timeline"></i> Timeline</h2>
+                        <div class="timeline">
+                            <div class="timeline-item completed">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>Initial Offer Submitted</h4>
+                                    <p>October 5, 2024</p>
+                                    <span>Offer accepted by seller</span>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item completed">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>Property Inspection</h4>
+                                    <p>October 12, 2024</p>
+                                    <span>All inspections passed successfully</span>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item current">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>Purchase Agreement Review</h4>
+                                    <p>October 15-30, 2024</p>
+                                    <span>Currently in progress - Due October 30</span>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>Closing Date</h4>
+                                    <p>November 15, 2024</p>
+                                    <span>Scheduled closing and property transfer</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- AI Stats -->
-                <div class="feature-stats">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-chart-line"></i>
+                <!-- Sidebar -->
+                <div class="task-detail-sidebar">
+                    <!-- Task Info Card -->
+                    <div class="task-info-card">
+                        <h3>Task Information</h3>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-calendar"></i>
+                            <div>
+                                <span class="info-label">Due Date</span>
+                                <span class="info-value">October 30, 2024</span>
+                            </div>
                         </div>
-                        <div class="stat-info">
-                            <h3>40%</h3>
-                            <p>Average productivity increase with AI</p>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-user"></i>
+                            <div>
+                                <span class="info-label">Assigned To</span>
+                                <span class="info-value">John Doe</span>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-user-tie"></i>
+                            <div>
+                                <span class="info-label">Responsible Agent</span>
+                                <span class="info-value">Michael Chen</span>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-gavel"></i>
+                            <div>
+                                <span class="info-label">Legal Contact</span>
+                                <span class="info-value">Sarah Johnson (Attorney)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-flag"></i>
+                            <div>
+                                <span class="info-label">Status</span>
+                                <span class="info-value status-badge in-progress">In Progress</span>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>
+                                <span class="info-label">Priority</span>
+                                <span class="info-value priority-badge high">High Priority</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-clock"></i>
+                    
+                    <!-- Documents Card -->
+                    <div class="documents-card">
+                        <h3>Related Documents</h3>
+                        
+                        <div class="document-item">
+                            <i class="fas fa-file-contract"></i>
+                            <div>
+                                <span class="document-name">Purchase Agreement</span>
+                                <span class="document-size">PDF - 2.4 MB</span>
+                            </div>
+                            <button class="document-action">
+                                <i class="fas fa-download"></i>
+                            </button>
                         </div>
-                        <div class="stat-info">
-                            <h3>95%</h3>
-                            <p>Deadline prediction accuracy</p>
+                        
+                        <div class="document-item">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <div>
+                                <span class="document-name">Financial Terms</span>
+                                <span class="document-size">PDF - 1.1 MB</span>
+                            </div>
+                            <button class="document-action">
+                                <i class="fas fa-download"></i>
+                            </button>
                         </div>
+                        
+                        <div class="document-item">
+                            <i class="fas fa-file-signature"></i>
+                            <div>
+                                <span class="document-name">Disclosure Forms</span>
+                                <span class="document-size">PDF - 3.2 MB</span>
+                            </div>
+                            <button class="document-action">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="document-item">
+                            <i class="fas fa-home"></i>
+                            <div>
+                                <span class="document-name">Property Report</span>
+                                <span class="document-size">PDF - 5.7 MB</span>
+                            </div>
+                            <button class="document-action">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                        
+                        <button class="btn btn-outline btn-block">
+                            <i class="fas fa-plus"></i> Add Document
+                        </button>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>8.5/10</h3>
-                            <p>Team satisfaction with AI suggestions</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="feature-content" id="workflowContent">
-                <div class="feature-detail">
-                    <div class="feature-detail-text">
-                        <h2>Visual Workflow Builder</h2>
-                        <p>Create complex workflows with our intuitive drag-and-drop interface. Visualize dependencies, assign responsibilities, and optimize processes in real-time.</p>
-                        <ul class="feature-list">
-                            <li><i class="fas fa-check-circle"></i> Drag-and-drop workflow creation</li>
-                            <li><i class="fas fa-check-circle"></i> Real-time collaboration on process maps</li>
-                            <li><i class="fas fa-check-circle"></i> Conditional logic and branching paths</li>
-                            <li><i class="fas fa-check-circle"></i> Automated task generation from workflows</li>
-                            <li><i class="fas fa-check-circle"></i> Version history and rollback capabilities</li>
-                        </ul>
-                        <div class="feature-actions">
-                            <a href="dashboard.html" class="btn btn-primary">Build Your First Workflow</a>
-                            <a href="#" class="btn btn-secondary">View Templates</a>
-                        </div>
-                    </div>
-                    <div class="feature-detail-visual">
-                        <div class="workflow-preview">
-                            <div class="workflow-diagram">
-                                <div class="workflow-node start">
-                                    <i class="fas fa-play"></i>
-                                    <span>Start Project</span>
+                    
+                    <!-- Contacts Card -->
+                    <div class="contacts-card">
+                        <h3>Key Contacts</h3>
+                        
+                        <div class="contact-item">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Agent">
+                            <div class="contact-info">
+                                <h4>Michael Chen</h4>
+                                <p>Luxury Property Specialist</p>
+                                <div class="contact-actions">
+                                    <button class="contact-btn">
+                                        <i class="fas fa-phone"></i>
+                                    </button>
+                                    <button class="contact-btn">
+                                        <i class="fas fa-envelope"></i>
+                                    </button>
                                 </div>
-                                <div class="workflow-arrow"></div>
-                                <div class="workflow-node process">
-                                    <i class="fas fa-tasks"></i>
-                                    <span>Design Phase</span>
-                                </div>
-                                <div class="workflow-arrow"></div>
-                                <div class="workflow-node decision">
-                                    <i class="fas fa-code-branch"></i>
-                                    <span>Client Approval?</span>
-                                </div>
-                                <div class="workflow-branch">
-                                    <div class="branch-yes">
-                                        <div class="workflow-arrow"></div>
-                                        <div class="workflow-node process">
-                                            <i class="fas fa-check"></i>
-                                            <span>Development</span>
-                                        </div>
-                                    </div>
-                                    <div class="branch-no">
-                                        <div class="workflow-arrow"></div>
-                                        <div class="workflow-node process">
-                                            <i class="fas fa-redo"></i>
-                                            <span>Revisions</span>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Attorney">
+                            <div class="contact-info">
+                                <h4>Sarah Johnson</h4>
+                                <p>Real Estate Attorney</p>
+                                <div class="contact-actions">
+                                    <button class="contact-btn">
+                                        <i class="fas fa-phone"></i>
+                                    </button>
+                                    <button class="contact-btn">
+                                        <i class="fas fa-envelope"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="feature-content" id="analyticsContent">
-                <div class="feature-detail">
-                    <div class="feature-detail-text">
-                        <h2>Advanced Analytics & Reporting</h2>
-                        <p>Gain deep insights into team performance, project health, and resource utilization with our comprehensive analytics suite.</p>
-                        <ul class="feature-list">
-                            <li><i class="fas fa-check-circle"></i> Real-time performance dashboards</li>
-                            <li><i class="fas fa-check-circle"></i> Predictive analytics for project timelines</li>
-                            <li><i class="fas fa-check-circle"></i> Custom report builder with drag-and-drop</li>
-                            <li><i class="fas fa-check-circle"></i> Export to PDF, Excel, and PowerPoint</li>
-                            <li><i class="fas fa-check-circle"></i> Automated executive summaries</li>
-                        </ul>
-                        <div class="feature-actions">
-                            <a href="dashboard.html" class="btn btn-primary">View Analytics</a>
-                            <a href="#" class="btn btn-secondary">Sample Reports</a>
+            
+            <!-- Comments Section -->
+            <div class="comments-section">
+                <h2><i class="fas fa-comments"></i> Comments & Notes</h2>
+                
+                <div class="comment-form">
+                    <div class="comment-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                    </div>
+                    <div class="comment-input">
+                        <textarea placeholder="Add a comment or note about this task..."></textarea>
+                        <div class="comment-actions">
+                            <button class="btn btn-primary">Post Comment</button>
                         </div>
                     </div>
-                    <div class="feature-detail-visual">
-                        <div class="analytics-preview">
-                            <div class="analytics-chart">
-                                <div class="chart-header">
-                                    <h4>Team Performance Metrics</h4>
-                                    <span class="chart-period">This Month</span>
-                                </div>
-                                <div class="chart-metrics">
-                                    <div class="metric">
-                                        <span class="metric-label">Productivity</span>
-                                        <div class="metric-bar">
-                                            <div class="metric-fill" style="width: 85%;"></div>
-                                        </div>
-                                        <span class="metric-value">85%</span>
-                                    </div>
-                                    <div class="metric">
-                                        <span class="metric-label">On-time Delivery</span>
-                                        <div class="metric-bar">
-                                            <div class="metric-fill" style="width: 92%;"></div>
-                                        </div>
-                                        <span class="metric-value">92%</span>
-                                    </div>
-                                    <div class="metric">
-                                        <span class="metric-label">Quality Score</span>
-                                        <div class="metric-bar">
-                                            <div class="metric-fill" style="width: 88%;"></div>
-                                        </div>
-                                        <span class="metric-value">88%</span>
-                                    </div>
-                                </div>
+                </div>
+                
+                <div class="comments-list">
+                    <div class="comment-item">
+                        <div class="comment-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Agent">
+                        </div>
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <h4>Michael Chen</h4>
+                                <span class="comment-time">2 hours ago</span>
                             </div>
+                            <p>The seller's attorney has agreed to extend the review period by 3 days. Please take your time to review thoroughly.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="comment-item">
+                        <div class="comment-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Attorney">
+                        </div>
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <h4>Sarah Johnson</h4>
+                                <span class="comment-time">1 day ago</span>
+                            </div>
+                            <p>I've highlighted sections 4.2 and 7.3 that need special attention. The financing contingency clause is standard but verify the dates.</p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Integration and Security sections would follow similar pattern -->
         </div>
-    </section>
-
-    <!-- Feature Comparison -->
-    <section class="section comparison">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Compare Plans</h2>
-                <p class="section-subtitle">Choose the right plan for your team's needs</p>
-            </div>
-            <div class="comparison-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th>Starter</th>
-                            <th>Professional</th>
-                            <th>Enterprise</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>AI Task Assistant</td>
-                            <td><i class="fas fa-check"></i></td>
-                            <td><i class="fas fa-check"></i></td>
-                            <td><i class="fas fa-check"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Advanced Workflows</td>
-                            <td><i class="fas fa-times"></i></td>
-                            <td><i class="fas fa-check"></i></td>
-                            <td><i class="fas fa-check"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Custom Analytics</td>
-                            <td>Basic</td>
-                            <td>Standard</td>
-                            <td>Advanced</td>
-                        </tr>
-                        <tr>
-                            <td>Enterprise Security</td>
-                            <td><i class="fas fa-times"></i></td>
-                            <td>Standard</td>
-                            <td><i class="fas fa-check"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Priority Support</td>
-                            <td><i class="fas fa-times"></i></td>
-                            <td>Business Hours</td>
-                            <td>24/7</td>
-                        </tr>
-                        <tr>
-                            <td>API Access</td>
-                            <td>Limited</td>
-                            <td>Standard</td>
-                            <td>Full</td>
-                        </tr>
-                        <tr>
-                            <td>Custom Integrations</td>
-                            <td><i class="fas fa-times"></i></td>
-                            <td>3 Integrations</td>
-                            <td>Unlimited</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Ready to Experience Advanced Task Management?</h2>
-                <p class="cta-text">Start your free 30-day trial of TaskFlow Pro today.</p>
-                <div class="cta-actions">
-                    <a href="dashboard.html" class="btn btn-primary btn-large">Start Free Trial</a>
-                    <a href="#" class="btn btn-secondary btn-large">Contact Sales</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="nav-brand">
-                        <i class="fas fa-tasks logo-icon"></i>
-                        <span class="brand-name">TaskFlow<span class="brand-pro">Pro</span></span>
-                    </div>
-                    <p class="footer-description">Enterprise task management for modern teams.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4 class="footer-title">Product</h4>
-                        <a href="task5.html" class="footer-link">Features</a>
-                        <a href="#pricing" class="footer-link">Pricing</a>
-                        <a href="dashboard.html" class="footer-link">Dashboard</a>
-                        <a href="tasks.html" class="footer-link">Tasks</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4 class="footer-title">Company</h4>
-                        <a href="#" class="footer-link">About</a>
-                        <a href="#" class="footer-link">Careers</a>
-                        <a href="#" class="footer-link">Blog</a>
-                        <a href="#" class="footer-link">Contact</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p class="copyright">© 2024 TaskFlow Pro. All rights reserved.</p>
-                <div class="footer-bottom-links">
-                    <a href="#" class="footer-bottom-link">Cookie Policy</a>
-                    <a href="#" class="footer-bottom-link">Sitemap</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    </div>
 
     <script src="script.js"></script>
-    <script>
-        // Features page JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
-            // Feature tabs
-            const featureTabs = document.querySelectorAll('.feature-tab');
-            const featureContents = document.querySelectorAll('.feature-content');
-            
-            featureTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // Remove active class from all tabs
-                    featureTabs.forEach(t => t.classList.remove('active'));
-                    
-                    // Add active class to clicked tab
-                    this.classList.add('active');
-                    
-                    // Hide all feature contents
-                    featureContents.forEach(content => {
-                        content.classList.remove('active');
-                    });
-                    
-                    // Show selected feature content
-                    const tabId = this.getAttribute('data-tab');
-                    const selectedContent = document.getElementById(`${tabId}Content`);
-                    if (selectedContent) {
-                        selectedContent.classList.add('active');
-                    }
-                });
-            });
-            
-            // Animate feature stats
-            const statCards = document.querySelectorAll('.feature-stats .stat-card');
-            const observerOptions = {
-                threshold: 0.5
-            };
-            
-            const statsObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const statCard = entry.target;
-                        statCard.classList.add('animated');
-                        statsObserver.unobserve(statCard);
-                    }
-                });
-            }, observerOptions);
-            
-            statCards.forEach(card => {
-                statsObserver.observe(card);
-            });
-            
-            // Demo video modal (placeholder)
-            const demoButtons = document.querySelectorAll('.btn-secondary');
-            demoButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    if (this.textContent.includes('Watch') || this.textContent.includes('Demo')) {
-                        e.preventDefault();
-                        alert('Demo video would play here. In a real implementation, this would open a modal with a video player.');
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
