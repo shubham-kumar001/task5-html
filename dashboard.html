@@ -3,172 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | TaskFlow Pro</title>
+    <title>Dashboard | EstatePro</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dashboard-page">
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <i class="fas fa-tasks logo-icon"></i>
-                <span class="brand-name">TaskFlow<span class="brand-pro">Pro</span></span>
-            </div>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Estate<span>Pro</span></a>
             
             <div class="nav-menu">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="task5.html" class="nav-link">Features</a>
                 <a href="dashboard.html" class="nav-link active">Dashboard</a>
-                <a href="tasks.html" class="nav-link">Tasks</a>
                 <a href="profile.html" class="nav-link">Profile</a>
+                <a href="tasks.html" class="nav-link">Tasks</a>
+                <a href="task5.html" class="nav-link">Task 5</a>
             </div>
             
             <div class="nav-actions">
-                <div class="notification-badge">
-                    <i class="fas fa-bell"></i>
-                    <span class="badge-count">3</span>
-                </div>
-                <div class="user-dropdown">
-                    <div class="user-info">
-                        <div class="user-avatar">JD</div>
-                        <div class="user-details">
-                            <span class="user-name">John Doe</span>
-                            <span class="user-role">Project Manager</span>
-                        </div>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="dropdown-menu">
-                        <a href="profile.html" class="dropdown-item">
-                            <i class="fas fa-user"></i> Profile
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-cog"></i> Settings
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-question-circle"></i> Help
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-sign-out-alt"></i> Logout
-                        </a>
-                    </div>
-                </div>
-                <button class="mobile-toggle" id="mobileToggle">
-                    <i class="fas fa-bars"></i>
+                <button class="btn btn-secondary" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
                 </button>
+                <div class="user-menu">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="user-avatar">
+                    <span class="user-name">John Doe</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="mobile-toggle" id="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="dashboard.html" class="mobile-link active">Dashboard</a>
+            <a href="profile.html" class="mobile-link">Profile</a>
+            <a href="tasks.html" class="mobile-link">Tasks</a>
+            <a href="task5.html" class="mobile-link">Task 5</a>
         </div>
     </nav>
 
-    <!-- Dashboard Layout -->
-    <div class="dashboard-layout">
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h3>Workspace</h3>
-                <button class="btn btn-primary btn-small" id="quickAddBtn">
-                    <i class="fas fa-plus"></i> Quick Add
-                </button>
+                <h3>Dashboard</h3>
             </div>
             
-            <nav class="sidebar-nav">
+            <div class="sidebar-menu">
                 <a href="dashboard.html" class="sidebar-link active">
                     <i class="fas fa-chart-line"></i>
-                    Overview
+                    <span>Overview</span>
+                </a>
+                <a href="profile.html" class="sidebar-link">
+                    <i class="fas fa-user"></i>
+                    <span>My Profile</span>
                 </a>
                 <a href="tasks.html" class="sidebar-link">
                     <i class="fas fa-tasks"></i>
-                    My Tasks
-                    <span class="sidebar-badge">12</span>
+                    <span>My Tasks</span>
+                    <span class="badge">5</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-heart"></i>
+                    <span>Favorites</span>
+                    <span class="badge">12</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-home"></i>
+                    <span>Properties</span>
                 </a>
                 <a href="#" class="sidebar-link">
                     <i class="fas fa-calendar-alt"></i>
-                    Calendar
+                    <span>Appointments</span>
+                    <span class="badge">3</span>
                 </a>
                 <a href="#" class="sidebar-link">
-                    <i class="fas fa-project-diagram"></i>
-                    Projects
-                    <span class="sidebar-badge">5</span>
+                    <i class="fas fa-file-contract"></i>
+                    <span>Documents</span>
                 </a>
                 <a href="#" class="sidebar-link">
-                    <i class="fas fa-users"></i>
-                    Team
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
                 </a>
-                <a href="#" class="sidebar-link">
-                    <i class="fas fa-chart-bar"></i>
-                    Reports
-                </a>
-                <a href="#" class="sidebar-link">
-                    <i class="fas fa-inbox"></i>
-                    Inbox
-                    <span class="sidebar-badge">3</span>
-                </a>
-            </nav>
-            
-            <div class="sidebar-section">
-                <h4>Projects</h4>
-                <div class="project-list">
-                    <div class="project-item active">
-                        <div class="project-color" style="background-color: #4361ee;"></div>
-                        <span>Q4 Launch</span>
-                        <div class="project-progress">85%</div>
-                    </div>
-                    <div class="project-item">
-                        <div class="project-color" style="background-color: #f72585;"></div>
-                        <span>Marketing Campaign</span>
-                        <div class="project-progress">60%</div>
-                    </div>
-                    <div class="project-item">
-                        <div class="project-color" style="background-color: #4cc9f0;"></div>
-                        <span>Website Redesign</span>
-                        <div class="project-progress">45%</div>
-                    </div>
-                    <div class="project-item">
-                        <div class="project-color" style="background-color: #f8961e;"></div>
-                        <span>Mobile App</span>
-                        <div class="project-progress">30%</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="sidebar-section">
-                <h4>Team Members</h4>
-                <div class="team-list">
-                    <div class="team-member">
-                        <div class="member-avatar">SJ</div>
-                        <div class="member-info">
-                            <span class="member-name">Sarah Johnson</span>
-                            <span class="member-status online"></span>
-                        </div>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-avatar">MC</div>
-                        <div class="member-info">
-                            <span class="member-name">Mike Chen</span>
-                            <span class="member-status online"></span>
-                        </div>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-avatar">LW</div>
-                        <div class="member-info">
-                            <span class="member-name">Lisa Wong</span>
-                            <span class="member-status away"></span>
-                        </div>
-                    </div>
-                </div>
             </div>
             
             <div class="sidebar-footer">
-                <div class="ai-assistant">
-                    <div class="ai-header">
-                        <i class="fas fa-robot"></i>
-                        <span>AI Assistant</span>
-                    </div>
-                    <button class="btn btn-text btn-small" id="askAI">
-                        <i class="fas fa-comment"></i> Ask AI
-                    </button>
+                <div class="upgrade-card">
+                    <h4>Upgrade to Pro</h4>
+                    <p>Get advanced features and priority support</p>
+                    <button class="btn btn-primary btn-small">Upgrade Now</button>
                 </div>
             </div>
         </aside>
@@ -176,216 +104,98 @@
         <!-- Main Content -->
         <main class="dashboard-main">
             <div class="dashboard-header">
-                <div class="dashboard-title">
-                    <h1>Dashboard</h1>
-                    <p class="dashboard-subtitle">Welcome back, John. Here's what's happening with your projects today.</p>
-                </div>
-                <div class="dashboard-actions">
-                    <button class="btn btn-primary" id="addTaskBtn">
-                        <i class="fas fa-plus"></i> Add Task
-                    </button>
-                    <div class="date-selector">
-                        <i class="fas fa-calendar"></i>
-                        <span id="currentDate">Loading...</span>
-                    </div>
-                </div>
+                <h1>Welcome back, John!</h1>
+                <p>Here's what's happening with your real estate journey today.</p>
             </div>
-
+            
             <!-- Stats Cards -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-card-header">
-                        <h3>Active Tasks</h3>
-                        <i class="fas fa-tasks stat-icon"></i>
+                    <div class="stat-icon" style="background: #e3f2fd;">
+                        <i class="fas fa-home" style="color: #2196f3;"></i>
                     </div>
-                    <div class="stat-card-body">
-                        <div class="stat-value">24</div>
-                        <div class="stat-change positive">
-                            <i class="fas fa-arrow-up"></i>
-                            <span>12% from last week</span>
-                        </div>
+                    <div class="stat-info">
+                        <h3>8</h3>
+                        <p>Properties Viewed</p>
                     </div>
                 </div>
                 
                 <div class="stat-card">
-                    <div class="stat-card-header">
-                        <h3>Completed Today</h3>
-                        <i class="fas fa-check-circle stat-icon"></i>
+                    <div class="stat-icon" style="background: #f3e5f5;">
+                        <i class="fas fa-heart" style="color: #9c27b0;"></i>
                     </div>
-                    <div class="stat-card-body">
-                        <div class="stat-value">8</div>
-                        <div class="stat-change positive">
-                            <i class="fas fa-arrow-up"></i>
-                            <span>20% from yesterday</span>
-                        </div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Favorites</p>
                     </div>
                 </div>
                 
                 <div class="stat-card">
-                    <div class="stat-card-header">
-                        <h3>Overdue</h3>
-                        <i class="fas fa-exclamation-triangle stat-icon"></i>
+                    <div class="stat-icon" style="background: #e8f5e9;">
+                        <i class="fas fa-calendar-check" style="color: #4caf50;"></i>
                     </div>
-                    <div class="stat-card-body">
-                        <div class="stat-value">3</div>
-                        <div class="stat-change negative">
-                            <i class="fas fa-arrow-down"></i>
-                            <span>2 since yesterday</span>
-                        </div>
+                    <div class="stat-info">
+                        <h3>3</h3>
+                        <p>Upcoming Tours</p>
                     </div>
                 </div>
                 
                 <div class="stat-card">
-                    <div class="stat-card-header">
-                        <h3>Team Productivity</h3>
-                        <i class="fas fa-chart-line stat-icon"></i>
+                    <div class="stat-icon" style="background: #fff3e0;">
+                        <i class="fas fa-file-signature" style="color: #ff9800;"></i>
                     </div>
-                    <div class="stat-card-body">
-                        <div class="stat-value">92%</div>
-                        <div class="stat-change positive">
-                            <i class="fas fa-arrow-up"></i>
-                            <span>5% from last week</span>
-                        </div>
+                    <div class="stat-info">
+                        <h3>2</h3>
+                        <p>Documents Pending</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Charts and Tasks -->
-            <div class="dashboard-content-grid">
-                <div class="dashboard-card large">
-                    <div class="card-header">
-                        <h3>Task Completion Trend</h3>
-                        <select class="chart-select" id="chartPeriod">
-                            <option>Last 7 days</option>
-                            <option selected>Last 30 days</option>
-                            <option>Last quarter</option>
-                        </select>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="taskChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="dashboard-card">
-                    <div class="card-header">
-                        <h3>Priority Tasks</h3>
-                        <a href="tasks.html" class="btn-text">View All</a>
-                    </div>
-                    <div class="card-body">
-                        <div class="priority-tasks">
-                            <div class="priority-task high">
-                                <div class="task-checkbox">
-                                    <input type="checkbox" id="dashTask1">
-                                    <label for="dashTask1"></label>
-                                </div>
-                                <div class="task-content">
-                                    <h4>Finalize Q4 Launch Plan</h4>
-                                    <p>Due: Today, 5:00 PM</p>
-                                </div>
-                                <div class="task-actions">
-                                    <button class="task-action-btn">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <div class="priority-task medium">
-                                <div class="task-checkbox">
-                                    <input type="checkbox" id="dashTask2">
-                                    <label for="dashTask2"></label>
-                                </div>
-                                <div class="task-content">
-                                    <h4>Client Presentation Review</h4>
-                                    <p>Due: Tomorrow, 10:00 AM</p>
-                                </div>
-                                <div class="task-actions">
-                                    <button class="task-action-btn">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <div class="priority-task low">
-                                <div class="task-checkbox">
-                                    <input type="checkbox" id="dashTask3">
-                                    <label for="dashTask3"></label>
-                                </div>
-                                <div class="task-content">
-                                    <h4>Team Meeting Agenda</h4>
-                                    <p>Due: Dec 10</p>
-                                </div>
-                                <div class="task-actions">
-                                    <button class="task-action-btn">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <div class="priority-task overdue">
-                                <div class="task-checkbox">
-                                    <input type="checkbox" id="dashTask4">
-                                    <label for="dashTask4"></label>
-                                </div>
-                                <div class="task-content">
-                                    <h4>Budget Report Submission</h4>
-                                    <p>Overdue by 2 days</p>
-                                </div>
-                                <div class="task-actions">
-                                    <button class="task-action-btn">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recent Activity and Upcoming -->
-            <div class="dashboard-content-grid">
+            
+            <!-- Recent Activity & Properties -->
+            <div class="dashboard-grid">
                 <div class="dashboard-card">
                     <div class="card-header">
                         <h3>Recent Activity</h3>
+                        <a href="#" class="view-all">View All</a>
                     </div>
-                    <div class="card-body">
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-avatar">
-                                    <i class="fas fa-user-check"></i>
-                                </div>
-                                <div class="activity-content">
-                                    <p><strong>Sarah Johnson</strong> completed "Design Mockups"</p>
-                                    <span class="activity-time">2 hours ago</span>
-                                </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-eye"></i>
                             </div>
-                            <div class="activity-item">
-                                <div class="activity-avatar">
-                                    <i class="fas fa-comment"></i>
-                                </div>
-                                <div class="activity-content">
-                                    <p><strong>Mike Chen</strong> commented on "Q4 Launch"</p>
-                                    <span class="activity-time">4 hours ago</span>
-                                </div>
+                            <div class="activity-content">
+                                <p>You viewed <strong>Luxury Villa in Malibu</strong></p>
+                                <span class="activity-time">2 hours ago</span>
                             </div>
-                            <div class="activity-item">
-                                <div class="activity-avatar">
-                                    <i class="fas fa-file-upload"></i>
-                                </div>
-                                <div class="activity-content">
-                                    <p><strong>You</strong> uploaded documents to "Marketing Campaign"</p>
-                                    <span class="activity-time">Yesterday</span>
-                                </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-heart"></i>
                             </div>
-                            <div class="activity-item">
-                                <div class="activity-avatar">
-                                    <i class="fas fa-tasks"></i>
-                                </div>
-                                <div class="activity-content">
-                                    <p><strong>Lisa Wong</strong> created a new task in "Website Redesign"</p>
-                                    <span class="activity-time">2 days ago</span>
-                                </div>
+                            <div class="activity-content">
+                                <p>You added <strong>Downtown Penthouse</strong> to favorites</p>
+                                <span class="activity-time">1 day ago</span>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-calendar-plus"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p>Tour scheduled for <strong>Modern Apartment</strong></p>
+                                <span class="activity-time">2 days ago</span>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p>New message from <strong>Agent Sarah</strong></p>
+                                <span class="activity-time">3 days ago</span>
                             </div>
                         </div>
                     </div>
@@ -393,402 +203,71 @@
                 
                 <div class="dashboard-card">
                     <div class="card-header">
-                        <h3>Upcoming Deadlines</h3>
-                        <a href="#" class="btn-text">View Calendar</a>
+                        <h3>Recommended Properties</h3>
+                        <a href="#" class="view-all">View All</a>
                     </div>
-                    <div class="card-body">
-                        <div class="deadline-list">
-                            <div class="deadline-item">
-                                <div class="deadline-date">
-                                    <span class="deadline-day">15</span>
-                                    <span class="deadline-month">DEC</span>
-                                </div>
-                                <div class="deadline-details">
-                                    <h4>Q4 Launch Final Review</h4>
-                                    <p>Project: Q4 Launch</p>
-                                </div>
-                                <div class="deadline-status urgent">Urgent</div>
+                    <div class="properties-list">
+                        <div class="property-item">
+                            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Property">
+                            <div class="property-info">
+                                <h4>Modern Villa</h4>
+                                <p><i class="fas fa-map-marker-alt"></i> Beverly Hills, CA</p>
+                                <div class="property-price">$2,500,000</div>
                             </div>
-                            <div class="deadline-item">
-                                <div class="deadline-date">
-                                    <span class="deadline-day">20</span>
-                                    <span class="deadline-month">DEC</span>
-                                </div>
-                                <div class="deadline-details">
-                                    <h4>Marketing Campaign Launch</h4>
-                                    <p>Project: Marketing</p>
-                                </div>
-                                <div class="deadline-status upcoming">Upcoming</div>
+                        </div>
+                        
+                        <div class="property-item">
+                            <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Property">
+                            <div class="property-info">
+                                <h4>Luxury Penthouse</h4>
+                                <p><i class="fas fa-map-marker-alt"></i> Manhattan, NY</p>
+                                <div class="property-price">$3,800,000</div>
                             </div>
-                            <div class="deadline-item">
-                                <div class="deadline-date">
-                                    <span class="deadline-day">31</span>
-                                    <span class="deadline-month">DEC</span>
-                                </div>
-                                <div class="deadline-details">
-                                    <h4>Year-End Reports</h4>
-                                    <p>Project: Internal</p>
-                                </div>
-                                <div class="deadline-status normal">Normal</div>
+                        </div>
+                        
+                        <div class="property-item">
+                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Property">
+                            <div class="property-info">
+                                <h4>Waterfront Estate</h4>
+                                <p><i class="fas fa-map-marker-alt"></i> Miami, FL</p>
+                                <div class="property-price">$5,200,000</div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Quick Actions</h3>
+                </div>
+                <div class="quick-actions">
+                    <a href="tasks.html" class="action-btn">
+                        <i class="fas fa-tasks"></i>
+                        <span>View Tasks</span>
+                    </a>
+                    <a href="profile.html" class="action-btn">
+                        <i class="fas fa-user-edit"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-search"></i>
+                        <span>Search Properties</span>
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-calendar-plus"></i>
+                        <span>Schedule Tour</span>
+                    </a>
+                    <a href="task5.html" class="action-btn">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Task 5 Details</span>
+                    </a>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- Quick Add Modal -->
-    <div class="modal" id="quickAddModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Quick Add Task</h3>
-                <button class="modal-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form id="quickTaskForm">
-                    <div class="form-group">
-                        <label for="quickTaskTitle">What needs to be done?</label>
-                        <input type="text" id="quickTaskTitle" placeholder="Enter task title" required autofocus>
-                    </div>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="quickTaskPriority">Priority</label>
-                            <select id="quickTaskPriority">
-                                <option value="low">Low</option>
-                                <option value="medium" selected>Medium</option>
-                                <option value="high">High</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="quickTaskDue">Due</label>
-                            <select id="quickTaskDue">
-                                <option value="today">Today</option>
-                                <option value="tomorrow" selected>Tomorrow</option>
-                                <option value="week">This Week</option>
-                                <option value="nextweek">Next Week</option>
-                                <option value="later">Later</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="quickTaskProject">Project</label>
-                        <select id="quickTaskProject">
-                            <option value="">No Project</option>
-                            <option value="q4-launch">Q4 Launch</option>
-                            <option value="marketing">Marketing Campaign</option>
-                            <option value="website">Website Redesign</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary">Cancel</button>
-                <button class="btn btn-primary" id="saveQuickTask">Add Task</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- AI Assistant Modal -->
-    <div class="modal" id="aiModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>AI Task Assistant</h3>
-                <button class="modal-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="ai-conversation">
-                    <div class="ai-message">
-                        <div class="ai-avatar">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="message-content">
-                            <p>Hi John! I'm your AI assistant. I can help you prioritize tasks, suggest deadlines, or optimize your workflow. What would you like help with today?</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="ai-suggestions">
-                    <button class="ai-suggestion-btn" data-question="What's my most urgent task?">
-                        <i class="fas fa-exclamation-circle"></i>
-                        What's my most urgent task?
-                    </button>
-                    <button class="ai-suggestion-btn" data-question="Suggest a deadline for my presentation">
-                        <i class="fas fa-calendar-check"></i>
-                        Suggest a deadline
-                    </button>
-                    <button class="ai-suggestion-btn" data-question="How can I optimize my workflow?">
-                        <i class="fas fa-chart-line"></i>
-                        Optimize my workflow
-                    </button>
-                </div>
-                <div class="ai-input">
-                    <input type="text" placeholder="Ask me anything about your tasks..." id="aiQuestion">
-                    <button class="btn btn-primary" id="askQuestion">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
-    <script>
-        // Dashboard-specific JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set current date
-            const currentDate = document.getElementById('currentDate');
-            if (currentDate) {
-                const now = new Date();
-                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                currentDate.textContent = now.toLocaleDateString('en-US', options);
-            }
-            
-            // Quick Add Modal
-            const quickAddBtn = document.getElementById('quickAddBtn');
-            const quickAddModal = document.getElementById('quickAddModal');
-            const addTaskBtn = document.getElementById('addTaskBtn');
-            
-            if (quickAddBtn && quickAddModal) {
-                const openModal = () => {
-                    quickAddModal.style.display = 'flex';
-                    document.getElementById('quickTaskTitle').focus();
-                };
-                
-                quickAddBtn.addEventListener('click', openModal);
-                if (addTaskBtn) addTaskBtn.addEventListener('click', openModal);
-                
-                const modalClose = quickAddModal.querySelector('.modal-close');
-                modalClose.addEventListener('click', () => {
-                    quickAddModal.style.display = 'none';
-                });
-                
-                quickAddModal.addEventListener('click', (e) => {
-                    if (e.target === quickAddModal) {
-                        quickAddModal.style.display = 'none';
-                    }
-                });
-                
-                // Save quick task
-                const saveBtn = document.getElementById('saveQuickTask');
-                if (saveBtn) {
-                    saveBtn.addEventListener('click', function() {
-                        const title = document.getElementById('quickTaskTitle').value;
-                        if (title.trim()) {
-                            // In a real app, save to backend
-                            showNotification('Task added successfully!', 'success');
-                            quickAddModal.style.display = 'none';
-                            document.getElementById('quickTaskForm').reset();
-                            
-                            // Update stats
-                            const statValue = document.querySelector('.stat-card:first-child .stat-value');
-                            if (statValue) {
-                                const current = parseInt(statValue.textContent);
-                                statValue.textContent = (current + 1).toString();
-                            }
-                        }
-                    });
-                }
-            }
-            
-            // AI Assistant Modal
-            const askAIBtn = document.getElementById('askAI');
-            const aiModal = document.getElementById('aiModal');
-            
-            if (askAIBtn && aiModal) {
-                askAIBtn.addEventListener('click', function() {
-                    aiModal.style.display = 'flex';
-                });
-                
-                const modalClose = aiModal.querySelector('.modal-close');
-                modalClose.addEventListener('click', () => {
-                    aiModal.style.display = 'none';
-                });
-                
-                aiModal.addEventListener('click', (e) => {
-                    if (e.target === aiModal) {
-                        aiModal.style.display = 'none';
-                    }
-                });
-                
-                // AI suggestions
-                const suggestionBtns = document.querySelectorAll('.ai-suggestion-btn');
-                suggestionBtns.forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const question = this.getAttribute('data-question');
-                        document.getElementById('aiQuestion').value = question;
-                        askAI(question);
-                    });
-                });
-                
-                // Ask question
-                const askQuestionBtn = document.getElementById('askQuestion');
-                if (askQuestionBtn) {
-                    askQuestionBtn.addEventListener('click', function() {
-                        const question = document.getElementById('aiQuestion').value;
-                        if (question.trim()) {
-                            askAI(question);
-                        }
-                    });
-                }
-            }
-            
-            function askAI(question) {
-                const conversation = document.querySelector('.ai-conversation');
-                if (!conversation) return;
-                
-                // Add user message
-                const userMessage = document.createElement('div');
-                userMessage.className = 'user-message';
-                userMessage.innerHTML = `
-                    <div class="user-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="message-content">
-                        <p>${question}</p>
-                    </div>
-                `;
-                conversation.appendChild(userMessage);
-                
-                // Clear input
-                document.getElementById('aiQuestion').value = '';
-                
-                // Simulate AI thinking
-                setTimeout(() => {
-                    const aiMessage = document.createElement('div');
-                    aiMessage.className = 'ai-message';
-                    
-                    let response = '';
-                    
-                    if (question.includes('urgent')) {
-                        response = "Based on your tasks, 'Finalize Q4 Launch Plan' is your most urgent task. It's due today and marked as high priority. I recommend focusing on this first.";
-                    } else if (question.includes('deadline')) {
-                        response = "For your client presentation, I suggest setting the deadline for Friday, December 15th. This gives you 3 days for preparation and allows time for review.";
-                    } else if (question.includes('optimize')) {
-                        response = "I notice you have 3 overdue tasks. Consider delegating 'Budget Report' to Mike Chen. Also, try batching similar tasks together to reduce context switching.";
-                    } else {
-                        response = "I've analyzed your workflow and suggest grouping similar tasks together. You have 5 design-related tasks that could be completed in one focused session.";
-                    }
-                    
-                    aiMessage.innerHTML = `
-                        <div class="ai-avatar">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="message-content">
-                            <p>${response}</p>
-                        </div>
-                    `;
-                    conversation.appendChild(aiMessage);
-                    
-                    // Scroll to bottom
-                    conversation.scrollTop = conversation.scrollHeight;
-                }, 1000);
-            }
-            
-            // Task Chart
-            const taskCtx = document.getElementById('taskChart');
-            if (taskCtx) {
-                new Chart(taskCtx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                        datasets: [{
-                            label: 'Tasks Completed',
-                            data: [12, 19, 8, 15, 22, 10, 18],
-                            borderColor: '#4361ee',
-                            backgroundColor: 'rgba(67, 97, 238, 0.1)',
-                            borderWidth: 2,
-                            fill: true,
-                            tension: 0.4
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                grid: {
-                                    color: 'rgba(0, 0, 0, 0.05)'
-                                },
-                                ticks: {
-                                    stepSize: 5
-                                }
-                            },
-                            x: {
-                                grid: {
-                                    display: false
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-            
-            // Task completion
-            const taskCheckboxes = document.querySelectorAll('.task-checkbox input');
-            taskCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    const task = this.closest('.priority-task');
-                    if (this.checked) {
-                        task.style.opacity = '0.6';
-                        setTimeout(() => {
-                            task.style.display = 'none';
-                            
-                            // Update stats
-                            const completedStat = document.querySelectorAll('.stat-value')[1];
-                            const activeStat = document.querySelectorAll('.stat-value')[0];
-                            
-                            if (completedStat) {
-                                const current = parseInt(completedStat.textContent);
-                                completedStat.textContent = (current + 1).toString();
-                            }
-                            
-                            if (activeStat) {
-                                const current = parseInt(activeStat.textContent);
-                                if (current > 0) {
-                                    activeStat.textContent = (current - 1).toString();
-                                }
-                            }
-                        }, 300);
-                    }
-                });
-            });
-            
-            // Chart period selector
-            const chartPeriod = document.getElementById('chartPeriod');
-            if (chartPeriod) {
-                chartPeriod.addEventListener('change', function() {
-                    // In a real app, update chart data based on selected period
-                    showNotification(`Chart updated for ${this.value}`, 'info');
-                });
-            }
-            
-            // Project item clicks
-            const projectItems = document.querySelectorAll('.project-item');
-            projectItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    projectItems.forEach(p => p.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const projectName = this.querySelector('span').textContent;
-                    showNotification(`Showing tasks for ${projectName}`, 'info');
-                });
-            });
-            
-            function showNotification(message, type = 'info') {
-                if (window.RealEstateUtils && window.RealEstateUtils.showNotification) {
-                    window.RealEstateUtils.showNotification(message, type);
-                } else {
-                    alert(message);
-                }
-            }
-        });
-    </script>
 </body>
 </html>
