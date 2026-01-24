@@ -1,581 +1,563 @@
-// TaskFlow Pro - Main JavaScript
+// DOM Elements
+const themeToggle = document.getElementById('theme-toggle');
+const mobileToggle = document.getElementById('mobile-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const addTaskBtn = document.getElementById('add-task-btn');
+const addTaskModal = document.getElementById('add-task-modal');
+const modalCloseBtns = document.querySelectorAll('.modal-close');
+const filterTabs = document.querySelectorAll('.filter-tab');
+const taskCards = document.querySelectorAll('.task-card');
+const newTaskForm = document.getElementById('new-task-form');
+const budgetRange = document.getElementById('budgetRange');
+const budgetValue = document.getElementById('budgetValue');
+const profileMenuLinks = document.querySelectorAll('.profile-menu-link');
+const profileSections = document.querySelectorAll('.profile-section');
 
-// DOM Content Loaded
+// Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Menu Toggle
-    const mobileToggle = document.getElementById('mobileToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
+    initTheme();
+    initMobileMenu();
+    initModals();
+    initTaskFilters();
+    initProfileTabs();
+    loadProperties();
+    updateBudgetValue();
     
+    // Add event listeners
+    if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+    if (budgetRange) budgetRange.addEventListener('input', updateBudgetValue);
+    if (newTaskForm) newTaskForm.addEventListener('submit', handleNewTask);
+});
+
+// Theme Management
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.body.classList.toggle('dark-mode', savedTheme === 'dark');
+    updateThemeIcon(savedTheme);
+}
+
+function toggleTheme() {
+    const isDark = document.body.classList.toggle('dark-mode');
+    const theme = isDark ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+    updateThemeIcon(theme);
+}
+
+function updateThemeIcon(theme) {
+    if (themeToggle) {
+        const icon = themeToggle.querySelector('i');
+        if (icon) {
+            icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    }
+}
+
+// Mobile Menu
+function initMobileMenu() {
     if (mobileToggle && mobileMenu) {
-        mobileToggle.addEventListener('click', function() {
+        mobileToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
-            mobileToggle.innerHTML = mobileMenu.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
         });
         
-        // Close mobile menu when clicking a link
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
-                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
     }
-    
-    // Feature Tabs (for task5.html)
-    const featureTabs = document.querySelectorAll('.feature-tab');
-    if (featureTabs.length > 0) {
-        featureTabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                // Remove active class from all tabs
-                featureTabs.forEach(t => t.classList.remove('active'));
-                
-                // Add active class to clicked tab
-                this.classList.add('active');
-                
-                // Hide all feature contents
-                const featureContents = document.querySelectorAll('.feature-content');
-                featureContents.forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                // Show selected feature content
-                const tabId = this.getAttribute('data-tab');
-                const selectedContent = document.getElementById(`${tabId}Content`);
-                if (selectedContent) {
-                    selectedContent.classList.add('active');
-                }
-            });
+}
+
+// Modals
+function initModals() {
+    // Add Task Modal
+    if (addTaskBtn && addTaskModal) {
+        addTaskBtn.addEventListener('click', () => {
+            addTaskModal.classList.add('active');
         });
     }
     
-    // Animate elements on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
-                
-                // Animate stats counters
-                if (entry.target.classList.contains('stat-number')) {
-                    animateCounter(entry.target);
-                }
-            }
-        });
-    }, observerOptions);
-    
-    // Observe feature cards
-    const featureCards = document.querySelectorAll('.feature-card');
-    featureCards.forEach(card => {
-        observer.observe(card);
-    });
-    
-    // Observe stat numbers
-    const statNumbers = document.querySelectorAll('.stat-number:not(.profile-stat .stat-number)');
-    statNumbers.forEach(number => {
-        observer.observe(number);
-    });
-    
-    // Task card hover effects
-    const taskCards = document.querySelectorAll('.task-card');
-    taskCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateX(5px)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateX(0)';
+    // Close modal buttons
+    modalCloseBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const modal = btn.closest('.modal');
+            if (modal) modal.classList.remove('active');
         });
     });
     
-    // Form validation for contact forms
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        if (!form.id || !form.id.includes('Task') && !form.id.includes('profile') && !form.id.includes('password')) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                // Basic validation
-                const inputs = this.querySelectorAll('input[required], textarea[required], select[required]');
-                let valid = true;
-                
-                inputs.forEach(input => {
-                    if (!input.value.trim()) {
-                        valid = false;
-                        input.style.borderColor = 'var(--danger)';
-                    } else {
-                        input.style.borderColor = '';
-                    }
-                });
-                
-                if (valid) {
-                    // In a real app, you would submit the form here
-                    console.log('Form submitted successfully');
-                    
-                    // Show success message
-                    showNotification('Form submitted successfully!', 'success');
-                    
-                    this.reset();
-                } else {
-                    showNotification('Please fill in all required fields.', 'error');
-                }
-            });
+    // Close modal when clicking outside
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal')) {
+            e.target.classList.remove('active');
         }
     });
-    
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+}
+
+// Task Filters
+function initTaskFilters() {
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Update active tab
+            filterTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            // Filter tasks
+            const filter = tab.dataset.filter;
+            filterTasks(filter);
+        });
+    });
+}
+
+function filterTasks(filter) {
+    taskCards.forEach(card => {
+        if (filter === 'all') {
+            card.style.display = 'flex';
+        } else if (filter === 'completed') {
+            const isCompleted = card.dataset.status === 'completed';
+            card.style.display = isCompleted ? 'flex' : 'none';
+        } else {
+            const matchesFilter = card.dataset[filter] !== undefined;
+            card.style.display = matchesFilter ? 'flex' : 'none';
+        }
+    });
+}
+
+// Profile Tabs
+function initProfileTabs() {
+    profileMenuLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
             e.preventDefault();
             
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            // Update active link
+            profileMenuLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
             
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
+            // Show corresponding section
+            const targetId = link.getAttribute('href').substring(1) + '-tab';
+            profileSections.forEach(section => {
+                section.classList.remove('active');
+                if (section.id === targetId) {
+                    section.classList.add('active');
+                }
+            });
         });
     });
-    
-    // Counter animation for stats
-    function animateCounter(element) {
-        if (element.dataset.animated) return;
-        
-        const target = parseInt(element.textContent.replace(/[^0-9]/g, ''));
-        if (isNaN(target)) return;
-        
-        element.dataset.animated = 'true';
-        let current = 0;
-        const increment = target / 50;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                current = target;
-                clearInterval(timer);
-            }
-            element.textContent = Math.round(current).toLocaleString() + (element.textContent.includes('%') ? '%' : '');
-        }, 30);
-    }
-    
-    // Theme toggle (dark mode)
-    const themeToggle = document.createElement('button');
-    themeToggle.id = 'themeToggle';
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-    themeToggle.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: var(--primary);
-        color: white;
-        border: none;
-        cursor: pointer;
-        box-shadow: var(--shadow-lg);
-        z-index: 100;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-    `;
-    
-    document.body.appendChild(themeToggle);
-    
-    themeToggle.addEventListener('click', function() {
-        document.body.classList.toggle('dark-mode');
-        const icon = this.querySelector('i');
-        if (document.body.classList.contains('dark-mode')) {
-            icon.className = 'fas fa-sun';
-            localStorage.setItem('theme', 'dark');
-        } else {
-            icon.className = 'fas fa-moon';
-            localStorage.setItem('theme', 'light');
-        }
-    });
-    
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        themeToggle.querySelector('i').className = 'fas fa-sun';
-    }
-    
-    // Add dark mode styles dynamically
-    const darkModeStyles = `
-        <style>
-            body.dark-mode {
-                --dark: #e0e0e0;
-                --gray-900: #f8f9fa;
-                --gray-800: #e9ecef;
-                --gray-700: #dee2e6;
-                --gray-600: #ced4da;
-                --gray-500: #adb5bd;
-                --gray-400: #6c757d;
-                --gray-300: #495057;
-                --gray-200: #343a40;
-                --gray-100: #212529;
-                --white: #121212;
-                background-color: var(--white);
-                color: var(--dark);
-            }
-            
-            body.dark-mode .navbar {
-                background-color: rgba(18, 18, 18, 0.95);
-                border-bottom: 1px solid var(--gray-300);
-            }
-            
-            body.dark-mode .feature-card,
-            body.dark-mode .dashboard-preview,
-            body.dark-mode .ai-dashboard-preview,
-            body.dark-mode .tasks-sidebar,
-            body.dark-mode .sidebar,
-            body.dark-mode .profile-card,
-            body.dark-mode .dashboard-card,
-            body.dark-mode .stat-card,
-            body.dark-mode .modal-content,
-            body.dark-mode .testimonial-card,
-            body.dark-mode .workflow-preview,
-            body.dark-mode .analytics-preview {
-                background-color: var(--gray-100);
-                border-color: var(--gray-300);
-                color: var(--dark);
-            }
-            
-            body.dark-mode .hero {
-                background: linear-gradient(135deg, var(--gray-100) 0%, var(--white) 100%);
-            }
-            
-            body.dark-mode .footer {
-                background-color: var(--gray-100);
-            }
-            
-            body.dark-mode p,
-            body.dark-mode .stat-label,
-            body.dark-mode .task-info p,
-            body.dark-mode .feature-description,
-            body.dark-mode .section-subtitle,
-            body.dark-mode .hero-subtitle,
-            body.dark-mode .dashboard-subtitle,
-            body.dark-mode .preference-info p,
-            body.dark-mode .footer-description,
-            body.dark-mode .footer-link,
-            body.dark-mode .copyright {
-                color: var(--gray-600);
-            }
-            
-            body.dark-mode .comparison-table td {
-                border-color: var(--gray-300);
-            }
-            
-            body.dark-mode .comparison-table tr:hover {
-                background-color: var(--gray-200);
-            }
-            
-            body.dark-mode .search-box input,
-            body.dark-mode .sort-select,
-            body.dark-mode .filter-select,
-            body.dark-mode .form-group input,
-            body.dark-mode .form-group select,
-            body.dark-mode .form-group textarea {
-                background-color: var(--gray-200);
-                border-color: var(--gray-400);
-                color: var(--dark);
-            }
-            
-            body.dark-mode .btn-text {
-                color: var(--gray-600);
-            }
-            
-            body.dark-mode .btn-text:hover {
-                color: var(--primary);
-            }
-            
-            body.dark-mode .tasks-content,
-            body.dark-mode .tasks-table,
-            body.dark-mode .board-column,
-            body.dark-mode .calendar-day {
-                background-color: var(--gray-100);
-            }
-            
-            body.dark-mode .table-header {
-                background-color: var(--gray-200);
-            }
-            
-            body.dark-mode .task-row:hover {
-                background-color: var(--gray-200);
-            }
-            
-            body.dark-mode .priority-task,
-            body.dark-mode .deadline-item,
-            body.dark-mode .session-item,
-            body.dark-mode .preference-item,
-            body.dark-mode .activity-item {
-                background-color: var(--gray-200);
-            }
-            
-            body.dark-mode .priority-task:hover,
-            body.dark-mode .deadline-item:hover {
-                background-color: var(--gray-300);
-            }
-            
-            body.dark-mode .ai-conversation,
-            body.dark-mode .ai-suggestion-btn {
-                background-color: var(--gray-200);
-            }
-            
-            body.dark-mode .message-content p {
-                background-color: var(--gray-100);
-            }
-        </style>
-    `;
-    
-    document.head.insertAdjacentHTML('beforeend', darkModeStyles);
-    
-    // Initialize any tooltips
-    const tooltips = document.querySelectorAll('[data-tooltip]');
-    tooltips.forEach(element => {
-        element.addEventListener('mouseenter', function() {
-            const tooltipText = this.getAttribute('data-tooltip');
-            const tooltip = document.createElement('div');
-            tooltip.className = 'tooltip';
-            tooltip.textContent = tooltipText;
-            tooltip.style.cssText = `
-                position: absolute;
-                background-color: var(--dark);
-                color: white;
-                padding: 5px 10px;
-                border-radius: 4px;
-                font-size: 0.8rem;
-                z-index: 1000;
-                white-space: nowrap;
-                transform: translateY(-100%);
-                margin-top: -10px;
-            `;
-            
-            this.appendChild(tooltip);
-            
-            // Position tooltip
-            const rect = this.getBoundingClientRect();
-            tooltip.style.left = `${rect.width/2 - tooltip.offsetWidth/2}px`;
-        });
-        
-        element.addEventListener('mouseleave', function() {
-            const tooltip = this.querySelector('.tooltip');
-            if (tooltip) {
-                tooltip.remove();
-            }
-        });
-    });
-});
+}
 
-// Add loading animation
-window.addEventListener('load', function() {
-    const loader = document.createElement('div');
-    loader.id = 'pageLoader';
-    loader.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: var(--white);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        transition: opacity 0.3s ease;
-    `;
+// Property Data
+const properties = [
+    {
+        id: 1,
+        image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        price: '$2,500,000',
+        title: 'Modern Luxury Villa',
+        location: 'Beverly Hills, CA',
+        beds: 4,
+        baths: 5,
+        sqft: '4,500'
+    },
+    {
+        id: 2,
+        image: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        price: '$3,800,000',
+        title: 'Penthouse with City View',
+        location: 'Manhattan, NY',
+        beds: 3,
+        baths: 3,
+        sqft: '3,200'
+    },
+    {
+        id: 3,
+        image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        price: '$1,200,000',
+        title: 'Waterfront Contemporary Home',
+        location: 'Miami, FL',
+        beds: 4,
+        baths: 3,
+        sqft: '3,800'
+    },
+    {
+        id: 4,
+        image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        price: '$850,000',
+        title: 'Modern Apartment',
+        location: 'Chicago, IL',
+        beds: 2,
+        baths: 2,
+        sqft: '1,800'
+    },
+    {
+        id: 5,
+        image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        price: '$1,500,000',
+        title: 'Suburban Family Home',
+        location: 'Austin, TX',
+        beds: 5,
+        baths: 4,
+        sqft: '4,200'
+    },
+    {
+        id: 6,
+        image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        price: '$5,200,000',
+        title: 'Luxury Mountain Retreat',
+        location: 'Aspen, CO',
+        beds: 6,
+        baths: 7,
+        sqft: '8,500'
+    }
+];
+
+// Load Properties
+function loadProperties() {
+    const propertiesGrid = document.querySelector('.properties-grid');
+    if (!propertiesGrid) return;
     
-    loader.innerHTML = `
-        <div class="loader-content">
-            <div class="loader-spinner"></div>
-            <div style="margin-top: 20px; font-weight: 600; color: var(--primary);">Loading TaskFlow Pro...</div>
+    propertiesGrid.innerHTML = properties.map(property => `
+        <div class="property-card">
+            <div class="property-image">
+                <img src="${property.image}" alt="${property.title}">
+                <div class="property-overlay">
+                    <button class="btn-wishlist"><i class="far fa-heart"></i></button>
+                </div>
+            </div>
+            <div class="property-content">
+                <div class="property-price">${property.price}</div>
+                <h3 class="property-title">${property.title}</h3>
+                <div class="property-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${property.location}</span>
+                </div>
+                <div class="property-features">
+                    <div class="property-feature">
+                        <span class="feature-value">${property.beds}</span>
+                        <span class="feature-label">Beds</span>
+                    </div>
+                    <div class="property-feature">
+                        <span class="feature-value">${property.baths}</span>
+                        <span class="feature-label">Baths</span>
+                    </div>
+                    <div class="property-feature">
+                        <span class="feature-value">${property.sqft}</span>
+                        <span class="feature-label">Sq Ft</span>
+                    </div>
+                </div>
+                <div class="property-actions">
+                    <button class="btn btn-primary btn-block">View Details</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Budget Range
+function updateBudgetValue() {
+    if (!budgetRange || !budgetValue) return;
+    
+    const value = parseInt(budgetRange.value);
+    if (value >= 1000000) {
+        budgetValue.textContent = `$${(value / 1000000).toFixed(1)}M`;
+    } else {
+        budgetValue.textContent = `$${(value / 1000).toFixed(0)}k`;
+    }
+}
+
+// New Task Handler
+function handleNewTask(e) {
+    e.preventDefault();
+    
+    const title = document.getElementById('task-title').value;
+    const description = document.getElementById('task-description').value;
+    const dueDate = document.getElementById('task-due-date').value;
+    const priority = document.getElementById('task-priority').value;
+    const category = document.getElementById('task-category').value;
+    
+    // Create new task card
+    const taskId = Date.now();
+    const taskCard = document.createElement('div');
+    taskCard.className = 'task-card';
+    taskCard.dataset.status = 'pending';
+    taskCard.dataset.priority = priority;
+    taskCard.innerHTML = `
+        <div class="task-checkbox">
+            <input type="checkbox" id="task${taskId}">
+            <label for="task${taskId}"></label>
+        </div>
+        
+        <div class="task-content">
+            <div class="task-header">
+                <h3>${title}</h3>
+                <span class="task-priority ${priority}">${priority.charAt(0).toUpperCase() + priority.slice(1)} Priority</span>
+            </div>
+            <p class="task-description">${description}</p>
+            
+            <div class="task-meta">
+                <span class="task-date">
+                    <i class="far fa-calendar"></i> Due: ${new Date(dueDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                </span>
+                <span class="task-category">
+                    <i class="fas fa-${getCategoryIcon(category)}"></i> ${getCategoryLabel(category)}
+                </span>
+                <span class="task-assigned">
+                    <i class="fas fa-user"></i> Assigned to: You
+                </span>
+            </div>
+            
+            <div class="task-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%;"></div>
+                </div>
+                <span>0% complete</span>
+            </div>
+        </div>
+        
+        <div class="task-actions">
+            <button class="task-action-btn" title="Edit">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button class="task-action-btn" title="Delete">
+                <i class="fas fa-trash"></i>
+            </button>
+            <button class="task-action-btn" title="View Details">
+                <i class="fas fa-external-link-alt"></i>
+            </button>
         </div>
     `;
     
-    document.body.appendChild(loader);
+    // Add to tasks list
+    const tasksList = document.querySelector('.tasks-list');
+    if (tasksList) {
+        tasksList.prepend(taskCard);
+    }
     
-    // Add spinner styles
-    const spinnerStyles = `
-        <style>
-            .loader-spinner {
-                width: 50px;
-                height: 50px;
-                border: 5px solid var(--gray-300);
-                border-top-color: var(--primary);
-                border-radius: 50%;
-                animation: spin 1s linear infinite;
-            }
-            
-            @keyframes spin {
-                to { transform: rotate(360deg); }
-            }
-        </style>
-    `;
+    // Close modal and reset form
+    addTaskModal.classList.remove('active');
+    e.target.reset();
     
-    document.head.insertAdjacentHTML('beforeend', spinnerStyles);
-    
-    // Remove loader after page loads
-    setTimeout(() => {
-        loader.style.opacity = '0';
-        setTimeout(() => {
-            loader.remove();
-        }, 300);
-    }, 500);
-});
+    // Show notification
+    showNotification('Task added successfully!', 'success');
+}
 
-// Handle window resize
-let resizeTimeout;
-window.addEventListener('resize', function() {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(function() {
-        // Close mobile menu on resize to desktop
-        if (window.innerWidth > 768) {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const mobileToggle = document.getElementById('mobileToggle');
-            if (mobileMenu && mobileToggle) {
-                mobileMenu.classList.remove('active');
-                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        }
-    }, 250);
-});
+function getCategoryIcon(category) {
+    const icons = {
+        'viewing': 'home',
+        'documentation': 'file-contract',
+        'financial': 'money-check-alt',
+        'legal': 'gavel',
+        'planning': 'paint-roller'
+    };
+    return icons[category] || 'tasks';
+}
 
-// Notification System
+function getCategoryLabel(category) {
+    const labels = {
+        'viewing': 'Property Viewing',
+        'documentation': 'Documentation',
+        'financial': 'Financial',
+        'legal': 'Legal',
+        'planning': 'Planning'
+    };
+    return labels[category] || 'General';
+}
+
+// Notifications
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
-    notification.textContent = message;
-    notification.style.cssText = `
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        background: ${type === 'success' ? 'var(--success)' : type === 'error' ? 'var(--danger)' : 'var(--primary)'};
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-lg);
-        z-index: 9999;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        max-width: 350px;
-        word-wrap: break-word;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-${getNotificationIcon(type)}"></i>
+            <span>${message}</span>
+        </div>
+        <button class="notification-close">&times;</button>
     `;
     
     document.body.appendChild(notification);
     
-    // Animate in
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-    }, 100);
+    // Add styles for notification
+    if (!document.querySelector('#notification-styles')) {
+        const style = document.createElement('style');
+        style.id = 'notification-styles';
+        style.textContent = `
+            .notification {
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: white;
+                border-radius: var(--border-radius);
+                padding: 1rem 1.5rem;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                max-width: 400px;
+            }
+            .dark-mode .notification {
+                background-color: var(--gray-light);
+            }
+            .notification-content {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            .notification-success {
+                border-left: 4px solid var(--success-color);
+            }
+            .notification-error {
+                border-left: 4px solid var(--danger-color);
+            }
+            .notification-warning {
+                border-left: 4px solid var(--warning-color);
+            }
+            .notification-info {
+                border-left: 4px solid var(--primary-color);
+            }
+            .notification-close {
+                background: none;
+                border: none;
+                font-size: 1.25rem;
+                color: var(--gray-dark);
+                cursor: pointer;
+                padding: 0;
+                width: 24px;
+                height: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                transition: var(--transition);
+            }
+            .notification-close:hover {
+                background-color: var(--gray-light);
+            }
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
     
-    // Remove after 5 seconds
+    // Auto remove after 5 seconds
     setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
     }, 5000);
+    
+    // Close button
+    notification.querySelector('.notification-close').addEventListener('click', () => {
+        notification.remove();
+    });
 }
 
-// Export utility functions for use in other scripts
-window.TaskFlowUtils = {
-    showNotification: showNotification,
-    
-    formatDate: function(dateString) {
-        const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', {
-            weekday: 'short',
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric'
-        });
-    },
-    
-    formatTime: function(dateString) {
-        const date = new Date(dateString);
-        return date.toLocaleTimeString('en-US', {
-            hour: 'numeric',
-            minute: '2-digit'
-        });
-    },
-    
-    debounce: function(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-};
+function getNotificationIcon(type) {
+    const icons = {
+        'success': 'check-circle',
+        'error': 'exclamation-circle',
+        'warning': 'exclamation-triangle',
+        'info': 'info-circle'
+    };
+    return icons[type] || 'info-circle';
+}
 
-// Initialize any chart.js charts if available
-window.initCharts = function() {
-    const chartElements = document.querySelectorAll('canvas');
-    chartElements.forEach(canvas => {
-        if (!canvas.chart) {
-            const ctx = canvas.getContext('2d');
-            const chartType = canvas.dataset.chartType || 'line';
-            
-            // Default chart configuration
-            const config = {
-                type: chartType,
-                data: {
-                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                    datasets: [{
-                        label: 'Tasks Completed',
-                        data: [12, 19, 8, 15, 22, 10, 18],
-                        borderColor: 'var(--primary)',
-                        backgroundColor: 'rgba(67, 97, 238, 0.1)',
-                        borderWidth: 2,
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.05)'
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false
-                            }
-                        }
-                    }
-                }
-            };
-            
-            canvas.chart = new Chart(ctx, config);
+// Search functionality
+function initSearch() {
+    const searchInput = document.querySelector('.search-input input');
+    if (searchInput) {
+        searchInput.addEventListener('keyup', debounce(function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            filterProperties(searchTerm);
+        }, 300));
+    }
+}
+
+function filterProperties(searchTerm) {
+    const propertyCards = document.querySelectorAll('.property-card');
+    
+    propertyCards.forEach(card => {
+        const title = card.querySelector('.property-title').textContent.toLowerCase();
+        const location = card.querySelector('.property-location span').textContent.toLowerCase();
+        const price = card.querySelector('.property-price').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || location.includes(searchTerm) || price.includes(searchTerm)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
         }
     });
-};
+}
 
-// Call initCharts on pages with charts
-if (document.querySelector('canvas')) {
-    document.addEventListener('DOMContentLoaded', initCharts);
+// Utility: Debounce function
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Initialize search on home page
+if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
+    initSearch();
+}
+
+// Task completion tracking
+document.addEventListener('change', function(e) {
+    if (e.target.matches('.task-checkbox input[type="checkbox"]')) {
+        const taskCard = e.target.closest('.task-card');
+        const progressFill = taskCard.querySelector('.progress-fill');
+        const progressText = taskCard.querySelector('.task-progress span');
+        
+        if (e.target.checked) {
+            taskCard.dataset.status = 'completed';
+            progressFill.style.width = '100%';
+            progressText.textContent = '100% complete';
+            
+            // Add completion animation
+            taskCard.style.opacity = '0.7';
+            
+            // Show notification
+            const taskTitle = taskCard.querySelector('.task-header h3').textContent;
+            showNotification(`Task "${taskTitle.substring(0, 30)}..." completed!`, 'success');
+        } else {
+            taskCard.dataset.status = 'pending';
+            progressFill.style.width = '0%';
+            progressText.textContent = '0% complete';
+            taskCard.style.opacity = '1';
+        }
+    }
+});
+
+// Form validation
+document.addEventListener('input', function(e) {
+    if (e.target.matches('input[required], textarea[required], select[required]')) {
+        validateField(e.target);
+    }
+});
+
+function validateField(field) {
+    const value = field.value.trim();
+    const isValid = value.length > 0;
+    
+    if (!isValid) {
+        field.style.borderColor = 'var(--danger-color)';
+    } else {
+        field.style.borderColor = 'var(--gray-medium)';
+    }
+    
+    return isValid;
 }
